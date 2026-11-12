@@ -1,6 +1,6 @@
 # Odoo 18 Functional Certification – Đề thi thử
 
-Bộ 3 đề thi thử chứng chỉ **Odoo 18 Functional Certification**, mô phỏng đúng thể lệ kỳ thi thật. Sau khi nộp bài, trang hiện thống kê đúng/sai và lời giải thích cho từng câu.
+6 đề thi thử chứng chỉ **Odoo 18 Functional Certification**: 3 đề đầy đủ mô phỏng đúng thể lệ kỳ thi thật, và 3 đề rút gọn 45 phút để luyện nhanh. Sau khi nộp bài, trang hiện thống kê đúng/sai và lời giải thích cho từng câu.
 
 Toàn bộ nằm trong một file HTML tĩnh duy nhất ([`Odoo18_Mock_Certification.html`](Odoo18_Mock_Certification.html)): không cần server, không cần cài đặt gì.
 
@@ -19,38 +19,41 @@ xdg-open odoo18-test-certification/Odoo18_Mock_Certification.html   # macOS: ope
 
 > Lưu ý: GitHub chỉ hiển thị mã nguồn của file `.html`, không chạy trang. Muốn làm bài trên web thì dùng link GitHub Pages ở trên.
 
-## Thể lệ (giống đề thật)
+## Thể lệ
 
-| | |
-|---|---|
-| Số câu | 125 câu trắc nghiệm, mỗi câu 1 đáp án đúng |
-| Thời gian | 90 phút. Hết giờ, bài tự động nộp |
-| Trả lời đúng | **+1** điểm |
-| Trả lời sai | **−0,5** điểm |
-| Bỏ trống | **0** điểm |
-| Điểm đạt | **≥ 70%** (87,5 / 125 điểm) |
+| | Đề đầy đủ (Đề 1–3) | Đề rút gọn (Đề 4–6) |
+|---|---|---|
+| Số câu | 125 câu | 63 câu |
+| Thời gian | 90 phút | 45 phút |
+| Điểm đạt | **≥ 70%**: 87,5 / 125 điểm | **≥ 70%**: 44,1 / 63 điểm |
+| Trả lời đúng | **+1** điểm | **+1** điểm |
+| Trả lời sai | **−0,5** điểm | **−0,5** điểm |
+| Bỏ trống | **0** điểm | **0** điểm |
+
+Đề đầy đủ giống hệt thể lệ đề thật. Đề rút gọn giảm một nửa số câu, thời gian và số điểm cần đạt (125 câu được làm tròn lên thành 63), nên tỉ lệ đạt vẫn là 70%. Mỗi câu chỉ có 1 đáp án đúng; hết giờ, bài tự động nộp.
 
 Câu hỏi và đáp án viết bằng **tiếng Anh** như đề thật; giao diện và lời giải thích bằng **tiếng Việt**.
 
 ## Nội dung đề
 
-3 đề × 125 câu = **375 câu**. Trong cùng một phân hệ, câu hỏi giữa các đề không trùng nhau. Mỗi đề có đủ 16 phân hệ thuộc phạm vi thi:
+3 đề × 125 câu + 3 đề × 63 câu = **564 câu**, không câu nào lặp lại giữa 6 đề. Câu của đề rút gọn được soạn mới, không lấy từ đề đầy đủ. Mỗi đề có đủ 16 phân hệ thuộc phạm vi thi:
 
-| Phân hệ | Số câu / đề | Phân hệ | Số câu / đề |
-|---|---:|---|---:|
-| Accounting | 10 | Marketing | 8 |
-| Inventory | 10 | Point of Sale | 8 |
-| Sales | 9 | Website | 7 |
-| Studio | 9 | eCommerce | 7 |
-| CRM | 8 | Project | 7 |
-| Purchase | 8 | Timesheets | 6 |
-| Manufacturing | 8 | Survey | 6 |
-| HR | 8 | Spreadsheet | 6 |
+| Phân hệ | Đề đầy đủ | Đề rút gọn | Phân hệ | Đề đầy đủ | Đề rút gọn |
+|---|---:|---:|---|---:|---:|
+| Accounting | 10 | 5 | Marketing | 8 | 4 |
+| Inventory | 10 | 5 | Point of Sale | 8 | 4 |
+| Sales | 9 | 5 | Website | 7 | 4 |
+| Studio | 9 | 5 | eCommerce | 7 | 3 |
+| CRM | 8 | 4 | Project | 7 | 3 |
+| Purchase | 8 | 4 | Timesheets | 6 | 3 |
+| Manufacturing | 8 | 4 | Survey | 6 | 3 |
+| HR | 8 | 4 | Spreadsheet | 6 | 3 |
+| | | | **Tổng / đề** | **125** | **63** |
 
 ## Tính năng
 
 **Trong khi làm bài**
-- Đồng hồ đếm ngược, thanh tiến độ, bảng lưới 125 câu để nhảy nhanh tới câu bất kỳ.
+- Đồng hồ đếm ngược, thanh tiến độ, bảng lưới các câu để nhảy nhanh tới câu bất kỳ.
 - Đánh dấu câu cần xem lại; nút *Xóa lựa chọn* để bỏ trống câu chưa chắc (bỏ trống không bị trừ điểm).
 - Tùy chọn xáo trộn thứ tự câu hỏi và đáp án.
 - Phím tắt: `A`–`D` chọn đáp án · `←` `→` chuyển câu · `F` đánh dấu · `Del` xóa lựa chọn.

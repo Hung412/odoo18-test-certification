@@ -63,9 +63,16 @@ Câu hỏi và đáp án viết bằng **tiếng Anh** như đề thật; giao d
 - Điểm, cách tính điểm, kết quả **Đạt / Chưa đạt**, số câu đúng / sai / bỏ trống và thời gian đã dùng.
 - Bảng thống kê theo từng phân hệ và gợi ý 3 phân hệ nên ôn thêm.
 - Xem lại từng câu: đáp án bạn chọn, đáp án đúng, giải thích và link tài liệu Odoo 18. Lọc được theo câu sai, câu bỏ trống, câu đã đánh dấu hoặc theo phân hệ.
-- Lưu lịch sử và điểm cao nhất của từng đề.
+- Điểm cao nhất của từng đề hiện ngay trên trang chọn đề.
 
-Tiến độ và lịch sử điểm chỉ lưu trong `localStorage` của trình duyệt đang dùng; không gửi đi đâu.
+**Lịch sử làm bài**
+- Mỗi lần nộp bài (kể cả khi hết giờ, tự nộp), kết quả tự lưu vào trang **Lịch sử làm bài**, mở từ nút trên trang chọn đề hoặc trang kết quả.
+- Mỗi lần thi có: thời điểm nộp, đề, điểm, tỉ lệ, Đạt / Chưa đạt, số câu đúng / sai / bỏ trống, thời gian làm. Lọc được theo đề, kèm số lần thi, số lần đạt, điểm trung bình và điểm cao nhất.
+- Bấm **Xem lại** để mở lại đúng trang kết quả của lần thi đó: thống kê theo phân hệ, đáp án đã chọn (đúng thứ tự đáp án lúc làm), câu đã đánh dấu, giải thích.
+- Xóa được từng lần thi hoặc toàn bộ lịch sử.
+- Giữ tối đa 300 lần thi; 150 lần gần nhất xem lại được chi tiết từng câu.
+
+Tiến độ và lịch sử chỉ lưu trong `localStorage` của trình duyệt đang dùng, không gửi đi đâu. Vì vậy lịch sử không đồng bộ giữa các máy hay trình duyệt, và sẽ mất khi xóa dữ liệu trình duyệt hoặc dùng cửa sổ ẩn danh.
 
 ## Triển khai GitHub Pages
 

@@ -1,0 +1,804 @@
+[
+ {
+  "subject": "Accounting",
+  "question": "A Romanian company must record corrections as reversal entries that keep the same side with negative amounts (e.g. a negative debit instead of a credit). Which Accounting setting should be enabled?",
+  "options": [
+   "Cash Basis",
+   "Storno accounting",
+   "Quick encoding",
+   "Dedicated Credit Note Sequence"
+  ],
+  "answer": 1,
+  "explanation": "Bật 'Storno accounting' thì các bút toán đảo (credit note, reverse) ghi số âm ở cùng phía Debit/Credit của bút toán gốc. Cash Basis liên quan thời điểm ghi nhận thuế, không phải cách đảo bút toán.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/get_started.html"
+ },
+ {
+  "subject": "Accounting",
+  "question": "A company wants customers to pay invoices by scanning a code with their banking app. Which configuration enables printing a SEPA QR-code on invoices?",
+  "options": [
+   "Enable 'Online Signature' in Sales settings so customers sign and pay",
+   "Enable 'Batch Payments' and SEPA Direct Debit on the bank journal",
+   "Enable 'Display SEPA QR-code' and set an IBAN on the bank journal",
+   "Install the Barcode app and print the customer's barcode on invoices"
+  ],
+  "answer": 2,
+  "explanation": "Tùy chọn Display SEPA QR-code (Accounting settings) cùng tài khoản ngân hàng IBAN trên sổ ngân hàng cho phép in mã QR thanh toán trên hóa đơn. SEPA Direct Debit là thu tiền tự động theo ủy quyền, không phải mã QR.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/customer_invoices/epc_qr_code.html"
+ },
+ {
+  "subject": "Accounting",
+  "question": "An accountant receives hundreds of PDF vendor bills and wants Odoo to read the vendor, dates, amounts and taxes automatically. Which feature is used, and what does it consume?",
+  "options": [
+   "Quick encoding, which is free and needs no setting",
+   "Bank synchronization, which consumes IAP credits",
+   "Snailmail, which consumes IAP credits",
+   "Document Digitization (OCR), which consumes In-App Purchase (IAP) credits"
+  ],
+  "answer": 3,
+  "explanation": "Document Digitization dùng OCR/AI để trích xuất dữ liệu từ PDF hóa đơn và tiêu tốn IAP credits. Snailmail là gửi thư bưu điện, cũng dùng IAP nhưng không đọc hóa đơn.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/vendor_bills/invoice_digitization.html"
+ },
+ {
+  "subject": "Accounting",
+  "question": "At month end, the accountant posts an accrual for electricity consumed in March but not yet billed, and wants it cancelled automatically on 1 April. What is the standard approach?",
+  "options": [
+   "Post it on 31 March, then 'Reverse' it dated 1 April",
+   "Post the entry on 31 March and delete it manually on 1 April",
+   "Set a Hard Lock date of 31 March in the Lock Dates menu",
+   "Create a credit note on a fake vendor bill dated 1 April"
+  ],
+  "answer": 0,
+  "explanation": "Dùng chức năng Reverse trên bút toán với Reversal Date = 1/4 để tạo bút toán đảo ngày đầu tháng sau, chuẩn cho accrual. Không thể xóa bút toán đã post, và Hard Lock date chỉ khóa kỳ.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/reporting/year_end.html"
+ },
+ {
+  "subject": "Accounting",
+  "question": "A recycling eco-fee of 0.50 € per unit must be charged on each unit of a product, regardless of its price. Which 'Tax Computation' should this tax use?",
+  "options": [
+   "Percentage",
+   "Percentage Tax Included",
+   "Group of Taxes",
+   "Fixed"
+  ],
+  "answer": 3,
+  "explanation": "Tax Computation = Fixed tính một số tiền cố định trên mỗi đơn vị số lượng, không phụ thuộc giá. Percentage tính theo tỷ lệ của giá bán.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/taxes.html"
+ },
+ {
+  "subject": "Sales",
+  "question": "A company sells online training and wants an email with the course agenda and materials to be sent automatically to the customer when the invoice for that product is confirmed. Which Sales setting enables this?",
+  "options": [
+   "Pro-Forma Invoice",
+   "Specific Email",
+   "Online Signature",
+   "Automatic Invoice"
+  ],
+  "answer": 1,
+  "explanation": "Setting 'Specific Email' cho phép gắn email template vào sản phẩm; email được gửi tự động khi hóa đơn của sản phẩm đó được xác nhận. Automatic Invoice chỉ tự tạo hóa đơn sau khi thanh toán online.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales.html"
+ },
+ {
+  "subject": "Sales",
+  "question": "A sales team wants every quotation PDF to include a company presentation page at the beginning and terms & conditions pages at the end, uploaded as PDF files. Which setting fits?",
+  "options": [
+   "Quotation Templates with optional products",
+   "Pro-Forma Invoice",
+   "PDF Quote builder",
+   "Specific Email"
+  ],
+  "answer": 2,
+  "explanation": "PDF Quote builder cho phép upload các trang PDF header/footer (và tài liệu theo sản phẩm) để ghép vào PDF báo giá. Quotation Templates xác định nội dung dòng/điều khoản, không ghép thêm trang PDF.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/pdf_quote_builder.html"
+ },
+ {
+  "subject": "Sales",
+  "question": "In Sales settings, the default Invoicing Policy is changed from 'Invoice what is ordered' to 'Invoice what is delivered'. What is the effect on products?",
+  "options": [
+   "All existing products are switched to 'Delivered quantities' at once",
+   "All open sales orders are re-invoiced on delivered quantities automatically",
+   "Service products are excluded and become non-invoiceable until reconfigured",
+   "New products default to 'Delivered quantities'; existing ones are unchanged"
+  ],
+  "answer": 3,
+  "explanation": "Invoicing Policy trong Settings chỉ là giá trị mặc định cho sản phẩm tạo mới; sản phẩm cũ phải sửa trên tab Sales của từng sản phẩm. Nó không cập nhật hàng loạt sản phẩm hay đơn hàng đang mở.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/invoicing/invoicing_policy.html"
+ },
+ {
+  "subject": "Sales",
+  "question": "Before sending a quotation, a salesperson wants to see exactly what the customer will see online. Which button on the quotation should be used?",
+  "options": [
+   "Preview",
+   "Print",
+   "Send by Email",
+   "Confirm"
+  ],
+  "answer": 0,
+  "explanation": "Nút 'Preview' mở báo giá trên customer portal đúng như khách hàng sẽ thấy (kèm ký/thanh toán online nếu bật). Print chỉ tạo bản PDF.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/send_quotations/get_signature_to_validate.html"
+ },
+ {
+  "subject": "Sales",
+  "question": "A product is being phased out. The company wants salespeople to see a pop-up message when they add it to a quotation, but still allow them to sell it. What should be configured?",
+  "options": [
+   "Set a 'Blocking Message' warning on the product's Sales tab",
+   "Enable Sale Order Warnings and set a 'Warning' on the product",
+   "Archive the product",
+   "Remove the product from all pricelists and quotation templates"
+  ],
+  "answer": 1,
+  "explanation": "Với Sale Order Warnings, loại 'Warning' hiển thị thông báo nhưng vẫn cho phép tiếp tục; 'Blocking Message' sẽ chặn không cho thêm sản phẩm. Archive làm sản phẩm không chọn được nữa.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales.html"
+ },
+ {
+  "subject": "Purchase",
+  "question": "A PO contains a line for a 'Maintenance' service (control policy on received quantities) that the vendor has performed. There is no receipt in Inventory. How is the received quantity recorded?",
+  "options": [
+   "By validating a receipt automatically created for services",
+   "By registering the vendor bill first",
+   "By entering the Received quantity manually on the PO line",
+   "It cannot be recorded; services always use ordered quantities"
+  ],
+  "answer": 2,
+  "explanation": "Dòng PO của dịch vụ không tạo phiếu nhập; cột Received được nhập thủ công trên dòng PO (qty received method = Manual). Hàng hóa (Goods) mới lấy số lượng nhận từ phiếu nhập kho.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/control_bills.html"
+ },
+ {
+  "subject": "Purchase",
+  "question": "On a vendor's contact form (with Purchase and Inventory installed), a buyer looks at the 'On-Time Delivery Rate'. What does it measure?",
+  "options": [
+   "The percentage of the vendor's bills that were paid before their due date",
+   "The number of RFQs the vendor answered before the order deadline",
+   "The average delay in days between PO confirmation and receipt validation",
+   "The share of ordered quantities received by the expected arrival date"
+  ],
+  "answer": 3,
+  "explanation": "On-Time Delivery Rate = số lượng sản phẩm nhận đúng hạn (trước/đúng Expected Arrival) chia cho số lượng đặt, mặc định trong 365 ngày gần nhất. Nó không đo việc thanh toán hóa đơn.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/advanced/analyze.html"
+ },
+ {
+  "subject": "Purchase",
+  "question": "A restaurant buys the same set of ingredients from a vendor every week, but prices and quantities change each time. Which Odoo 18 purchase agreement type helps generate these RFQs quickly from a predefined product list?",
+  "options": [
+   "Purchase Template",
+   "Blanket Order",
+   "Call for Tenders",
+   "Alternative RFQs"
+  ],
+  "answer": 0,
+  "explanation": "Purchase Template lưu sẵn danh sách sản phẩm để tạo RFQ nhanh mà không cam kết giá/số lượng. Blanket Order là cam kết giá với nhà cung cấp; 'Call for Tenders' không còn là loại agreement trong Odoo 18.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/agreements.html"
+ },
+ {
+  "subject": "Purchase",
+  "question": "A product is purchased with a 10% input VAT, while it is sold with 20% output VAT. Where is the purchase tax set so that it is proposed by default on RFQ lines?",
+  "options": [
+   "In the 'Sales Taxes' field; Odoo converts it automatically",
+   "In the 'Purchase Taxes' field of the product form",
+   "On the vendor's fiscal position only",
+   "In the Purchase journal's default tax"
+  ],
+  "answer": 1,
+  "explanation": "Thuế mua mặc định lấy từ trường Purchase Taxes (vendor taxes) trên sản phẩm, sau đó có thể bị fiscal position thay thế. Sales Taxes chỉ dùng cho đơn bán/hóa đơn khách hàng.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/taxes.html"
+ },
+ {
+  "subject": "Spreadsheet",
+  "question": "A spreadsheet has a date global filter labelled 'Period'. The report title cell should display the period currently selected by the user. Which function returns it?",
+  "options": [
+   "=ODOO.LIST.HEADER(\"Period\")",
+   "=PIVOT.HEADER(\"Period\")",
+   "=ODOO.FILTER.VALUE(\"Period\")",
+   "=ODOO.FISCALYEAR.START(\"Period\")"
+  ],
+  "answer": 2,
+  "explanation": "ODOO.FILTER.VALUE(filter_name) trả về giá trị hiện tại của global filter theo nhãn. PIVOT.HEADER trả về tiêu đề của pivot chứ không phải giá trị bộ lọc.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/global_filters.html"
+ },
+ {
+  "subject": "Spreadsheet",
+  "question": "A company's fiscal year runs from 1 July to 30 June. In a spreadsheet report, which function returns the first day of the fiscal year containing a given date?",
+  "options": [
+   "ODOO.BALANCE",
+   "ODOO.CURRENCY.RATE",
+   "ODOO.FILTER.VALUE",
+   "ODOO.FISCALYEAR.START"
+  ],
+  "answer": 3,
+  "explanation": "ODOO.FISCALYEAR.START trả về ngày bắt đầu năm tài chính chứa ngày đã cho (theo cấu hình công ty); có hàm tương ứng ODOO.FISCALYEAR.END. ODOO.BALANCE trả về số dư tài khoản.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/functions.html"
+ },
+ {
+  "subject": "Spreadsheet",
+  "question": "A spreadsheet created by a US colleague shows dates as MM/DD/YYYY and decimals with a dot, but the Belgian team wants DD/MM/YYYY and decimal commas for this spreadsheet. What should they change?",
+  "options": [
+   "The Locale in File ‣ Settings of the spreadsheet",
+   "The timezone in their user preferences",
+   "The currency of the company",
+   "The format of each cell one by one, there is no global option"
+  ],
+  "answer": 0,
+  "explanation": "Spreadsheet có phần Settings (File ‣ Settings) để chọn Locale, quyết định định dạng ngày, số thập phân và dấu phân cách cho cả bảng tính. Timezone chỉ ảnh hưởng giờ, không đổi định dạng số.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet.html"
+ },
+ {
+  "subject": "Inventory",
+  "question": "A warehouse stores a product in packages and wants deliveries to be fulfilled using as few packages as possible. Which removal strategy fits best?",
+  "options": [
+   "Least Packages",
+   "FIFO",
+   "Closest Location",
+   "LIFO"
+  ],
+  "answer": 0,
+  "explanation": "Removal strategy 'Least Packages' ưu tiên lấy hàng sao cho dùng ít package nhất. Closest Location chỉ dựa vào thứ tự tên location, không xét số package.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/removal_strategies.html"
+ },
+ {
+  "subject": "Inventory",
+  "question": "A courier must have the customer sign on a tablet when goods are delivered, and the signature should be printed on the delivery slip. Which Inventory setting enables this?",
+  "options": [
+   "Delivery Methods",
+   "Warnings for Stock",
+   "Reception Report",
+   "Signature"
+  ],
+  "answer": 3,
+  "explanation": "Bật 'Signature' trong Inventory ‣ Configuration ‣ Settings sẽ hiện nút Sign trên phiếu giao và in chữ ký lên delivery slip. 'Warnings for Stock' chỉ để hiện cảnh báo khi chọn partner/sản phẩm.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/setup_configuration/signature.html"
+ },
+ {
+  "subject": "Inventory",
+  "question": "A product recall requires listing every receipt, manufacturing order and delivery in which lot LOT-0042 was involved. What is the quickest way to get this?",
+  "options": [
+   "Inventory ‣ Reporting ‣ Stock, grouped by product",
+   "The Replenishment report",
+   "The 'Traceability' smart button on the lot's form",
+   "The Valuation report filtered on the product"
+  ],
+  "answer": 2,
+  "explanation": "Nút 'Traceability' trên form lot/serial mở báo cáo truy xuất toàn bộ các bước di chuyển (nhập, sản xuất, xuất) của lô đó. Báo cáo Stock chỉ cho thấy tồn hiện tại, không có lịch sử.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/product_management/product_tracking/lots.html"
+ },
+ {
+  "subject": "Inventory",
+  "question": "Water bottles are sold individually but also in packs of 6 and cartons of 24, and salespeople should be able to sell by pack. Which setting must be enabled first?",
+  "options": [
+   "Packages",
+   "Product Packagings",
+   "Multi-Step Routes",
+   "Consignment"
+  ],
+  "answer": 1,
+  "explanation": "'Product Packagings' cho phép định nghĩa các quy cách đóng gói (6, 24 chai…) trên sản phẩm và dùng chúng trên đơn bán/mua. 'Packages' là bao bì vật lý dùng để chứa hàng khi 'Put in Pack', không phải quy cách bán.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/product_management/configure/packaging.html"
+ },
+ {
+  "subject": "Inventory",
+  "question": "Screws are purchased by the box of 100 but stocked and consumed per unit. With the Units of Measure setting enabled, how should the product be configured?",
+  "options": [
+   "Create two separate products, one per box and one per unit",
+   "Set the Unit of Measure to 'Box of 100' and convert manually on each receipt",
+   "Use a reordering rule with a Multiple Quantity of 100 units",
+   "Keep Units as the UoM and set a 'Box of 100' Purchase Unit"
+  ],
+  "answer": 3,
+  "explanation": "Đơn vị mua (Purchase UoM) phải cùng category với đơn vị tồn kho; Odoo tự quy đổi 1 box = 100 units khi nhập kho. Tạo hai sản phẩm riêng sẽ làm sai tồn kho và giá vốn.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/product_management/configure/uom.html"
+ },
+ {
+  "subject": "Manufacturing",
+  "question": "A confirmed manufacturing order for 100 units must be divided into 4 MOs of 25 units so that several teams can work in parallel. What should be used?",
+  "options": [
+   "The 'Split' action on the MO",
+   "The 'Merge' action",
+   "An unbuild order",
+   "A backorder created at validation"
+  ],
+  "answer": 0,
+  "explanation": "Action 'Split' chia một MO (Draft/Confirmed) thành nhiều MO với số lượng tùy chọn. Backorder chỉ được đề xuất khi đóng MO với số lượng sản xuất thiếu, không dùng để chia trước.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/split_merge.html"
+ },
+ {
+  "subject": "Manufacturing",
+  "question": "When computing the cost of a manufactured product from its BoM, the time spent on operations must be valued at $40 per hour for the CNC machine. Where is this rate configured?",
+  "options": [
+   "On the product form, in the 'Cost' field",
+   "In the 'Cost Share (%)' field on the BoM",
+   "In the 'Cost per hour' field of the CNC work center",
+   "On the operation type 'Manufacturing'"
+  ],
+  "answer": 2,
+  "explanation": "'Cost per hour' trên work center được dùng để tính chi phí operation (thời gian × đơn giá) trong giá thành sản phẩm và BoM Overview. 'Cost Share (%)' chỉ phân bổ chi phí cho by-product.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/advanced_configuration/work_center_costs.html"
+ },
+ {
+  "subject": "Manufacturing",
+  "question": "In Odoo 18, where do you define the 'Manuf. Lead Time' (number of days needed to manufacture a product) used to compute MO scheduled dates?",
+  "options": [
+   "On the product form, Inventory tab",
+   "On the bill of materials, Miscellaneous tab",
+   "On the work center, General Information tab",
+   "In Manufacturing ‣ Configuration ‣ Settings"
+  ],
+  "answer": 1,
+  "explanation": "Từ Odoo 18, 'Manuf. Lead Time' (produce_delay) nằm trên BoM, tab Miscellaneous, cùng với 'Days to prepare Manufacturing Order'. Các phiên bản trước đặt trường này trên tab Inventory của sản phẩm.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/scheduled_dates.html"
+ },
+ {
+  "subject": "Manufacturing",
+  "question": "An old press machine works more slowly than standard: every operation on it takes longer than the BoM duration. Which work center field should be adjusted so that expected durations reflect this?",
+  "options": [
+   "OEE Target",
+   "Capacity",
+   "Setup Time",
+   "Time Efficiency"
+  ],
+  "answer": 3,
+  "explanation": "'Time Efficiency' (%) điều chỉnh thời lượng dự kiến: thời gian chạy = thời lượng chuẩn × 100 / efficiency, nên efficiency < 100% làm thời gian dài hơn. 'OEE Target' chỉ là chỉ tiêu dùng cho báo cáo, không ảnh hưởng thời lượng.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/advanced_configuration/using_work_centers.html"
+ },
+ {
+  "subject": "Point of Sale",
+  "question": "A customer brings back an item bought yesterday in the shop. How should the cashier process the refund in the PoS?",
+  "options": [
+   "Add the product with a negative price on a new order and pay out",
+   "From the Orders screen, select the original order line and click 'Refund'",
+   "Cancel the original order from the backend",
+   "Close the session, then create a credit note for the customer in Accounting"
+  ],
+  "answer": 1,
+  "explanation": "Cách chuẩn là vào màn hình Orders, tìm đơn gốc, chọn số lượng cần trả và bấm Refund; Odoo tạo đơn hoàn trả liên kết với đơn gốc (số lượng âm). Nhập giá âm thủ công sẽ mất liên kết với đơn gốc và sai thống kê.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/shop/refund.html"
+ },
+ {
+  "subject": "Point of Sale",
+  "question": "A customer confirmed a quotation with a salesperson and comes to the store to pay and collect the goods. How can the cashier load this sales order in the PoS?",
+  "options": [
+   "Use the 'Quotation/Order' button and pick the order",
+   "Scan the quotation's PDF with a barcode scanner",
+   "Use the Customer Account payment method on a new order",
+   "Duplicate the sales order as a PoS order from the Sales app"
+  ],
+  "answer": 0,
+  "explanation": "Khi cài Sales cùng PoS (module pos_sale), nút 'Quotation/Order' cho phép tải báo giá/đơn bán vào PoS để thanh toán (settle order hoặc trả trước). Customer Account là phương thức ghi nợ, không tải được đơn bán.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/shop/sales_order.html"
+ },
+ {
+  "subject": "Point of Sale",
+  "question": "A country no longer uses 1-cent coins. Cash payments must be rounded to the nearest 0.05, but card payments must stay exact. How should this be configured?",
+  "options": [
+   "Set the currency's rounding factor to 0.05 in Accounting",
+   "Create a pricelist that rounds all product prices to 0.05",
+   "Cash Rounding at 0.05 with 'Only apply rounding on cash'",
+   "Enable Global Discounts to absorb the cents on cash orders"
+  ],
+  "answer": 2,
+  "explanation": "Setting 'Cash Rounding' với rounding method 0.05 kèm tùy chọn 'Only apply rounding on cash' chỉ làm tròn khi trả bằng phương thức tiền mặt. Đổi rounding của tiền tệ sẽ ảnh hưởng toàn bộ kế toán và cả thanh toán thẻ.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/pricing/cash_rounding.html"
+ },
+ {
+  "subject": "Point of Sale",
+  "question": "In a restaurant PoS, guests want to check their bill on paper before paying. Which setting lets the waiter print the bill before payment?",
+  "options": [
+   "Allow Bill Splitting",
+   "Preparation Printers",
+   "Use QR code on ticket",
+   "Early Receipt Printing"
+  ],
+  "answer": 3,
+  "explanation": "'Early Receipt Printing' (restaurant) thêm nút in hóa đơn tạm (Bill) trước khi thanh toán. Preparation Printers dùng để in phiếu chế biến cho bếp/bar, không phải hóa đơn cho khách.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/restaurant/bill_printing.html"
+ },
+ {
+  "subject": "CRM",
+  "question": "A salesperson wants to record an internal comment on an opportunity that must NOT be emailed to the customer. Which chatter action should be used?",
+  "options": [
+   "Log note",
+   "Send message",
+   "Schedule activity with the customer as assignee",
+   "Add the customer as a follower and use Send message"
+  ],
+  "answer": 0,
+  "explanation": "'Log note' tạo ghi chú nội bộ, không gửi email cho khách hàng (follower bên ngoài). 'Send message' sẽ gửi email đến các follower, bao gồm khách hàng."
+ },
+ {
+  "subject": "CRM",
+  "question": "When marking an opportunity as lost in Odoo 18, what can the salesperson fill in besides the Lost Reason?",
+  "options": [
+   "The competitor's quotation amount, which updates the expected revenue",
+   "A Closing Note explaining the loss, which is logged in the chatter",
+   "A new expected closing date for a future follow-up",
+   "The name of the salesperson who will reopen it"
+  ],
+  "answer": 1,
+  "explanation": "Wizard 'Mark Lost' trong Odoo 18 có Lost Reason và Closing Note (ghi chú tự do được log vào chatter). Wizard không có trường số tiền đối thủ hay ngày đóng mới."
+ },
+ {
+  "subject": "CRM",
+  "question": "A sales director wants to analyse how many calls, meetings and emails each salesperson has completed on leads and opportunities. Which report should be opened?",
+  "options": [
+   "CRM ‣ Reporting ‣ Pipeline",
+   "CRM ‣ Reporting ‣ Forecast",
+   "CRM ‣ Reporting ‣ Activities",
+   "CRM ‣ Sales ‣ Teams"
+  ],
+  "answer": 2,
+  "explanation": "CRM ‣ Reporting ‣ Activities phân tích các hoạt động (call, meeting, email...) theo người phụ trách, loại và ngày. Forecast chỉ phân tích doanh thu dự kiến theo ngày chốt."
+ },
+ {
+  "subject": "CRM",
+  "question": "From an opportunity, a salesperson clicks the \"Meeting\" smart button and books a demo in the calendar. What is the result?",
+  "options": [
+   "The meeting is only visible in the salesperson's personal calendar with no link to the opportunity",
+   "A new opportunity is created for the meeting",
+   "The opportunity automatically moves to the next stage",
+   "The calendar event is linked to the opportunity and appears in its meeting count and chatter"
+  ],
+  "answer": 3,
+  "explanation": "Khi tạo cuộc họp từ smart button 'Meeting', sự kiện Calendar được liên kết với cơ hội (opportunity_id), được đếm trên smart button và ghi vào chatter. Việc đặt lịch không tự động chuyển stage."
+ },
+ {
+  "subject": "Marketing",
+  "question": "An SMS mailing contains a link to a promotion page. How does Odoo track clicks on that link?",
+  "options": [
+   "They are shortened via the link tracker, which counts the clicks",
+   "SMS links cannot be tracked; only email links can be shortened",
+   "The marketer must add Google Analytics UTM tags to the SMS manually",
+   "Only if the recipient replies to the SMS with the keyword"
+  ],
+  "answer": 0,
+  "explanation": "SMS Marketing tự động rút gọn link qua Link Tracker, kèm mã thống kê để đếm click theo người nhận. Không cần công cụ ngoài như Google Analytics."
+ },
+ {
+  "subject": "Marketing",
+  "question": "In Social Marketing, a marketer wants to monitor the posts and comments of a connected Facebook page directly in Odoo. What should be added?",
+  "options": [
+   "A Marketing Automation campaign targeting the page",
+   "A stream on the Feed (e.g. the page's posts)",
+   "A Link Tracker entry for the page URL",
+   "A mailing list for the page followers"
+  ],
+  "answer": 1,
+  "explanation": "Trong Social Marketing, vào Feed và thêm Stream (ví dụ 'Page Posts') để theo dõi bài đăng và bình luận của tài khoản đã kết nối. Link Tracker chỉ theo dõi click link.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/social_marketing.html"
+ },
+ {
+  "subject": "Marketing",
+  "question": "A company wants to send web push notifications to visitors of its Odoo website through the Social Marketing app. What must be done first?",
+  "options": [
+   "Enable SMS Marketing and buy IAP credits for the notifications",
+   "Connect a Facebook page as a stream in Social Marketing",
+   "Enable Web Push Notifications in Website settings",
+   "Add a Newsletter Popup block on the homepage to collect visitors"
+  ],
+  "answer": 2,
+  "explanation": "Push notification cần bật 'Enable Web Push Notifications' trong cài đặt Website (dùng Firebase); sau đó tài khoản Push Notifications xuất hiện trong Social Marketing. Kết nối Facebook không liên quan đến push trên website."
+ },
+ {
+  "subject": "Marketing",
+  "question": "Recipients should be able to add themselves to the blacklist directly from the unsubscribe page of a mailing. Which setting enables this?",
+  "options": [
+   "Dedicated Server",
+   "Mailing Campaigns",
+   "Split First and Last Name",
+   "Blacklist Option when Unsubscribing"
+  ],
+  "answer": 3,
+  "explanation": "'Blacklist Option when Unsubscribing' trong Email Marketing settings cho phép người nhận tự quản lý trạng thái blacklist trên trang hủy đăng ký. Các tùy chọn khác không liên quan đến trang unsubscribe."
+ },
+ {
+  "subject": "Survey",
+  "question": "A company sends a survey invitation via the \"Share\" button and wants the personal links to stop working after the end of the month. What should be set in the invitation wizard?",
+  "options": [
+   "The number of attempts allowed",
+   "The survey's time limit in minutes",
+   "The Answer deadline",
+   "The survey's Access Mode set to \"Anyone with the link\""
+  ],
+  "answer": 2,
+  "explanation": "Wizard Share/Invite có trường 'Answer deadline' giới hạn thời hạn trả lời cho các link mời. Time limit tính theo phút cho một lần làm bài, không phải hạn chót."
+ },
+ {
+  "subject": "Survey",
+  "question": "A company wants its certification PDF to use a different design and colour. Where is this chosen?",
+  "options": [
+   "In the website editor's Theme tab, under Colors",
+   "In Settings ‣ Companies ‣ Document Layout only",
+   "In the Certified Email Template of the survey",
+   "In the survey's Certification template field"
+  ],
+  "answer": 3,
+  "explanation": "Trường 'Certification template' trên survey cho chọn các mẫu Modern/Classic với màu Purple, Blue, Gold. Document Layout của công ty không điều khiển mẫu chứng chỉ survey."
+ },
+ {
+  "subject": "Survey",
+  "question": "Which of the following is NOT a question type available in the Odoo 18 Survey app?",
+  "options": [
+   "File Upload",
+   "Datetime",
+   "Single Line Text Box",
+   "Matrix"
+  ],
+  "answer": 0,
+  "explanation": "Odoo 18 Survey có các loại: Multiple choice (một/nhiều đáp án), Multiple Lines Text Box, Single Line Text Box, Numerical Value, Scale, Date, Datetime, Matrix. Không có kiểu 'File Upload' trong bản chuẩn."
+ },
+ {
+  "subject": "Website",
+  "question": "An administrator wants to reorder the website's top menu items and create a sub-menu under \"Services\". Which tool is used?",
+  "options": [
+   "Website ‣ Configuration ‣ Settings",
+   "The Menu Editor (Site ‣ Menu Editor)",
+   "The Theme tab of the website editor",
+   "Page Properties of the Services page"
+  ],
+  "answer": 1,
+  "explanation": "Menu Editor cho phép thêm, sắp xếp (kéo thả) và lồng menu con. Theme tab chỉ thay đổi giao diện (font, màu), không quản lý cấu trúc menu."
+ },
+ {
+  "subject": "Website",
+  "question": "An administrator wants to see all website pages in a list, check which ones are published, and delete obsolete ones in bulk. Where is this done?",
+  "options": [
+   "Website ‣ Configuration ‣ Settings",
+   "Website ‣ Reporting ‣ Analytics",
+   "Website ‣ Site ‣ Pages",
+   "Settings ‣ Technical ‣ Views"
+  ],
+  "answer": 2,
+  "explanation": "Website ‣ Site ‣ Pages hiển thị danh sách các trang (URL, trạng thái publish, indexed...) và cho phép thao tác hàng loạt. Technical ‣ Views là view kỹ thuật, không phải công cụ quản lý trang."
+ },
+ {
+  "subject": "Website",
+  "question": "A large banner image looks good on desktop but cluttered on smartphones. How can it be hidden only on mobile devices?",
+  "options": [
+   "Switch the website to a mobile-specific theme in the Theme tab",
+   "Delete the block and create a separate mobile website",
+   "Set the page's Visibility to \"Signed In\"",
+   "Hide it on mobile with the block's visibility option"
+  ],
+  "answer": 3,
+  "explanation": "Website editor cho phép ẩn/hiện block theo thiết bị (desktop/mobile) qua tùy chọn visibility của block. Không cần website riêng cho mobile."
+ },
+ {
+  "subject": "Website",
+  "question": "A B2B company only wants customers it has explicitly invited to be able to create a portal account on the website. Which Customer Account option should be selected in Website settings?",
+  "options": [
+   "On invitation",
+   "Free sign up",
+   "Shared Customer Accounts",
+   "Mandatory (no guest checkout)"
+  ],
+  "answer": 0,
+  "explanation": "Tùy chọn 'On invitation' chỉ cho phép người được mời (Portal Access) tạo tài khoản, còn 'Free sign up' cho bất kỳ ai đăng ký. Shared Customer Accounts chỉ liên quan đến multi-website."
+ },
+ {
+  "subject": "eCommerce",
+  "question": "A shop offers free delivery for orders of $100 or more, otherwise a fixed $8 fee. How is this configured?",
+  "options": [
+   "Create two separate websites",
+   "Create a 100% discount promotion for orders above $100 on all products",
+   "Set a pricelist rule that subtracts $8 for orders above $100",
+   "Tick \"Free if order amount is above\" $100 on an $8 Fixed Price method"
+  ],
+  "answer": 3,
+  "explanation": "Delivery method có tùy chọn 'Free if order amount is above' với ngưỡng; khi tổng đơn (chưa tính ship) ≥ ngưỡng thì phí giao hàng = 0. Giảm 100% sản phẩm sẽ làm hàng miễn phí chứ không phải phí giao hàng."
+ },
+ {
+  "subject": "eCommerce",
+  "question": "An online shop wants an invoice to be created and marked as paid automatically when an online payment is confirmed. Which setting should be enabled?",
+  "options": [
+   "Automatic Invoice in the Sales settings",
+   "Lock Confirmed Sales",
+   "Extra Step During Checkout",
+   "Abandoned cart emails"
+  ],
+  "answer": 0,
+  "explanation": "'Automatic Invoice' (Sales ‣ Configuration ‣ Settings) tạo và đối soát hóa đơn khi giao dịch thanh toán online được xác nhận. 'Lock Confirmed Sales' chỉ khóa đơn đã xác nhận."
+ },
+ {
+  "subject": "eCommerce",
+  "question": "Returning customers want to quickly buy the same products again from an order they placed before. Which Odoo 18 eCommerce setting helps?",
+  "options": [
+   "Buy Now",
+   "Re-order From Portal",
+   "Wishlists",
+   "Shared Customer Accounts"
+  ],
+  "answer": 1,
+  "explanation": "'Re-order From Portal' thêm nút cho phép khách đặt lại các sản phẩm từ đơn cũ trong portal. 'Buy Now' chỉ bỏ qua bước giỏ hàng trên trang sản phẩm."
+ },
+ {
+  "subject": "Project",
+  "question": "A project manager wants to define key milestones on a project and link tasks to them, but the Milestones tab is missing. What must be done first?",
+  "options": [
+   "Set the project's invoicing policy to 'Based on Milestones'",
+   "Install the Planning app",
+   "Enable 'Milestones' in Project ‣ Configuration ‣ Settings",
+   "Enable 'Project Stages' in Project ‣ Configuration ‣ Settings"
+  ],
+  "answer": 2,
+  "explanation": "Tính năng Milestones phải được bật trong Project Settings thì mới tạo được milestone và gắn task. Chính sách hóa đơn 'Based on Milestones' là của sản phẩm, chỉ dùng sau khi đã có milestone.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project.html"
+ },
+ {
+  "subject": "Project",
+  "question": "A task must be handled jointly by two developers, and both must see it in their 'My Tasks'. How is this done in Odoo 18?",
+  "options": [
+   "Create a sub-task for the second developer; only one assignee is allowed per task",
+   "Add the second developer as a follower of the task",
+   "Duplicate the task and assign each copy to one developer",
+   "Add both users in the task's Assignees field"
+  ],
+  "answer": 3,
+  "explanation": "Trường Assignees của task là many2many nên có thể gán nhiều người; task sẽ hiển thị trong My Tasks của từng người. Follower chỉ nhận thông báo, không được coi là người được giao.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project.html"
+ },
+ {
+  "subject": "Project",
+  "question": "A recurring task 'Quarterly VAT review' must be recreated every three months. How should its recurrence be configured?",
+  "options": [
+   "Repeat Every 3 Months",
+   "Repeat Every 1 Quarter",
+   "Repeat Every 90 Weeks",
+   "Repeat Every 12 Days"
+  ],
+  "answer": 0,
+  "explanation": "Đơn vị lặp lại của recurring task gồm Days, Weeks, Months và Years; không có đơn vị Quarter, nên cần đặt 3 Months.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project.html"
+ },
+ {
+  "subject": "Timesheets",
+  "question": "In a project with Timesheets enabled, a user quick-creates a task by typing 'Write user guide 5h' in the kanban view. What does Odoo 18 do?",
+  "options": [
+   "Creates the task and logs a 5-hour timesheet on it",
+   "Creates the task 'Write user guide' with 5 hours of Allocated Time",
+   "Creates the task with a deadline in 5 hours",
+   "Creates the task named 'Write user guide 5h' without any other change"
+  ],
+  "answer": 1,
+  "explanation": "Khi tạo nhanh task, cú pháp số + 'h' (ví dụ 5h) được hiểu là Allocated Time và bị loại khỏi tên task. Odoo không tự tạo timesheet hay deadline.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/timesheets.html"
+ },
+ {
+  "subject": "Timesheets",
+  "question": "Which view of the Timesheets app lets employees enter their hours in a table with one line per project/task and one column per day of the week?",
+  "options": [
+   "Pivot view",
+   "Kanban view",
+   "Grid view",
+   "Calendar view"
+  ],
+  "answer": 2,
+  "explanation": "Grid view (mặc định ở My Timesheets) hiển thị bảng mỗi dòng là project/task, mỗi cột là một ngày để nhập giờ trực tiếp. Pivot chỉ dùng để phân tích, không để nhập liệu.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/timesheets.html"
+ },
+ {
+  "subject": "Timesheets",
+  "question": "A timesheet approver wants to quickly find and validate the timesheets of the previous period. Which menu is used?",
+  "options": [
+   "Timesheets ‣ Reporting ‣ by Employee",
+   "Timesheets ‣ Configuration ‣ Settings",
+   "Project ‣ Reporting ‣ Tasks Analysis",
+   "Timesheets ‣ To Validate (e.g. 'Last Period')"
+  ],
+  "answer": 3,
+  "explanation": "Menu To Validate (với các mục như Last Period, All Timesheets) liệt kê timesheet chờ duyệt để người duyệt bấm Validate. Các menu Reporting chỉ dùng để phân tích.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/timesheets.html"
+ },
+ {
+  "subject": "HR",
+  "question": "A company wants employees to be able to update their own data (e.g. private address) from their profile without HR intervention. Which Employees setting should be enabled?",
+  "options": [
+   "Employee Editing",
+   "Advanced Presence Control",
+   "Skills Management",
+   "Remote Work"
+  ],
+  "answer": 0,
+  "explanation": "Employee Editing (trong Employees ‣ Configuration ‣ Settings) cho phép nhân viên tự cập nhật dữ liệu của mình. Advanced Presence Control liên quan đến cách xác định trạng thái có mặt.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/hr/employees.html"
+ },
+ {
+  "subject": "HR",
+  "question": "In the Appraisals app, a manager tracks an employee's goal 'Obtain the PMP certification'. Which progress values can be selected on a goal?",
+  "options": [
+   "Any percentage between 0 and 100",
+   "0%, 25%, 50%, 75%, 100%",
+   "Not Started, In Progress, Done",
+   "1 to 5 stars"
+  ],
+  "answer": 1,
+  "explanation": "Trường Progress của goal trong Appraisals là selection với các mức 0%, 25%, 50%, 75% và 100%. Không thể nhập phần trăm tùy ý.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/hr/appraisals.html"
+ },
+ {
+  "subject": "HR",
+  "question": "During an appraisal, a manager is writing their feedback and does not want the employee to read it before it is finished. What should the manager do?",
+  "options": [
+   "Cancel the appraisal and recreate it once the feedback is ready",
+   "Remove the employee from the appraisal's followers",
+   "Switch off its toggle so it shows 'Not Visible to Employee'",
+   "Move the feedback into the private notes of the employee form"
+  ],
+  "answer": 2,
+  "explanation": "Phần feedback của manager có toggle hiển thị; tắt nó để feedback ở trạng thái 'Not Visible to Employee' cho đến khi bật lại. Gỡ follower không ẩn nội dung feedback trên form.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/hr/appraisals.html"
+ },
+ {
+  "subject": "HR",
+  "question": "Extra hours recorded in Attendances must not be counted until the employee's manager has checked them. Which setting should be used?",
+  "options": [
+   "Extra Hours Validation: Automatically Approved",
+   "Tolerance Time In Favor Of Company",
+   "Automatic Check-Out",
+   "Extra Hours Validation: Approved by Manager"
+  ],
+  "answer": 3,
+  "explanation": "Thiết lập Extra Hours Validation có hai giá trị Automatically Approved và Approved by Manager; chọn Approved by Manager để giờ làm thêm phải được quản lý duyệt. Tolerance chỉ bỏ qua các khoảng thời gian nhỏ.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/hr/attendances.html"
+ },
+ {
+  "subject": "Studio",
+  "question": "When creating a new model with Studio, which suggested feature adds start/end date fields and lets you visualize the records in a Gantt chart?",
+  "options": [
+   "Date range & Gantt",
+   "Date & Calendar",
+   "Pipeline stages",
+   "Custom Sorting"
+  ],
+  "answer": 0,
+  "explanation": "Tùy chọn Date range & Gantt tạo trường ngày bắt đầu/kết thúc và Gantt view. Date & Calendar chỉ thêm một trường ngày và Calendar view.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/studio/models_modules_apps.html"
+ },
+ {
+  "subject": "Studio",
+  "question": "In a multi-company database, records of a new Studio model must each belong to one company and be restricted to users of that company. Which suggested feature should be selected when creating the model?",
+  "options": [
+   "Contact details",
+   "Company",
+   "User assignment",
+   "Archiving"
+  ],
+  "answer": 1,
+  "explanation": "Tùy chọn Company thêm trường company và các quy tắc truy cập (record rule) đa công ty tương ứng. User assignment chỉ thêm người phụ trách.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/studio/models_modules_apps.html"
+ },
+ {
+  "subject": "Studio",
+  "question": "In Studio, an administrator wants to edit the XML of a view directly, or use 'Restore Default View' to discard all Studio changes on it. What is required for these buttons to appear in the view's sidebar?",
+  "options": [
+   "The view must first be exported with Studio's Export",
+   "The user must be in the 'Technical Features' group of the Studio app only",
+   "Developer mode must be activated",
+   "Nothing: they are always visible in the Studio sidebar"
+  ],
+  "answer": 2,
+  "explanation": "Các nút More, XML, Default Values và Restore Default View trong sidebar của view editor chỉ hiện khi bật developer mode. Export không liên quan.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/studio/views.html"
+ },
+ {
+  "subject": "Studio",
+  "question": "You export your Studio customizations to install them in a new database, and the records of your custom 'Equipment Type' model must be exported too. What should be done in the Studio export wizard?",
+  "options": [
+   "Nothing: all records of all custom models are always exported",
+   "Export the records separately with Import/Export; Studio export cannot contain data",
+   "Enable 'Include Demo Data' only",
+   "Enable 'Include Data' and select the model(s) whose records must be exported"
+  ],
+  "answer": 3,
+  "explanation": "Wizard export của Studio có tùy chọn Include Data để chọn thêm model và bản ghi cần xuất kèm customizations. Include Demo Data chỉ đánh dấu dữ liệu là demo, không thay thế việc chọn dữ liệu.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/studio.html"
+ },
+ {
+  "subject": "Studio",
+  "question": "On an approval rule, the sales director must be informed (without having to approve) each time the step is approved or rejected. Which field should be used?",
+  "options": [
+   "Users to Notify",
+   "Approvers",
+   "Exclusive Approval",
+   "Approval Group"
+  ],
+  "answer": 0,
+  "explanation": "Users to Notify nhận thông báo (internal note) khi bước được duyệt hoặc từ chối mà không cần tham gia phê duyệt. Approvers/Approval Group là những người có quyền duyệt.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/studio/approval_rules.html"
+ }
+]

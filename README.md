@@ -1,6 +1,6 @@
 # Odoo 18 Functional Certification – Đề thi thử
 
-6 đề thi thử chứng chỉ **Odoo 18 Functional Certification**: 3 đề đầy đủ mô phỏng đúng thể lệ kỳ thi thật, và 3 đề rút gọn 45 phút để luyện nhanh. Sau khi nộp bài, trang hiện thống kê đúng/sai và lời giải thích cho từng câu.
+9 đề thi thử chứng chỉ **Odoo 18 Functional Certification**: 3 đề đầy đủ mô phỏng đúng thể lệ kỳ thi thật, và 6 đề rút gọn 45 phút để luyện nhanh (từ Đề 7 có câu hỏi kèm hình ảnh giao diện, như đề thật). Sau khi nộp bài, trang hiện thống kê đúng/sai và lời giải thích cho từng câu.
 
 Toàn bộ nằm trong một file HTML tĩnh duy nhất ([`Odoo18_Mock_Certification.html`](Odoo18_Mock_Certification.html)): không cần server, không cần cài đặt gì.
 
@@ -21,7 +21,7 @@ xdg-open odoo18-test-certification/Odoo18_Mock_Certification.html   # macOS: ope
 
 ## Thể lệ
 
-| | Đề đầy đủ (Đề 1–3) | Đề rút gọn (Đề 4–6) |
+| | Đề đầy đủ (Đề 1–3) | Đề rút gọn (Đề 4–9) |
 |---|---|---|
 | Số câu | 125 câu | 63 câu |
 | Thời gian | 90 phút | 45 phút |
@@ -36,7 +36,7 @@ Câu hỏi và đáp án viết bằng **tiếng Anh** như đề thật; giao d
 
 ## Nội dung đề
 
-3 đề × 125 câu + 3 đề × 63 câu = **564 câu**, không câu nào lặp lại giữa 6 đề. Câu của đề rút gọn được soạn mới, không lấy từ đề đầy đủ. Mỗi đề có đủ 16 phân hệ thuộc phạm vi thi:
+3 đề × 125 câu + 6 đề × 63 câu = **753 câu**, không câu nào lặp lại giữa 9 đề. Câu của đề rút gọn được soạn mới, không lấy từ đề đầy đủ. Mỗi đề có đủ 16 phân hệ thuộc phạm vi thi:
 
 | Phân hệ | Đề đầy đủ | Đề rút gọn | Phân hệ | Đề đầy đủ | Đề rút gọn |
 |---|---:|---:|---|---:|---:|
@@ -49,6 +49,10 @@ Câu hỏi và đáp án viết bằng **tiếng Anh** như đề thật; giao d
 | Manufacturing | 8 | 4 | Survey | 6 | 3 |
 | HR | 8 | 4 | Spreadsheet | 6 | 3 |
 | | | | **Tổng / đề** | **125** | **63** |
+
+**Câu hỏi có hình (Đề 7–9):** mỗi đề có 12 câu kèm hình giao diện Odoo 18, ví dụ kanban CRM, form hóa đơn, statusbar, danh sách, trang Settings, màn hình POS. Câu hỏi thường trỏ vào một vị trí được đánh số trên hình ("marker 1"). Hình được vẽ lại bằng HTML/CSS theo giao diện Odoo 18 với dữ liệu demo (không phải ảnh chụp thật), nên vẫn nằm gọn trong một file HTML.
+
+**Độ dài đáp án:** các lựa chọn được viết với độ dài và mức chi tiết tương đương nhau. Đáp án đúng chỉ là lựa chọn dài nhất ở khoảng 10–23% số câu và ngắn nhất ở khoảng 20–30%, nên mẹo "chọn câu dài nhất" không còn tác dụng. Tỉ lệ từng đề được in ra mỗi lần chạy `python3 build.py`.
 
 ## Tính năng
 
@@ -73,6 +77,40 @@ Câu hỏi và đáp án viết bằng **tiếng Anh** như đề thật; giao d
 - Giữ tối đa 300 lần thi; 150 lần gần nhất xem lại được chi tiết từng câu.
 
 Tiến độ và lịch sử chỉ lưu trong `localStorage` của trình duyệt đang dùng, không gửi đi đâu. Vì vậy lịch sử không đồng bộ giữa các máy hay trình duyệt, và sẽ mất khi xóa dữ liệu trình duyệt hoặc dùng cửa sổ ẩn danh.
+
+## Cấu trúc repo và cách sửa đề
+
+```
+data/set1.json … set9.json   # câu hỏi của từng đề (nguồn chính)
+src/template.html            # giao diện + logic trang thi
+build.py                     # ghép data + template -> Odoo18_Mock_Certification.html
+docs/ui-kit.md               # bộ khung vẽ giao diện Odoo cho câu hỏi có hình
+tools/preview_images.py      # chụp ảnh xem trước các câu có hình (cần google-chrome)
+```
+
+`Odoo18_Mock_Certification.html` là file được sinh ra. Muốn sửa câu hỏi hay giao diện thì sửa `data/` hoặc `src/`, rồi chạy:
+
+```bash
+python3 build.py
+```
+
+Lệnh này kiểm tra dữ liệu (đủ 4 đáp án khác nhau, `answer` từ 0–3, không trùng câu), in thống kê từng đề, rồi ghi lại file HTML. Chạy `python3 build.py --check` nếu chỉ muốn kiểm tra mà không ghi file.
+
+Mỗi câu hỏi trong `data/setN.json` có dạng:
+
+```json
+{
+ "subject": "Inventory",
+ "question": "…",
+ "options": ["…", "…", "…", "…"],
+ "answer": 2,
+ "explanation": "Giải thích bằng tiếng Việt…",
+ "ref": "https://www.odoo.com/documentation/18.0/…",
+ "image": "<div class=\"ox\">…</div>"
+}
+```
+
+`answer` là vị trí đáp án đúng, tính từ 0. Trường `image` chỉ có ở câu có hình; cách vẽ xem [docs/ui-kit.md](docs/ui-kit.md). Lịch sử làm bài nhận diện câu hỏi theo nội dung câu hỏi, nên sửa đáp án hay giải thích không ảnh hưởng lịch sử cũ. Riêng khi sửa lời câu hỏi, câu đó sẽ không còn hiện trong phần xem lại của các lần thi trước.
 
 ## Triển khai GitHub Pages
 

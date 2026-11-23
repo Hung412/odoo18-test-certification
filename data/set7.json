@@ -1,0 +1,833 @@
+[
+ {
+  "subject": "Accounting",
+  "question": "A salesperson asks about the customer invoice shown in the screenshot. Which statement correctly describes it?",
+  "options": [
+   "It is still a draft and the ribbon shows that only some lines were validated",
+   "It is posted and a $ 500.00 payment is reconciled with it, leaving $ 650.00 due",
+   "It is posted and fully paid, but the payment is not yet matched with the bank",
+   "It is posted and a $ 500.00 credit note was issued, so it can no longer be paid"
+  ],
+  "answer": 1,
+  "explanation": "Ribbon 'Partial' (Payment Status = Partially Paid) nghĩa là hóa đơn đã Posted và đã được đối soát một phần với khoản thanh toán ('Paid on ... $ 500.00'), Amount Due còn $ 650.00 nên nút Pay vẫn hiển thị. Trường hợp đã thanh toán đủ nhưng chưa khớp với sao kê ngân hàng thì ribbon là 'In Payment'.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/payments.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Accounting</span><span>Dashboard</span><span>Customers</span><span>Vendors</span><span>Accounting</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>Invoices</a> / <b>INV/2025/00012</b></span></div><div><span class=\"ox-pager\">3 / 41</span></div></div><div class=\"ox-body\"><div class=\"ox-bar\"><div><span class=\"ox-btn ox-primary\">Send</span><span class=\"ox-btn\">Print</span><span class=\"ox-btn ox-primary\">Pay</span><span class=\"ox-btn\">Preview</span><span class=\"ox-btn\">Credit Note</span><span class=\"ox-btn\">Reset to Draft</span></div><div class=\"ox-status\"><span>Draft</span><span class=\"on\">Posted</span></div></div><div class=\"ox-sheet\"><div class=\"ox-ribbon ok\">Partial</div><div class=\"ox-title\"><small>Customer Invoice</small>INV/2025/00012</div><div class=\"ox-fields\"><div><div class=\"ox-f\"><span class=\"l\">Customer</span><span class=\"v\">Deco Addict</span></div></div><div><div class=\"ox-f\"><span class=\"l\">Invoice Date</span><span class=\"v\">03/03/2025</span></div><div class=\"ox-f\"><span class=\"l\">Due Date</span><span class=\"v\">04/02/2025</span></div></div></div><div class=\"ox-tabs\"><span class=\"on\">Invoice Lines</span><span>Journal Items</span><span>Other Info</span></div><table class=\"ox-list\"><thead><tr><th>Product</th><th class=\"n\">Quantity</th><th class=\"n\">Price</th><th>Taxes</th><th class=\"n\">Amount</th></tr></thead><tbody><tr><td>[FURN_8999] Three-Seat Sofa</td><td class=\"n\">1.00</td><td class=\"n\">1,000.00</td><td><span class=\"ox-tag c1\">15%</span></td><td class=\"n\">$ 1,000.00</td></tr></tbody></table><div style=\"margin-left:auto;width:290px;margin-top:10px;font-size:13px\"><div style=\"display:flex;justify-content:space-between\"><span>Untaxed Amount:</span><span>$ 1,000.00</span></div><div style=\"display:flex;justify-content:space-between\"><span>Tax 15%:</span><span>$ 150.00</span></div><div style=\"display:flex;justify-content:space-between;font-weight:700\"><span>Total:</span><span>$ 1,150.00</span></div><div style=\"display:flex;justify-content:space-between\"><span><i class=\"ox-mu\">Paid on 03/15/2025</i></span><span><span class=\"ox-mu\">$ 500.00</span></span></div><div style=\"display:flex;justify-content:space-between;font-weight:700\"><span>Amount Due:</span><span>$ 650.00</span></div></div></div></div></div>"
+ },
+ {
+  "subject": "Accounting",
+  "question": "A clerk encodes a vendor bill from Wood Corner with Bill Reference 'WC-2291', the same vendor, reference and amount as a bill already recorded last week. What does Odoo 18 do?",
+  "options": [
+   "It blocks saving the bill until the Bill Reference is changed to a unique value",
+   "It automatically cancels the older bill and keeps only the newly encoded one",
+   "It merges both bills into a single bill and adds up the quantities of the lines",
+   "It shows a warning banner on the bill with a link to the possible duplicate"
+  ],
+  "answer": 3,
+  "explanation": "Odoo 18 tính trường duplicated_ref_ids và hiển thị cảnh báo 'Warning: this document might be a duplicate of ...' kèm liên kết đến chứng từ nghi trùng. Đây chỉ là cảnh báo: Odoo không chặn lưu/vào sổ và không tự hủy hay gộp hóa đơn.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/vendor_bills.html"
+ },
+ {
+  "subject": "Accounting",
+  "question": "The accountant selects five posted bills of the same vendor in the list view and clicks Pay. She wants a single bank transfer covering all five bills instead of five separate payments. Which option of the payment wizard does this?",
+  "options": [
+   "Group Payments",
+   "Batch Payment",
+   "Early Payment Discount",
+   "Payment Difference"
+  ],
+  "answer": 0,
+  "explanation": "Khi đăng ký thanh toán nhiều hóa đơn, tick 'Group Payments' để Odoo tạo một payment duy nhất cho mỗi đối tác (tài khoản ngân hàng) thay vì một payment cho mỗi bill. Batch Payment là tính năng gom nhiều payment đã tạo thành một lô nộp ngân hàng, không phải tùy chọn của wizard này.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/payments.html"
+ },
+ {
+  "subject": "Accounting",
+  "question": "Cash advances to employees are booked on a new 'Current Assets' account 141000 'Employee Advances'. The accountant wants to match each advance with its settlement so that only open advances remain, but cannot reconcile these journal items. What must be done?",
+  "options": [
+   "Change the type of account 141000 to 'Bank and Cash' to match it in the bank widget",
+   "Set account 141000 as the Suspense Account of the Miscellaneous Operations journal",
+   "Enable 'Allow Reconciliation' on account 141000 in the Chart of Accounts",
+   "Add account 141000 as the Outstanding Receipts account of the main bank journal"
+  ],
+  "answer": 2,
+  "explanation": "Chỉ các tài khoản bật 'Allow Reconciliation' (hoặc loại Receivable/Payable) mới cho phép đối soát (matching) các bút toán với nhau. Đổi sang loại 'Bank and Cash' hay dùng làm Suspense Account không phải là cách để theo dõi khoản tạm ứng còn mở.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/get_started/chart_of_accounts.html"
+ },
+ {
+  "subject": "Accounting",
+  "question": "A company creates a second sales journal for its export business with the Short Code 'EXP'. By default, what will the number of the first invoice posted in this journal in 2025 look like?",
+  "options": [
+   "INV/2025/00001, continuing the sequence of the main sales journal",
+   "EXP/2025/00001",
+   "INV/EXP/2025/00001, using INV as a prefix for every sales journal",
+   "EXP-INV-2025-0001, combining the short code with the journal type"
+  ],
+  "answer": 1,
+  "explanation": "Số chứng từ mặc định được tạo từ Short Code của journal + năm + số thứ tự, nên journal 'EXP' sẽ cho EXP/2025/00001. Mỗi journal có dãy số riêng, không tiếp nối dãy INV của journal bán hàng chính.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/customer_invoices/sequence.html"
+ },
+ {
+  "subject": "Sales",
+  "question": "In the sales order shown, both products use the 'Delivered quantities' invoicing policy. The salesperson clicks Create Invoice and creates a regular invoice. What will the invoice contain?",
+  "options": [
+   "10 Acoustic Bloc Screens only",
+   "10 Acoustic Bloc Screens and 3 Four Person Desks",
+   "4 Acoustic Bloc Screens and 3 Four Person Desks",
+   "4 Acoustic Bloc Screens only"
+  ],
+  "answer": 3,
+  "explanation": "Với chính sách 'Delivered quantities', số lượng xuất hóa đơn = Delivered − Invoiced: Acoustic Bloc Screens là 4 − 0 = 4, Four Person Desk là 3 − 3 = 0. Vì vậy hóa đơn chỉ có 4 Acoustic Bloc Screens; 10 là số lượng đặt, chỉ áp dụng với chính sách Ordered quantities.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/invoicing/invoicing_policy.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Sales</span><span>Orders</span><span>To Invoice</span><span>Products</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>Sales Orders</a> / <b>S00045</b></span></div><div><span class=\"ox-pager\">2 / 18</span></div></div><div class=\"ox-body\"><div class=\"ox-bar\"><div><span class=\"ox-btn ox-primary\">Create Invoice</span><span class=\"ox-btn\">Send by Email</span><span class=\"ox-btn\">Preview</span><span class=\"ox-btn\">Cancel</span></div><div class=\"ox-status\"><span>Quotation</span><span>Quotation Sent</span><span class=\"on\">Sales Order</span></div></div><div class=\"ox-sheet\"><div class=\"ox-smarts\"><div class=\"ox-smart\"><b>2</b>Delivery</div><div class=\"ox-smart\"><b>1</b>Invoices</div></div><div class=\"ox-title\">S00045</div><div class=\"ox-fields\"><div><div class=\"ox-f\"><span class=\"l\">Customer</span><span class=\"v\">Gemini Furniture</span></div></div><div><div class=\"ox-f\"><span class=\"l\">Order Date</span><span class=\"v\">05/12/2025</span></div><div class=\"ox-f\"><span class=\"l\">Payment Terms</span><span class=\"v\">30 Days</span></div></div></div><div class=\"ox-tabs\"><span class=\"on\">Order Lines</span><span>Other Info</span></div><table class=\"ox-list\"><thead><tr><th>Product</th><th class=\"n\">Quantity</th><th class=\"n\">Delivered</th><th class=\"n\">Invoiced</th><th class=\"n\">Unit Price</th><th class=\"n\">Amount</th></tr></thead><tbody><tr><td>[FURN_6666] Acoustic Bloc Screens</td><td class=\"n\">10.00</td><td class=\"n\">4.00</td><td class=\"n\">0.00</td><td class=\"n\">295.00</td><td class=\"n\">$ 2,950.00</td></tr><tr><td>[FURN_8220] Four Person Desk</td><td class=\"n\">3.00</td><td class=\"n\">3.00</td><td class=\"n\">3.00</td><td class=\"n\">2,350.00</td><td class=\"n\">$ 7,050.00</td></tr></tbody></table></div></div></div>"
+ },
+ {
+  "subject": "Sales",
+  "question": "A design agency wants to invoice a fixed-price service in stages (e.g. 30% when the concept is approved). On the service product, the invoicing policy 'Based on Milestones' is not proposed. What must be done first?",
+  "options": [
+   "Enable 'Milestones' in Project ‣ Configuration ‣ Settings",
+   "Enable 'Down Payments' in Sales ‣ Configuration ‣ Settings",
+   "Set the product's 'Create on Order' field to 'Project'",
+   "Set the product's invoicing policy to 'Prepaid/Fixed Price'"
+  ],
+  "answer": 0,
+  "explanation": "Lựa chọn 'Based on Milestones' chỉ xuất hiện khi tính năng 'Milestones' được bật trong Project ‣ Configuration ‣ Settings. Đặt 'Create on Order' hay dùng down payment không làm xuất hiện chính sách này.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/invoicing/milestone.html"
+ },
+ {
+  "subject": "Sales",
+  "question": "A store wants to run a '2+1 free' offer on office chairs: customers who buy two chairs get the third one for free, applied automatically on quotations. Which program type in Sales ‣ Products ‣ Discount & Loyalty is pre-configured for this?",
+  "options": [
+   "Next Order Coupons",
+   "Loyalty Cards",
+   "Buy X Get Y",
+   "Discount Code"
+  ],
+  "answer": 2,
+  "explanation": "Loại chương trình 'Buy X Get Y' được cấu hình sẵn để mua 2 sản phẩm thì được tặng sản phẩm thứ 3 (rule tính điểm theo đơn vị, reward là sản phẩm miễn phí, áp dụng tự động). 'Next Order Coupons' lại tạo coupon cho đơn hàng sau, không áp dụng ngay.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/products_prices/loyalty_discount.html"
+ },
+ {
+  "subject": "Sales",
+  "question": "A customer confirms an order today but requires delivery on 15 June, not as soon as possible. Where should the salesperson record this so that the delivery is scheduled for that date?",
+  "options": [
+   "In the Expiration field at the top of the quotation form",
+   "In the Delivery Date field of the Other Info tab",
+   "In the Customer Lead Time of each product sold",
+   "In the Order Date field of the Other Info tab"
+  ],
+  "answer": 1,
+  "explanation": "Trường 'Delivery Date' (commitment_date) trong tab Other Info là ngày giao hàng đã cam kết với khách; khi có giá trị, phiếu giao hàng được lên lịch theo ngày này thay vì ngày dự kiến tính từ lead time. 'Expiration' chỉ là hạn hiệu lực của báo giá.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/delivery_date.html"
+ },
+ {
+  "subject": "Sales",
+  "question": "A customer wants to pay the confirmed order S00061 by card before shipment, but the salesperson does not want to resend the whole order by email. What can be used from the sales order form?",
+  "options": [
+   "Actions ‣ Generate a Payment Link, then share the link",
+   "Create Invoice with a 100% down payment, then send the draft",
+   "Print ‣ Quotation / Order, then add bank details to the PDF",
+   "Lock the order, which makes a Pay Now button appear online"
+  ],
+  "answer": 0,
+  "explanation": "Từ form sales order, menu Actions ‣ Generate a Payment Link tạo một đường link thanh toán trực tuyến cho số tiền cần trả, có thể copy và gửi cho khách qua bất kỳ kênh nào. Hóa đơn nháp không thể thanh toán online và việc khóa đơn không tạo nút thanh toán.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/products_prices/ecommerce/payments.html"
+ },
+ {
+  "subject": "Purchase",
+  "question": "The buyer must add one more product to the purchase order shown, but its lines are read-only. What should be done?",
+  "options": [
+   "Click Cancel, then Set to Draft, and confirm the order once again",
+   "Disable 'Lock Confirmed Orders' in settings; the order then unlocks",
+   "A Purchase administrator clicks Unlock, then the line can be added",
+   "Create the vendor bill first; the lines become editable once billed"
+  ],
+  "answer": 2,
+  "explanation": "PO đang ở trạng thái Locked nên chỉ còn nút Unlock, và nút này chỉ dành cho nhóm Purchase / Administrator; sau khi Unlock, đơn trở lại trạng thái Purchase Order và có thể sửa. Tắt setting 'Lock Confirmed Orders' không mở khóa các PO đã bị khóa, và nút Cancel không hiển thị trên đơn Locked.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/control_bills.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Purchase</span><span>Orders</span><span>Products</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>Purchase Orders</a> / <b>P00012</b></span></div><div><span class=\"ox-pager\">5 / 23</span></div></div><div class=\"ox-body\"><div class=\"ox-bar\"><div><span class=\"ox-btn ox-primary\">Create Bill</span><span class=\"ox-btn\">Unlock</span></div><div class=\"ox-status\"><span>RFQ</span><span>RFQ Sent</span><span>Purchase Order</span><span class=\"on\">Locked</span></div></div><div class=\"ox-sheet\"><div class=\"ox-smarts\"><div class=\"ox-smart\"><b>1</b>Receipt</div><div class=\"ox-smart\"><b>0</b>Vendor Bills</div></div><div class=\"ox-title\"><small>Purchase Order</small>P00012</div><div class=\"ox-fields\"><div><div class=\"ox-f\"><span class=\"l\">Vendor</span><span class=\"v ro\">Wood Corner</span></div><div class=\"ox-f\"><span class=\"l\">Vendor Reference</span><span class=\"v ro\">WC-5541</span></div></div><div><div class=\"ox-f\"><span class=\"l\">Confirmation Date</span><span class=\"v ro\">04/07/2025 10:12</span></div><div class=\"ox-f\"><span class=\"l\">Expected Arrival</span><span class=\"v ro\">04/14/2025</span></div></div></div><div class=\"ox-tabs\"><span class=\"on\">Products</span><span>Other Information</span></div><table class=\"ox-list\"><thead><tr><th>Product</th><th class=\"n\">Quantity</th><th class=\"n\">Received</th><th class=\"n\">Billed</th><th class=\"n\">Unit Price</th><th class=\"n\">Amount</th></tr></thead><tbody><tr><td>[FURN_7800] Desk Combination</td><td class=\"n\">5.00</td><td class=\"n\">5.00</td><td class=\"n\">0.00</td><td class=\"n\">380.00</td><td class=\"n\">$ 1,900.00</td></tr></tbody></table></div></div></div>"
+ },
+ {
+  "subject": "Purchase",
+  "question": "A purchase order for 20 desks was confirmed and its receipt has already been validated. The vendor now asks to cancel the deal. What happens when the buyer clicks Cancel on the PO?",
+  "options": [
+   "Odoo raises an error because a receipt of the order is already done",
+   "The PO is cancelled and the done receipt is returned to the vendor",
+   "The PO is cancelled and a draft vendor credit note is created for it",
+   "The PO goes to 'To Approve' so a manager confirms the cancellation"
+  ],
+  "answer": 0,
+  "explanation": "Odoo không cho hủy PO có phiếu nhập kho đã hoàn tất (lỗi 'Unable to cancel purchase order(s) ... since they have receipts that are already done'). Muốn trả hàng phải dùng nút Return trên phiếu nhập; Odoo không tự tạo phiếu trả hay credit note khi hủy.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/manage.html"
+ },
+ {
+  "subject": "Purchase",
+  "question": "The vendor's order confirmation number 'SO-88213' is entered in the 'Vendor Reference' field of a PO. When the bill is created from that PO with Create Bill, where does this number appear?",
+  "options": [
+   "In the Source Document of the bill, replacing the PO number",
+   "Nowhere; it is only printed on the purchase order PDF",
+   "In the Incoterm Location field of the bill's Other Info tab",
+   "In the Bill Reference and Payment Reference of the bill"
+  ],
+  "answer": 3,
+  "explanation": "Khi tạo bill từ PO, Odoo copy 'Vendor Reference' của PO vào Bill Reference (ref) và Payment Reference của bill, giúp đối chiếu với chứng từ của nhà cung cấp. Source Document vẫn là số PO.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/control_bills.html"
+ },
+ {
+  "subject": "Purchase",
+  "question": "Vendor Wood Corner identifies the product 'Large Desk' by its own code 'WC-180' and name 'Executive desk'. The buyer wants this code and name printed on RFQs sent to Wood Corner only. Where is this set?",
+  "options": [
+   "In the product's Internal Reference, replaced by the vendor code WC-180",
+   "On Wood Corner's vendor line of the product (Vendor Product Name / Code)",
+   "In the Purchase Description of the product, filled with the vendor name",
+   "On Wood Corner's contact form, in the Internal Notes of the Purchase tab"
+  ],
+  "answer": 1,
+  "explanation": "Trên dòng nhà cung cấp (vendor pricelist) ở tab Purchase của sản phẩm, các trường Vendor Product Name và Vendor Product Code được dùng khi in RFQ cho đúng nhà cung cấp đó. Đổi Internal Reference sẽ ảnh hưởng đến mọi chứng từ, không chỉ với Wood Corner.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/products/product_variants.html"
+ },
+ {
+  "subject": "Spreadsheet",
+  "question": "In a spreadsheet, a pivot cell shows 45,300 for 'Azure Interior / Q2'. The sales manager wants to open the Odoo records behind this figure. What is the quickest way?",
+  "options": [
+   "Double-click the cell to open the formula editor",
+   "Use Data ‣ Refresh all data, then reopen the pivot",
+   "Right-click the cell and choose 'See records'",
+   "Right-click the cell and choose 'Edit Pivot'"
+  ],
+  "answer": 2,
+  "explanation": "Menu chuột phải trên một ô pivot có mục 'See records', mở danh sách các bản ghi Odoo tạo nên giá trị đó (theo domain của ô). 'Edit Pivot' chỉ mở panel thuộc tính của pivot.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/insert.html"
+ },
+ {
+  "subject": "Spreadsheet",
+  "question": "A cell contains =ODOO.BALANCE(\"60\", \"Q1/2025\"), where accounts starting with 60 are expense accounts. Which journal items are taken into account by default?",
+  "options": [
+   "Posted and draft items of account 600000 only, dated in Q1 2025",
+   "Posted items of account 600000 only, from 1 January 2025 up to the end of Q1",
+   "Posted and draft items of every account starting with 60, in Q1 2025",
+   "Posted items of all accounts whose code starts with 60, dated in Q1 2025"
+  ],
+  "answer": 3,
+  "explanation": "Tham số account_codes là tiền tố mã tài khoản, nên '60' lấy mọi tài khoản bắt đầu bằng 60; mặc định include_unposted = FALSE nên chỉ tính bút toán đã Posted. Với tài khoản chi phí (P&L), chỉ các bút toán trong kỳ Q1/2025 được tính.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/functions.html"
+ },
+ {
+  "subject": "Spreadsheet",
+  "question": "A dynamic pivot was inserted with =PIVOT(1). The controller wants to move some of its cells and insert blank rows between them, which the single array formula does not allow. Which option of the cell's right-click menu helps?",
+  "options": [
+   "Convert to individual formulas",
+   "See records",
+   "Edit Pivot",
+   "Paste special"
+  ],
+  "answer": 0,
+  "explanation": "'Convert to individual formulas' tách pivot động (một công thức mảng =PIVOT) thành các công thức PIVOT.HEADER / PIVOT.VALUE riêng cho từng ô, nên có thể di chuyển, chèn dòng tùy ý. 'Edit Pivot' chỉ mở panel thuộc tính.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/insert.html"
+ },
+ {
+  "subject": "Inventory",
+  "question": "The San Francisco warehouse delivers in 2 steps (Pick then Deliver). The delivery order shown is in the state marked 1. What does this state mean?",
+  "options": [
+   "No stock is available in WH/Output and no replenishment has been triggered for it yet",
+   "The delivery is still a draft and must be confirmed with Mark as Todo before reserving",
+   "It depends on a preceding transfer (the pick to WH/Output) that is not done yet",
+   "Part of the demand is reserved and the rest waits for the next receipt from the vendor"
+  ],
+  "answer": 2,
+  "explanation": "Trạng thái 'Waiting Another Operation' nghĩa là phiếu xuất được nối chuỗi và đang chờ một phiếu trước đó (ở đây là phiếu Pick từ WH/Stock sang WH/Output) hoàn tất. Trạng thái 'Waiting' mới là trường hợp chờ hàng có sẵn trong kho.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/receipts_delivery_two_steps.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Inventory</span><span>Overview</span><span>Operations</span><span>Products</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>Delivery Orders</a> / <b>WH/OUT/00007</b></span></div><div><span class=\"ox-pager\">3 / 9</span></div></div><div class=\"ox-body\"><div class=\"ox-bar\"><div><span class=\"ox-btn ox-primary\">Check Availability</span><span class=\"ox-btn ox-primary\">Validate</span><span class=\"ox-btn\">Cancel</span></div><div style=\"align-items:center\"><div class=\"ox-status\"><span>Draft</span><span class=\"on ox-hl\">Waiting Another Operation</span><span>Waiting</span><span>Ready</span><span>Done</span></div><span class=\"ox-mark\">1</span></div></div><div class=\"ox-sheet\"><div class=\"ox-title\">WH/OUT/00007</div><div class=\"ox-fields\"><div><div class=\"ox-f\"><span class=\"l\">Delivery Address</span><span class=\"v\">Deco Addict</span></div><div class=\"ox-f\"><span class=\"l\">Source Location</span><span class=\"v\">WH/Output</span></div><div class=\"ox-f\"><span class=\"l\">Operation Type</span><span class=\"v\">San Francisco: Delivery Orders</span></div></div><div><div class=\"ox-f\"><span class=\"l\">Scheduled Date</span><span class=\"v\">11/25/2026 10:00:00</span></div><div class=\"ox-f\"><span class=\"l\">Source Document</span><span class=\"v\">S00031</span></div></div></div><div class=\"ox-tabs\"><span class=\"on\">Operations</span><span>Additional Info</span><span>Note</span></div><table class=\"ox-list\"><thead><tr><th>Product</th><th class=\"n\">Demand</th><th class=\"n\">Quantity</th><th>Unit</th></tr></thead><tbody><tr><td>[FURN_8888] Office Lamp</td><td class=\"n\">4.00</td><td class=\"n\">0.00</td><td>Units</td></tr><tr><td>[FURN_0269] Office Chair Black</td><td class=\"n\">2.00</td><td class=\"n\">0.00</td><td>Units</td></tr></tbody></table></div></div></div>"
+ },
+ {
+  "subject": "Inventory",
+  "question": "The product category 'Office Furniture' has the removal strategy LIFO, while the location WH/Stock has the removal strategy FIFO. A delivery reserves a product of this category from WH/Stock. Which strategy does Odoo apply?",
+  "options": [
+   "LIFO, because the strategy of the product category takes priority over the location's",
+   "FIFO, because the strategy of the location takes priority over the product category's",
+   "FIFO, because Odoo falls back to FIFO whenever two different strategies are in conflict",
+   "LIFO, but only when the costing method of the product category is also set to FIFO"
+  ],
+  "answer": 0,
+  "explanation": "Odoo tìm removal strategy trên product category trước; chỉ khi category không có mới xét đến location (và các location cha), cuối cùng mặc định là FIFO. Vì vậy LIFO của category được áp dụng, không phải FIFO của WH/Stock.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/removal_strategies.html"
+ },
+ {
+  "subject": "Inventory",
+  "question": "Deliveries to a customer must be stopped until a dispute is settled: when a user selects this customer on a transfer, Odoo must show a message and refuse the contact. What should be configured?",
+  "options": [
+   "Enable Warnings in the Inventory settings, then set the contact's Stock Picking warning to 'Warning' with a message",
+   "Set the Reservation Method of the Delivery Orders operation type to 'Manually' for this customer",
+   "Archive the customer's delivery address so that it can no longer be selected on a transfer",
+   "Enable Warnings in the Inventory settings, then set the contact's Stock Picking warning to 'Blocking Message'"
+  ],
+  "answer": 3,
+  "explanation": "Khi bật Warnings (Inventory ‣ Configuration ‣ Settings), trên contact có trường cảnh báo Stock Picking; chọn 'Blocking Message' sẽ hiện thông báo và xóa contact khỏi phiếu chuyển. Tùy chọn 'Warning' chỉ hiện thông báo nhưng vẫn cho phép tiếp tục.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/receipts_delivery_one_step.html"
+ },
+ {
+  "subject": "Inventory",
+  "question": "A stock rule has Action = 'Push To', Source Location = WH/Input and Destination Location = WH/Stock. When does this rule create a transfer?",
+  "options": [
+   "When products are needed in WH/Stock, to bring them from WH/Input",
+   "When products arrive in WH/Input, to move them on to WH/Stock",
+   "When the scheduler runs, to move all of WH/Stock back to WH/Input",
+   "When a receipt to WH/Input is confirmed, before it is even validated"
+  ],
+  "answer": 1,
+  "explanation": "Rule 'Push To' được kích hoạt khi hàng đến Source Location (WH/Input) và tạo phiếu chuyển tiếp sang WH/Stock. Trường hợp 'khi WH/Stock cần hàng thì kéo từ WH/Input' là hành vi của rule 'Pull From'.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/use_routes.html"
+ },
+ {
+  "subject": "Inventory",
+  "question": "A product has 20 units on hand in WH/Stock. There is a receipt of 15 units in state Ready, a delivery of 12 units in state Waiting and a delivery of 5 units still in Draft. What Forecasted quantity does the product form show?",
+  "options": [
+   "18 units",
+   "35 units",
+   "23 units",
+   "8 units"
+  ],
+  "answer": 2,
+  "explanation": "Forecasted = On Hand + nhập dự kiến − xuất dự kiến, chỉ tính các phiếu đã xác nhận (Waiting/Ready…): 20 + 15 − 12 = 23. Phiếu xuất ở trạng thái Draft chưa được tính nên 18 là sai.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/warehouses_storage/replenishment.html"
+ },
+ {
+  "subject": "Manufacturing",
+  "question": "The manufacturing order shown is confirmed and its components are reserved. What happens when the user clicks the button marked 1?",
+  "options": [
+   "The MO moves to the In Progress state; nothing is produced or consumed yet",
+   "All components are consumed and the 10 tables are added to the stock at once",
+   "The MO's work orders are scheduled in the work center calendars by capacity",
+   "The components are reserved again and the MO becomes Ready to be produced"
+  ],
+  "answer": 0,
+  "explanation": "Nút Start trên MO đã xác nhận chỉ chuyển MO sang trạng thái In Progress để báo hiệu bắt đầu sản xuất; chưa ghi nhận tiêu hao hay thành phẩm. Tiêu hao và nhập thành phẩm xảy ra khi bấm Produce All.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/manufacturing_orders.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Manufacturing</span><span>Overview</span><span>Operations</span><span>Planning</span><span>Products</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>Manufacturing Orders</a> / <b>WH/MO/00012</b></span></div><div><span class=\"ox-pager\">2 / 14</span></div></div><div class=\"ox-body\"><div class=\"ox-bar\"><div><span class=\"ox-btn ox-primary\">Produce All</span><span class=\"ox-btn\">Start <span class=\"ox-mark\">1</span></span><span class=\"ox-btn\">Unreserve</span><span class=\"ox-btn\">Cancel</span></div><div class=\"ox-status\"><span>Draft</span><span class=\"on\">Confirmed</span><span>Done</span></div></div><div class=\"ox-sheet\"><div class=\"ox-smarts\"><div class=\"ox-smart\"><b>&#9776;</b>Overview</div></div><div class=\"ox-title\">WH/MO/00012</div><div class=\"ox-fields\"><div><div class=\"ox-f\"><span class=\"l\">Product</span><span class=\"v ro\">[FURN_9666] Table</span></div><div class=\"ox-f\"><span class=\"l\">Bill of Material</span><span class=\"v\">Table</span></div><div class=\"ox-f\"><span class=\"l\">Quantity</span><span class=\"v\">0.00 / 10.00 Units <b>To Produce</b></span></div></div><div><div class=\"ox-f\"><span class=\"l\">Scheduled Date</span><span class=\"v\">11/26/2026 08:00:00</span></div><div class=\"ox-f\"><span class=\"l\">Responsible</span><span class=\"v\">Mitchell Admin</span></div></div></div><div class=\"ox-tabs\"><span class=\"on\">Components</span><span>By-Products</span><span>Miscellaneous</span></div><table class=\"ox-list\"><thead><tr><th>Product</th><th class=\"n\">To Consume</th><th class=\"n\">Quantity</th><th>UoM</th></tr></thead><tbody><tr><td>[FURN_8522] Table Top</td><td class=\"n\">10.00</td><td class=\"n\">0.00</td><td>Units</td></tr><tr><td>[FURN_2333] Table Leg</td><td class=\"n\">40.00</td><td class=\"n\">0.00</td><td>Units</td></tr><tr><td>[CONS_89957] Bolt</td><td class=\"n\">40.00</td><td class=\"n\">0.00</td><td>Units</td></tr></tbody></table></div></div></div>"
+ },
+ {
+  "subject": "Manufacturing",
+  "question": "An oven can bake 12 cupcake trays at once but only 4 wedding cakes at once. In Odoo 18, where do you configure these product-dependent capacities?",
+  "options": [
+   "In the Capacity field of each BoM operation, overriding the work center value",
+   "By creating one work center per product, each with its own Default Capacity",
+   "In the Manufacturing section of each product, in a Work Center Capacity field",
+   "In the Specific Capacities tab of the work center, with one line per product"
+  ],
+  "answer": 3,
+  "explanation": "Từ Odoo 17/18, form work center có tab Specific Capacities cho phép khai báo capacity (và setup/cleanup time) riêng cho từng sản phẩm; Default Capacity chỉ dùng cho sản phẩm không có dòng riêng. Tạo nhiều work center là thừa và sai bản chất.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/advanced_configuration/using_work_centers.html"
+ },
+ {
+  "subject": "Manufacturing",
+  "question": "Manufacturing orders are often finished late. Management wants all MOs to be scheduled 2 days earlier than strictly needed, as a safety margin. What should be configured?",
+  "options": [
+   "Set the Days to prepare Manufacturing Order field to 2 on every bill of materials",
+   "Enable Security Lead Time in the Manufacturing settings and set it to 2 days",
+   "Set the Time Efficiency of every work center to 50% so durations are doubled",
+   "Set the Manuf. Lead Time to 2 days on the Miscellaneous tab of every BoM"
+  ],
+  "answer": 1,
+  "explanation": "Security Lead Time (Manufacturing ‣ Configuration ‣ Settings) lùi ngày dự kiến của mọi MO thêm X ngày để tạo khoảng an toàn. Manuf. Lead Time trên BoM là thời gian sản xuất thực của sản phẩm, không phải biên độ an toàn chung.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/scheduled_dates.html"
+ },
+ {
+  "subject": "Manufacturing",
+  "question": "Components reserved for a confirmed MO are urgently needed for another, higher-priority MO. Which button on the first MO releases its reservation without cancelling it?",
+  "options": [
+   "The Unplan button",
+   "The Lock/Unlock button",
+   "The Unreserve button",
+   "The Check availability button"
+  ],
+  "answer": 2,
+  "explanation": "Nút Unreserve trên MO giải phóng lượng linh kiện đã giữ chỗ mà MO vẫn ở trạng thái Confirmed. Unplan chỉ gỡ lịch work order trên work center, không đụng tới việc giữ hàng.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/manufacturing_orders.html"
+ },
+ {
+  "subject": "Point of Sale",
+  "question": "The cashier validates the order shown on the payment screen. How are the payments recorded on the PoS order?",
+  "options": [
+   "Card $ 40.00 and Cash $ 23.25, the change being deducted from the cash line",
+   "Card $ 33.25 and Cash $ 30.00, the change being deducted from the card line",
+   "Card $ 40.00 and Cash $ 30.00, the change being recorded later as a Cash Out",
+   "Card $ 40.00, Cash $ 30.00 and a separate Cash line of -$ 6.75 as change"
+  ],
+  "answer": 3,
+  "explanation": "Khi có tiền thối, PoS giữ nguyên các dòng thanh toán và tạo thêm một dòng thanh toán âm (is_change) trên phương thức tiền mặt, ở đây −$ 6.75. Tiền thối không bị trừ vào dòng Cash hay Card, và cũng không phải Cash In/Out.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/payment_methods.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\" style=\"justify-content:space-between\"><span><span class=\"ox-btn ox-primary\">Register</span> <span class=\"ox-btn\">Orders</span></span><span class=\"ox-mu\">Furniture Shop &middot; Mitchell Admin</span></div><div class=\"ox-body\" style=\"display:grid;grid-template-columns:150px 1fr;gap:12px\"><div style=\"display:grid;gap:6px;align-content:start\"><span class=\"ox-btn\">Cash</span><span class=\"ox-btn\">Card</span><span class=\"ox-btn\">Customer Account</span><span class=\"ox-btn\" style=\"margin-top:20px\">&#128100; Customer</span><span class=\"ox-btn\">Invoice</span></div><div style=\"background:#fff;border:1px solid #d8dadd;border-radius:4px;padding:12px\"><div style=\"text-align:center;font-size:30px;font-weight:700;margin-bottom:10px\">$ 63.25</div><table class=\"ox-list\"><tbody><tr><td>Card</td><td class=\"n\">$ 40.00</td><td class=\"ox-mu\">&#10005;</td></tr><tr class=\"sel\"><td>Cash</td><td class=\"n\">$ 30.00</td><td class=\"ox-mu\">&#10005;</td></tr></tbody></table><div style=\"display:flex;justify-content:space-between;font-size:18px;margin:10px 4px\"><span>Change</span><b class=\"ox-ok\">$ 6.75</b></div><div style=\"display:flex;justify-content:space-between;margin-top:14px\"><span class=\"ox-btn\">&lsaquo; Back</span><span class=\"ox-btn ox-primary\" style=\"padding:8px 40px;font-size:16px\">Validate &rsaquo;</span></div></div></div></div>"
+ },
+ {
+  "subject": "Point of Sale",
+  "question": "A customer buys a present and asks for a ticket to slip into the gift box that does not show any price. Which PoS setting makes this possible?",
+  "options": [
+   "Basic Receipt",
+   "Gift Card",
+   "Early Receipt Printing",
+   "Skip Preview Screen"
+  ],
+  "answer": 0,
+  "explanation": "Setting Basic Receipt cho phép in thêm phiếu cơ bản không có giá, dùng làm phiếu quà tặng. Gift Card là chương trình thẻ quà tặng trả trước, không liên quan đến việc ẩn giá trên phiếu.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/receipts_invoices.html"
+ },
+ {
+  "subject": "Point of Sale",
+  "question": "A shop gives the same code 'SUMMER10' to all its newsletter subscribers; anyone who types this code at the PoS gets 10% off. Which Discount & Loyalty program type fits?",
+  "options": [
+   "Coupons",
+   "Discount Code",
+   "Promotions",
+   "Next Order Coupons"
+  ],
+  "answer": 1,
+  "explanation": "Program type Discount Code dùng một mã chung mà khách nhập để nhận ưu đãi. Coupons sinh ra các mã riêng, mỗi mã dùng một lần; Promotions thì áp dụng tự động không cần mã.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/pricing/loyalty.html"
+ },
+ {
+  "subject": "Point of Sale",
+  "question": "A shop has two registers, each with its own PoS. A cashier must be able to finish on register 2 an order that was started on register 1. Which setting should be used?",
+  "options": [
+   "Log in with Employees, with both cashiers allowed on each PoS",
+   "Restrict Categories, with the same categories on both PoS",
+   "Share Open Orders, with the other PoS selected as Trusted POS",
+   "Allow Ship Later, with the other PoS chosen as warehouse"
+  ],
+  "answer": 2,
+  "explanation": "Setting Share Open Orders (chọn các PoS trong Trusted POS) cho phép các PoS truy cập đơn đang mở của nhau. Log in with Employees chỉ quản lý việc đăng nhập nhân viên, không chia sẻ đơn giữa hai PoS.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/configuration.html"
+ },
+ {
+  "subject": "CRM",
+  "question": "In the CRM pipeline shown, what does the amount displayed next to the 'New' stage name (marker 1) represent?",
+  "options": [
+   "The sum of the prorated revenues (Expected Revenue × Probability) of the column's opportunities",
+   "The total untaxed amount of the quotations already sent for these opportunities",
+   "The sum of the Expected Revenue of the opportunities currently in that stage",
+   "The monthly sales target of the team, defined on the sales team form"
+  ],
+  "answer": 2,
+  "explanation": "Trong kanban Pipeline, tiêu đề mỗi cột cộng trường Expected Revenue của các cơ hội trong giai đoạn đó (24.000 + 11.000 = 35.000). Doanh thu đã nhân xác suất (prorated) chỉ được cộng trong kanban của báo cáo CRM ‣ Reporting ‣ Forecast.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">CRM</span><span>Sales</span><span>Leads</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><b>Pipeline</b></span></div><div><span class=\"ox-search\"><span class=\"ox-facet\">My Pipeline</span>Search...</span><span class=\"ox-views\"><span class=\"on\">▦</span><span>☰</span><span>▤</span></span></div></div><div class=\"ox-kanban\"><div class=\"ox-col\"><div class=\"ox-colh\">New <small>$ 35,000 <span class=\"ox-mark\">1</span></small></div><div class=\"ox-prog\"><i class=\"g\" style=\"width:50%\"></i><i class=\"r\" style=\"width:50%\"></i></div><div class=\"ox-card\"><div class=\"t\">Office Design Project</div><div>$ 24,000</div><div class=\"s\">Deco Addict</div><div><span class=\"ox-tag c5\">Design</span></div><div class=\"foot\"><span><span class=\"ox-stars\"><b>★★</b>★</span><span class=\"ox-act planned\"></span></span><span class=\"ox-av\">MA</span></div></div><div class=\"ox-card\"><div class=\"t\">Chairs for meeting room</div><div>$ 11,000</div><div class=\"s\">Azure Interior</div><div class=\"foot\"><span><span class=\"ox-stars\"><b>★</b>★★</span><span class=\"ox-act late\"></span></span><span class=\"ox-av\">MD</span></div></div></div><div class=\"ox-col\"><div class=\"ox-colh\">Qualified <small>$ 9,500</small></div><div class=\"ox-prog\"><i class=\"o\" style=\"width:100%\"></i></div><div class=\"ox-card\"><div class=\"t\">Quote for 12 tables</div><div>$ 9,500</div><div class=\"s\">Gemini Furniture</div><div><span class=\"ox-tag c2\">Product</span></div><div class=\"foot\"><span><span class=\"ox-stars\"><b>★</b>★★</span><span class=\"ox-act today\"></span></span><span class=\"ox-av\">MA</span></div></div></div><div class=\"ox-col\"><div class=\"ox-colh\">Proposition <small>$ 40,000</small></div><div class=\"ox-prog\"><i class=\"g\" style=\"width:100%\"></i></div><div class=\"ox-card\"><div class=\"t\">Open space design</div><div>$ 40,000</div><div class=\"s\">Lumber Inc</div><div class=\"foot\"><span><span class=\"ox-stars\"><b>★★★</b></span><span class=\"ox-act planned\"></span></span><span class=\"ox-av\">MD</span></div></div></div></div></div>"
+ },
+ {
+  "subject": "CRM",
+  "question": "The 'Europe' sales team wants an extra field 'Number of employees' on its opportunities, without using Studio and without changing the opportunities of the other teams. What does Odoo 18 offer?",
+  "options": [
+   "Lead Properties: fields added from an opportunity and stored per sales team",
+   "Team Tags: tags restricted to one team in CRM ‣ Configuration ‣ Tags",
+   "Stage Requirements: a text that each team fills on its own stages",
+   "Recurring Plans: a plan per team that adds numeric fields on opportunities"
+  ],
+  "answer": 0,
+  "explanation": "Odoo 18 cho phép thêm Properties trên lead/cơ hội; định nghĩa thuộc tính được lưu trên Sales Team (lead_properties_definition), nên chỉ cơ hội của đội đó mới có trường này. Tags dùng chung cho mọi đội và Requirements chỉ là tooltip của giai đoạn.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm.html"
+ },
+ {
+  "subject": "CRM",
+  "question": "A sales manager wants every opportunity entering the 'Proposition' stage to automatically get a probability of 60%. What should they know about Odoo 18?",
+  "options": [
+   "Set Probability to 60% on the stage; opportunities moved there are updated",
+   "Enable 'Stage Probability' in CRM settings and type 60 in the stage's Requirements",
+   "Give the stage a sequence of 60, as probability is derived from the stage order",
+   "Stages have no probability field; it comes from lead scoring or manual input"
+  ],
+  "answer": 3,
+  "explanation": "Trong Odoo 18, crm.stage chỉ có Name, Is Won Stage, Folded, Requirements, Sales Team… không có trường xác suất. Probability được tính bởi Predictive Lead Scoring hoặc do người bán nhập tay; chỉ giai đoạn Won mới đặt xác suất 100%.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm.html"
+ },
+ {
+  "subject": "CRM",
+  "question": "While chatting with a website visitor in Live Chat, an operator realises the visitor is a real sales prospect. How can the operator create a CRM lead directly from the conversation?",
+  "options": [
+   "Click 'Convert' in the Live Chat session report of that visitor",
+   "Type the /lead command followed by a title in the chat window",
+   "Forward the chat transcript to the sales team's email alias",
+   "Add the 'Lead' tag to the conversation so a scheduled action creates it"
+  ],
+  "answer": 1,
+  "explanation": "Khi cài crm_livechat, operator gõ lệnh '/lead <tiêu đề>' trong cửa sổ chat để tạo lead chứa nội dung cuộc trò chuyện. Chuyển tiếp email tới alias cũng tạo được lead nhưng không phải cách làm trực tiếp từ cuộc chat.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/livechat.html"
+ },
+ {
+  "subject": "Marketing",
+  "question": "A mailing has been sent and its form now looks like the image. What happens when the user clicks the button at marker 1?",
+  "options": [
+   "The whole mailing is sent again to every contact of the Newsletter list",
+   "The failed emails and their traces are deleted, then sent again to those recipients",
+   "The mailing is resent only to the recipients who did not open the first email",
+   "Bounced addresses are removed from the list and the mailing is copied as a draft"
+  ],
+  "answer": 1,
+  "explanation": "Nút Retry chỉ hiện khi mailing đã Sent và có email lỗi (3 emails could not be sent); nó xóa các email lỗi cùng trace rồi gửi lại cho đúng những người nhận đó. Muốn gửi lại cho người chưa mở thì phải tạo mailing mới với bộ lọc phù hợp.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/email_marketing.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Email Marketing</span><span>Mailings</span><span>Mailing Lists</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>Mailings</a> / <b>Spring collection is here</b></span></div><div><span class=\"ox-pager\">1 / 8</span></div></div><div class=\"ox-body\"><div class=\"ox-bar\"><div><span class=\"ox-btn\">Duplicate</span><span class=\"ox-btn\">Test</span><span class=\"ox-btn ox-primary\">Retry</span> <span class=\"ox-mark\">1</span><span class=\"ox-btn\">Add to Templates</span></div><div class=\"ox-status\"><span>Draft</span><span>In Queue</span><span>Sending</span><span class=\"on\">Sent</span></div></div><div style=\"background:#cff4fc;color:#055160;font-weight:600;padding:6px 12px;margin:6px 0\">1197 emails have been sent.<br>3 emails could not be sent.</div><div class=\"ox-sheet\"><div class=\"ox-smarts\"><div class=\"ox-smart\"><b>42%</b>Opened</div><div class=\"ox-smart\"><b>3%</b>Replied</div><div class=\"ox-smart\"><b>12%</b>Clicked</div><div class=\"ox-smart\"><b>99%</b>Received</div><div class=\"ox-smart\"><b>1%</b>Bounced</div><div class=\"ox-smart\"><b>2</b>Link Trackers</div></div><div class=\"ox-fields\"><div><div class=\"ox-f\"><span class=\"l\">Subject</span><span class=\"v\">Spring collection is here</span></div><div class=\"ox-f\"><span class=\"l\">Recipients</span><span class=\"v\">Mailing List</span></div></div><div><div class=\"ox-f\"><span class=\"l\">Mailing List</span><span class=\"v\"><span class=\"ox-tag c3\">Newsletter</span></span></div></div></div><div class=\"ox-tabs\"><span class=\"on\">Mail Body</span><span>A/B Tests</span><span>Settings</span></div></div></div></div>"
+ },
+ {
+  "subject": "Marketing",
+  "question": "A marketer wants to start mailings with 'Dear {first name}', but mailing contacts only have a single Name field. Which Email Marketing setting helps?",
+  "options": [
+   "Mailing Campaigns, which adds name fields to the recipients of a campaign",
+   "Dedicated Server, which parses contact names when emails are delivered",
+   "24H Stat Mailing Reports, which enriches contacts after each sending",
+   "Split First and Last Name, which separates contact names into two fields"
+  ],
+  "answer": 3,
+  "explanation": "Setting 'Split First and Last Name' (Contact Naming) tách tên mailing contact thành First Name và Last Name để cá nhân hóa nội dung. Các setting còn lại liên quan đến campaign, máy chủ gửi và báo cáo, không đổi cấu trúc tên liên hệ.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/email_marketing.html"
+ },
+ {
+  "subject": "Marketing",
+  "question": "A mailing is sent to CRM opportunities (Recipients: Lead/Opportunity). The sales team wants each customer's reply to be logged in the chatter of the related opportunity. Which Reply To option should be selected in the mailing's Settings tab?",
+  "options": [
+   "Recipient Followers",
+   "Specified Email Address",
+   "Mailing Responsible",
+   "Sales Team Alias"
+  ],
+  "answer": 0,
+  "explanation": "Với mailing gửi tới bản ghi có chatter (như lead), Reply To = 'Recipient Followers' (mặc định) giúp thư trả lời quay về luồng thảo luận của chính bản ghi đó. 'Specified Email Address' gửi phản hồi về một địa chỉ cố định, không ghi vào chatter của cơ hội.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/email_marketing.html"
+ },
+ {
+  "subject": "Marketing",
+  "question": "An event's end date has passed, but nobody moved it in the Events Kanban view. What happens in Odoo 18 with the default event stages?",
+  "options": [
+   "It stays in its current stage until an organiser drags it to 'Ended'",
+   "It is archived automatically and disappears from the Kanban view",
+   "A scheduled action moves it to 'Ended', a stage flagged as End Stage",
+   "It is moved to 'Cancelled' if it had no attendees marked as attended"
+  ],
+  "answer": 2,
+  "explanation": "Giai đoạn 'Ended' có tùy chọn End Stage; một scheduled action tự động chuyển các sự kiện đã qua ngày kết thúc vào giai đoạn End Stage đầu tiên. Sự kiện không bị lưu trữ và không bị chuyển sang Cancelled.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/events.html"
+ },
+ {
+  "subject": "Survey",
+  "question": "A public survey starts with the question 'Your email address'. The manager wants this answer to be stored as the participant's email on the participation. Which options are used on this Single Line Text Box question?",
+  "options": [
+   "'Validate entry' with an email pattern and 'Mandatory Answer'",
+   "'Show Comments Field' with 'Comment is an answer' set to Email",
+   "'Input must be an email', then 'Save as user email'",
+   "'Conditional display' based on the contact's email field"
+  ],
+  "answer": 2,
+  "explanation": "Với câu Single Line Text Box, bật 'Input must be an email' để kiểm tra định dạng, rồi 'Save as user email' để lưu câu trả lời thành email của lượt tham gia. 'Validate entry' chỉ áp dụng cho giới hạn số/ngày, không có mẫu email.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/surveys/questions.html"
+ },
+ {
+  "subject": "Survey",
+  "question": "A survey uses 'One page per section'. Instead of a percentage, respondents should see the number of the current page out of the total. What should be changed in the Options tab?",
+  "options": [
+   "Set Pagination to 'One page per question'",
+   "Set 'Display Progress as' to 'Number'",
+   "Enable 'Allow Roaming' between the pages",
+   "Set Question Selection to 'Randomized per Section'"
+  ],
+  "answer": 1,
+  "explanation": "Trường 'Display Progress as' có hai lựa chọn Percentage left và Number; chọn Number để hiển thị số trang hiện tại trên tổng số. Tùy chọn này chỉ hiện khi pagination không phải 'One page with all the questions'.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/surveys.html"
+ },
+ {
+  "subject": "Survey",
+  "question": "In a live session with 'Reward quick answers' enabled and a 30-second question time limit, a participant gives the correct answer after 20 seconds. How are their points for this question computed?",
+  "options": [
+   "Between 50% and 100%: full points within 2 seconds, then decreasing",
+   "No points, since only the first correct participant scores the question",
+   "Full points, because the answer was given before the time limit expired",
+   "Points proportional to their rank among all participants who answered right"
+  ],
+  "answer": 0,
+  "explanation": "Khi 'Reward quick answers' bật, trả lời đúng trong 2 giây đầu được 100% điểm, sau đó điểm giảm tuyến tính nhưng luôn còn tối thiểu 50% (kể cả khi hết giờ). Odoo không xếp hạng theo thứ tự người trả lời.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/surveys/live_session.html"
+ },
+ {
+  "subject": "Website",
+  "question": "A marketer has designed a landing page and wants it offered as a starting layout whenever someone creates a page with '+New ‣ Page'. What should be done in Odoo 18?",
+  "options": [
+   "Save every block as a custom snippet and drop them on each new page",
+   "Duplicate the page from Website ‣ Site ‣ Pages every time it is needed",
+   "Set the page's Visibility to 'Template' in its page properties",
+   "Enable 'Is a Template' in its page properties; it appears under Custom"
+  ],
+  "answer": 3,
+  "explanation": "Bật 'Is a Template' trong Page Properties sẽ thêm trang vào hộp thoại tạo trang mới (+New ‣ Page), nhóm 'Custom'. Visibility chỉ có Public, Signed In, Restricted Group, With Password.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages.html"
+ },
+ {
+  "subject": "Website",
+  "question": "eCommerce is installed in a database with two websites. On the corporate website only, the /shop URL must not be reachable at all. Which rule in Website ‣ Configuration ‣ Redirects fits?",
+  "options": [
+   "A 301 redirect from /shop to the corporate homepage",
+   "A 404 Not Found rule for /shop on the corporate website",
+   "A 308 Redirect / Rewrite from /shop to /corporate",
+   "A 302 redirect from /shop to the other website's /shop"
+  ],
+  "answer": 1,
+  "explanation": "Loại '404 Not Found' dùng để gỡ bỏ một trang/controller trên một website cụ thể (ví dụ không muốn có /shop dù eCommerce đã cài). 301/302/308 vẫn đưa khách tới một URL khác chứ không chặn hẳn.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages/seo.html"
+ },
+ {
+  "subject": "Website",
+  "question": "With the Cookies Bar enabled, a company must not load embedded YouTube videos or Google Maps until the visitor accepts cookies. What should be configured?",
+  "options": [
+   "Set the cookies bar layout to 'Popup' so pages stay blocked until consent",
+   "Replace the video and map blocks with static screenshots on every page",
+   "Enable 'Block tracking 3rd-party services' under the Cookies Bar setting",
+   "Restrict the pages containing videos or maps to signed-in visitors only"
+  ],
+  "answer": 2,
+  "explanation": "Khi bật Cookies Bar, Odoo 18 có thêm tùy chọn 'Block tracking 3rd-party services' để chặn các dịch vụ bên thứ ba (YouTube, Google Maps, Facebook…) cho đến khi khách đồng ý. Đổi bố cục thanh cookie không chặn nội dung nhúng.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website.html"
+ },
+ {
+  "subject": "Website",
+  "question": "When a website page is shared on social networks, the preview shows the company logo. The company wants a promotional banner to be used instead, by default, for all pages. Which Website setting is used?",
+  "options": [
+   "Default Social Share Image",
+   "Favicon",
+   "Website Logo in the header",
+   "Social Media links block"
+  ],
+  "answer": 0,
+  "explanation": "Setting 'Default Social Share Image' thay logo website bằng ảnh chia sẻ mặc định khi trang được chia sẻ lên mạng xã hội. Favicon chỉ là biểu tượng trên tab trình duyệt.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages/seo.html"
+ },
+ {
+  "subject": "eCommerce",
+  "question": "With the option at marker 1 selected, what happens when a customer clicks 'Add to Cart' on a product page?",
+  "options": [
+   "The product is added and the customer is redirected to the cart page",
+   "The product is added silently and the cart icon counter is updated",
+   "The customer must sign in or create an account before it is added",
+   "A dialog offers 'Continue Shopping' or 'Proceed to Checkout'"
+  ],
+  "answer": 3,
+  "explanation": "'Let the user decide (dialog)' luôn mở hộp thoại sau khi thêm vào giỏ, để khách chọn Continue Shopping hoặc Proceed to Checkout. 'Go to cart' chuyển thẳng tới giỏ hàng, còn 'Stay on Product Page' giữ khách ở trang sản phẩm.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/checkout_payment_shipping.html",
+  "image": "<div class=\"ox\"><div class=\"ox-settings\"><div class=\"ox-sh\">Shop - Checkout Process</div><div class=\"ox-set\"><span class=\"ox-cb\" style=\"visibility:hidden\"></span><div><div class=\"t\">Add to Cart</div><div class=\"d\">What should be done on \"Add to Cart\"?</div><div class=\"sub\"><div>○ Stay on Product Page<br>○ Go to cart<br><span class=\"ox-mark\">1</span> ◉ Let the user decide (dialog)</div></div></div></div><div class=\"ox-set\"><span class=\"ox-cb\" style=\"visibility:hidden\"></span><div><div class=\"t\">Sign in/up at checkout</div><div class=\"d\">\"Optional\" allows guests to register from the order confirmation email to track their order.</div><div class=\"sub\"><div>◉ Optional<br>○ Disabled (buy as guest)<br>○ Mandatory (no guest checkout)</div></div></div></div><div class=\"ox-set\"><span class=\"ox-cb\"></span><div><div class=\"t\">Buy Now</div><div class=\"d\">Instant checkout, instead of adding to cart</div></div></div><div class=\"ox-set\"><span class=\"ox-cb\"></span><div><div class=\"t\">Extra Step During Checkout</div><div class=\"d\">Add a customizable form during checkout (after address)</div></div></div></div></div>"
+ },
+ {
+  "subject": "eCommerce",
+  "question": "A storable product is out of stock and 'Continue Selling' is disabled on it. A visitor would like to know when it becomes available again. What does the product page offer in Odoo 18?",
+  "options": [
+   "A 'Pre-order' button creating a quotation that is confirmed upon restocking",
+   "A field to leave an email address and be notified when it is back in stock",
+   "A wishlist link, whose items are emailed once the product is restocked",
+   "A countdown showing the date of the next expected receipt from the vendor"
+  ],
+  "answer": 1,
+  "explanation": "Với website_sale_stock, sản phẩm hết hàng (không cho bán tiếp) hiển thị 'Get notified when back in stock'; khách nhập email và một scheduled action gửi thư khi có hàng lại. Odoo không có nút pre-order hay đếm ngược ngày nhập hàng.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/products.html"
+ },
+ {
+  "subject": "eCommerce",
+  "question": "A shop wants visitors from Switzerland to automatically see prices from its 'CHF Pricelist', while everyone else sees the default pricelist. What should be set on the CHF pricelist?",
+  "options": [
+   "A pricelist rule with a minimum quantity per country",
+   "The 'Selectable' option, restricted to Swiss customers",
+   "A Country Group containing Switzerland",
+   "The Swiss franc as the website company's currency"
+  ],
+  "answer": 2,
+  "explanation": "Pricelist có trường Country Groups; website dùng GeoIP để chọn bảng giá có nhóm quốc gia khớp với quốc gia của khách. 'Selectable' chỉ cho phép khách tự chọn bảng giá, không tự áp dụng theo quốc gia.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/products/price_management.html"
+ },
+ {
+  "subject": "Project",
+  "question": "In the 'Office Design' project, the task 'Room 2: Decoration' shows the indicator at marker 1. A user then drags this card from 'In Progress' to 'Review'. What happens to the indicator?",
+  "options": [
+   "It stays green: the task state is kept when the task changes stage",
+   "It turns grey: the task state goes back to In Progress in the new stage",
+   "It becomes a green check-mark: an Approved task is now marked Done",
+   "It turns orange: the state becomes Changes Requested until reviewed"
+  ],
+  "answer": 1,
+  "explanation": "Chấm xanh là trạng thái Approved. Trong Odoo 18, trạng thái (state) của task được tính lại khi đổi stage: task chưa đóng (không phải Done/Cancelled) và không bị chặn bởi dependency sẽ quay về In Progress (chấm xám). Approved không tự chuyển thành Done hay Changes Requested.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project/tasks.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Project</span><span>Projects</span><span>My Tasks</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>Projects</a> / <b>Office Design</b></span></div><div><span class=\"ox-search\"><span class=\"ox-facet\">Open Tasks</span>Search...</span><span class=\"ox-views\"><span class=\"on\">▦</span><span>☰</span><span>▤</span></span></div></div><div class=\"ox-kanban\"><div class=\"ox-col\"><div class=\"ox-colh\">Backlog <small>2</small></div><div class=\"ox-card\"><div class=\"t\">Energy Certificate</div><div class=\"s\">Deco Addict</div><div class=\"foot\"><span><span class=\"ox-stars\">★</span><span class=\"ox-act none\"></span></span><span><span class=\"ox-dot\"></span><span class=\"ox-av\">AD</span></span></div></div><div class=\"ox-card\"><div class=\"t\">Lunch with the customer</div><div class=\"s\">Deco Addict</div><div class=\"foot\"><span><span class=\"ox-stars\">★</span><span class=\"ox-act planned\"></span></span><span><span class=\"ox-dot\"></span><span class=\"ox-av\">MD</span></span></div></div></div><div class=\"ox-col\"><div class=\"ox-colh\">In Progress <small>2</small></div><div class=\"ox-card\"><div class=\"t\">Room 2: Decoration</div><div class=\"s\">Deco Addict</div><div><span class=\"ox-tag c5\">Design</span></div><div class=\"foot\"><span><span class=\"ox-stars\"><b>★</b></span><span class=\"ox-act today\"></span></span><span><span class=\"ox-dot ok\"></span><span class=\"ox-mark\">1</span><span class=\"ox-av\">MD</span></span></div></div><div class=\"ox-card\"><div class=\"t\">Customer Meeting</div><div class=\"s\">Deco Addict</div><div class=\"foot\"><span><span class=\"ox-stars\">★</span><span class=\"ox-act none\"></span></span><span><span class=\"ox-dot\"></span><span class=\"ox-av\">MA</span></span></div></div></div><div class=\"ox-col\"><div class=\"ox-colh\">Review <small>1</small></div><div class=\"ox-card\"><div class=\"t\">Room 1: Decoration</div><div class=\"s\">Deco Addict</div><div class=\"foot\"><span><span class=\"ox-stars\">★</span><span class=\"ox-act late\"></span></span><span><span class=\"ox-dot\"></span><span class=\"ox-av\">MD</span></span></div></div></div></div></div>"
+ },
+ {
+  "subject": "Project",
+  "question": "The 'R&D Secret' project has the Visibility 'Invited internal users (private)'. Marc Demo (Project: User) is not a follower of the project, but he is assigned to one of its tasks. What can Marc access?",
+  "options": [
+   "Nothing: he must follow the project before opening any of its tasks",
+   "All tasks of the project, but only in read-only mode",
+   "Only the tasks he is assigned to or follows, not the other tasks",
+   "All tasks of the project, since he is assigned to one of them"
+  ],
+  "answer": 2,
+  "explanation": "Với dự án private, record rule chỉ cho người dùng nội bộ không follow dự án thấy những task mà họ được giao (Assignees) hoặc đang follow. Việc được giao một task không mở quyền xem toàn bộ task của dự án.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project.html"
+ },
+ {
+  "subject": "Project",
+  "question": "Customers of the 'Field Repairs' project must automatically receive a text message (SMS) when their task reaches the stage 'Technician on the way'. How is this configured?",
+  "options": [
+   "Enable Customer Ratings on the project and choose SMS as channel",
+   "Set an Email Template on the stage and tick its 'Send as SMS' box",
+   "Add the customer as a follower of the task with SMS notifications",
+   "Set an SMS Template on the 'Technician on the way' task stage"
+  ],
+  "answer": 3,
+  "explanation": "Module project_sms thêm trường SMS Template trên task stage: khi task (có Customer) chuyển vào stage đó, SMS được gửi cho khách hàng. Email Template trên stage chỉ gửi email, không có tùy chọn gửi dưới dạng SMS.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project/tasks.html"
+ },
+ {
+  "subject": "Timesheets",
+  "question": "In a project with timesheets, four tasks each have 10:00 of Allocated Time and no sub-tasks. Which task appears when the manager applies the 'Timesheets 80%' filter?",
+  "options": [
+   "Task A, with 07:30 recorded",
+   "Task B, with 10:00 recorded",
+   "Task C, with 11:00 recorded",
+   "Task D, with 08:30 recorded"
+  ],
+  "answer": 3,
+  "explanation": "Bộ lọc 'Timesheets 80%' lấy các task còn lại trên 0% và tối đa 20% thời gian phân bổ (đã dùng 80–100%). 08:30/10:00 còn 15% nên thỏa; 10:00 còn 0% không thỏa, còn 11:00 vượt quá thuộc bộ lọc 'Timesheets >100%'.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/timesheets.html"
+ },
+ {
+  "subject": "Timesheets",
+  "question": "An employee starts the timer from the form view of a task and, 50 minutes later, clicks Stop. What does Odoo 18 Enterprise do?",
+  "options": [
+   "It opens a 'Confirm Time Spent' dialog to check the time and description",
+   "It logs 50 minutes on the task at once, without asking for a description",
+   "It pauses the timer until the employee's timesheets have been validated",
+   "It sends the 50 minutes to the employee's approver as a draft timesheet"
+  ],
+  "answer": 0,
+  "explanation": "Khi bấm Stop trên timer của task, Odoo mở hộp thoại 'Confirm Time Spent' (thời gian đã làm tròn theo cài đặt) để xác nhận bằng Log Time, tiếp tục bằng Resume Timer hoặc xóa. Timesheet chỉ được tạo sau khi xác nhận.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/timesheets.html"
+ },
+ {
+  "subject": "Timesheets",
+  "question": "A 'Support Pack - 20 hours' service (invoicing policy Prepaid/Fixed Price) is sold. The salesperson must be warned to propose more hours once 90% of them have been consumed. What should be configured?",
+  "options": [
+   "The product's upsell Threshold, set to 90%",
+   "The Employee Reminder of the Timesheets settings, set to 90%",
+   "The Allocated Time of the task, set to 90% of the 20 hours",
+   "A Billing Time Target of 90% on the salesperson's employee form"
+  ],
+  "answer": 0,
+  "explanation": "Với sản phẩm dịch vụ Prepaid/Fixed Price, trường Threshold trên sản phẩm ('Warn the salesperson for an upsell when work done exceeds … of hours sold') tạo activity upsell cho salesperson khi thời gian đã làm vượt ngưỡng. Employee Reminder chỉ nhắc nhân viên nhập timesheet.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/invoicing/time_materials.html"
+ },
+ {
+  "subject": "HR",
+  "question": "Mitchell Admin opens his own approved time off request shown below, which starts next month, and clicks the button at marker 1. What happens?",
+  "options": [
+   "The request goes back to To Approve so that he can change its dates",
+   "A dialog asks him for a reason, then the request becomes Cancelled",
+   "The request is deleted once his manager has approved the deletion",
+   "A refuse reason is requested, then the request becomes Refused"
+  ],
+  "answer": 1,
+  "explanation": "Nhân viên có thể tự hủy yêu cầu nghỉ đã duyệt của mình nếu ngày bắt đầu chưa qua: nút Cancel mở wizard 'Cancel Time Off' bắt buộc nhập lý do, yêu cầu chuyển sang Cancelled và người duyệt được thông báo. Refused là kết quả của nút Refuse do người duyệt thực hiện.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/hr/time_off.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Time Off</span><span>My Time</span><span>Overview</span><span>Management</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>My Time Off</a> / <b>Mitchell Admin on Paid Time Off: 5 days</b></span></div><div><span class=\"ox-pager\">1 / 3</span></div></div><div class=\"ox-body\"><div class=\"ox-bar\"><div><span class=\"ox-btn\">Cancel</span><span class=\"ox-mark\">1</span></div><div class=\"ox-status\"><span>To Approve</span><span class=\"on\">Approved</span><span>Cancelled</span></div></div><div class=\"ox-sheet\"><div class=\"ox-fields\"><div><div class=\"ox-f\"><span class=\"l\">Employee</span><span class=\"v ro\">Mitchell Admin</span></div><div class=\"ox-f\"><span class=\"l\">Time Off Type</span><span class=\"v ro\">Paid Time Off</span></div><div class=\"ox-f\"><span class=\"l\">Dates</span><span class=\"v ro\">12/14/2026 → 12/18/2026</span></div><div class=\"ox-f\"><span class=\"l\">Duration</span><span class=\"v ro\">5 Days</span></div></div><div><div class=\"ox-f\"><span class=\"l\">Description</span><span class=\"v\">Family trip</span></div></div></div><div class=\"ox-chatter\"><div class=\"ox-cbar\"><span class=\"ox-btn\">Send message</span><span class=\"ox-btn\">Log note</span><span class=\"ox-btn\">Activities</span></div><div class=\"ox-msg\"><span class=\"ox-av\">MA</span><div><span class=\"who\">Mitchell Admin</span><span class=\"when\">2 days ago</span><div class=\"ox-mu\">To Approve → Approved (Status)</div></div></div></div></div></div></div>"
+ },
+ {
+  "subject": "HR",
+  "question": "An employee records a single $180 restaurant expense, but part of it was a client dinner and part a team lunch that must be booked on different categories. The expense is not in a report yet and its category has no fixed cost. What should the employee use?",
+  "options": [
+   "The Duplicate action, then reduce the amount of each copy",
+   "A second analytic distribution line on the same expense",
+   "The Split Expense button, to divide it into several expenses",
+   "Two expense reports, each one holding half of the expense"
+  ],
+  "answer": 2,
+  "explanation": "Nút Split Expense (chỉ hiện khi expense chưa thuộc report và category không có cost cố định) mở wizard chia expense thành nhiều dòng với category, thuế, nhân viên và số tiền riêng, tổng phải bằng số ban đầu. Analytic distribution chỉ phân bổ chi phí, không đổi category.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/expenses.html"
+ },
+ {
+  "subject": "HR",
+  "question": "In Odoo 18 Recruitment, the candidate Enrique Jones has two applications: one evaluated 'Excellent' (3 stars) and one evaluated 'Good' (1 star). Which Evaluation is shown on his Candidate record?",
+  "options": [
+   "Excellent, the highest evaluation among his applications",
+   "Good, the evaluation of his most recent application",
+   "Very Good, the rounded average of his applications",
+   "None, as only applications carry an evaluation"
+  ],
+  "answer": 2,
+  "explanation": "Odoo 18 tách Candidate (thông tin người ứng tuyển) khỏi Application. Evaluation của Candidate được tính bằng trung bình làm tròn các Evaluation của các application: (3 + 1) / 2 = 2, tức Very Good. Nó không lấy giá trị cao nhất hay mới nhất.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/hr/recruitment.html"
+ },
+ {
+  "subject": "HR",
+  "question": "HR wants the days on which an employee with a fixed working schedule recorded no attendance at all to appear in the Attendances report as missing hours. Which setting should be enabled?",
+  "options": [
+   "Absence Management",
+   "Automatic Check-Out",
+   "Extra Hours Validation",
+   "Tolerance Time In Favor Of Employee"
+  ],
+  "answer": 0,
+  "explanation": "Absence Management (Attendances ‣ Configuration ‣ Settings) làm cho những ngày không có attendance hiện trong báo cáo dưới dạng giờ thiếu (không áp dụng cho lịch làm việc flexible). Automatic Check-Out chỉ tự check-out nhân viên quên check-out.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/hr/attendances.html"
+ },
+ {
+  "subject": "Studio",
+  "question": "In Studio, an administrator sets the property at marker 1 on the Quotations list view, then closes Studio. What will users see?",
+  "options": [
+   "The list opens grouped by Salesperson; users can remove the grouping",
+   "Only the quotations of the logged-in salesperson are listed by default",
+   "The list stays ungrouped, as the grouping only applies inside Studio",
+   "The list opens grouped by Salesperson and the grouping cannot be removed"
+  ],
+  "answer": 0,
+  "explanation": "Default Group By đặt nhóm mặc định khi mở list view; người dùng vẫn có thể bỏ nhóm trong thanh tìm kiếm. Studio chỉ không áp dụng nhóm khi đang chỉnh sửa để có thể sửa các cột. Đây không phải bộ lọc theo người dùng.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/studio/views.html",
+  "image": "<div class=\"ox\"><div class=\"ox-nav\" style=\"background:#714b67\"><span class=\"ox-app\" style=\"color:#fff\">Studio</span><span style=\"color:#fff\">Views</span><span style=\"color:#fff\">Reports</span><span style=\"color:#fff\">Automations</span><span style=\"color:#fff\">Webhooks</span><span style=\"color:#fff\">Access Control</span><span style=\"color:#fff;margin-left:auto\">Close</span></div><div style=\"display:flex\"><div style=\"flex:1;padding:10px 12px;min-width:0\"><div class=\"ox-bc\" style=\"margin-bottom:8px\"><a>Quotations</a> / <b>List</b></div><table class=\"ox-list\"><thead><tr><th>Number</th><th>Customer</th><th>Salesperson</th><th>Status</th><th class=\"n\">Total</th></tr></thead><tbody><tr><td>S00042</td><td>Deco Addict</td><td>Mitchell Admin</td><td>Quotation</td><td class=\"n\">$ 1,740.00</td></tr><tr><td>S00041</td><td>Gemini Furniture</td><td>Marc Demo</td><td>Quotation Sent</td><td class=\"n\">$ 960.00</td></tr><tr><td>S00039</td><td>Azure Interior</td><td>Mitchell Admin</td><td>Sales Order</td><td class=\"n\">$ 2,315.00</td></tr><tr><td>S00037</td><td>Ready Mat</td><td>Marc Demo</td><td>Quotation</td><td class=\"n\">$ 488.00</td></tr></tbody></table></div><div style=\"width:260px;flex:none;border-left:1px solid #d8dadd;background:#f9fafb;padding:10px 12px;font-size:12px\"><div class=\"ox-tabs\" style=\"margin-top:0\"><span>Add</span><span class=\"on\">View</span><span>Properties</span></div><div style=\"display:grid;gap:7px\"><div><span class=\"ox-cb on\"></span> Can Create</div><div><span class=\"ox-cb on\"></span> Can Edit</div><div><span class=\"ox-cb on\"></span> Can Delete</div><div><span class=\"ox-cb\"></span> Show Invisible Elements</div><div><b>When Creating Record</b><div style=\"border:1px solid #d8dadd;background:#fff;border-radius:3px;padding:2px 6px;margin-top:2px\">Open form view</div></div><div><span class=\"ox-cb on\"></span> Enable Mass Editing</div><div><b>Sort By</b><div style=\"border:1px solid #d8dadd;background:#fff;border-radius:3px;padding:2px 6px;margin-top:2px\">&nbsp;</div></div><div><b>Default Group By</b> <span class=\"ox-mark\">1</span><div style=\"border:1px solid #d8dadd;background:#fff;border-radius:3px;padding:2px 6px;margin-top:2px\">Salesperson</div></div><div class=\"ox-note\" style=\"font-style:italic\">Grouping is not applied while in Studio to allow editing.</div></div></div></div></div>"
+ },
+ {
+  "subject": "Studio",
+  "question": "A sales manager with full Sales rights does not see the Studio icon in the top bar, although Studio is installed. What is the most likely reason?",
+  "options": [
+   "Studio must be enabled per user in his Preferences",
+   "Developer mode must be active to show the Studio icon",
+   "Studio is only shown to users of the main company",
+   "He lacks the Administration: Settings access right"
+  ],
+  "answer": 3,
+  "explanation": "Biểu tượng Studio chỉ hiển thị cho người dùng có quyền Administration: Settings (base.group_system). Không cần bật developer mode, và không có tùy chọn bật Studio trong Preferences.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/studio.html"
+ },
+ {
+  "subject": "Studio",
+  "question": "With Studio, you want to add a smart button on the Contact form that counts and opens the 'Claims' (a custom model) of that contact. What does Studio need in order to create the button?",
+  "options": [
+   "A One2many field on the Contact model listing the claims",
+   "A Many2one field on the Claim model pointing to Contact",
+   "A computed Integer field on Contact counting the claims",
+   "A server action on Claim returning the number of claims"
+  ],
+  "answer": 1,
+  "explanation": "Khi thêm smart button, Studio yêu cầu chọn một related field: trường Many2one (hoặc Many2many) trên model kia trỏ về model hiện tại; Studio tự tạo trường đếm và action. Không cần tạo trước trường One2many hay trường đếm.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/studio/fields.html"
+ },
+ {
+  "subject": "Studio",
+  "question": "When creating a new 'Site Visits' app with Studio, which suggested feature adds to each record a Contact field together with that contact's phone and email?",
+  "options": [
+   "User assignment",
+   "Lines",
+   "Contact details",
+   "Chatter"
+  ],
+  "answer": 2,
+  "explanation": "Tính năng Contact details tạo trường Contact (Many2one tới res.partner) cùng hai related field Phone và Email. User assignment chỉ thêm trường Responsible (người dùng nội bộ).",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/studio/models_modules_apps.html"
+ },
+ {
+  "subject": "Studio",
+  "question": "In the Odoo 18 Studio report editor, you want to add a table listing the records of a One2many field to a custom PDF report. What is the quickest way?",
+  "options": [
+   "Drag the One2many field from the Add tab onto the page",
+   "Type '/' and insert a Dynamic Table based on the field",
+   "Copy the lines table of the standard Sales Order report",
+   "Switch the report editor to XML, the only way to add tables"
+  ],
+  "answer": 1,
+  "explanation": "Trình sửa report của Studio 18 là WYSIWYG: gõ '/' để mở nhóm lệnh Report Tools, chọn Dynamic Table ('Insert a table based on a relational field') hoặc Field. Không cần sửa XML để thêm bảng.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/studio/pdf_reports.html"
+ }
+]

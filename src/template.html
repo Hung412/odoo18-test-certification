@@ -1,0 +1,653 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Odoo 18 Mock Certification</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: exam-hall console — top status bar with timer, question pane + navigator rail; results as a scorecard then review list */
+:root{
+  --bg:#f6f4f6; --surface:#ffffff; --sunk:#efeaee; --line:#ddd3db;
+  --fg:#231a21; --muted:#6c5f69;
+  --accent:#6d3f63; --accent-fg:#ffffff; --accent-soft:#f1e5ee;
+  --ok:#1f7a4d; --ok-soft:#e1f2e8; --bad:#b4332b; --bad-soft:#f8e2df; --warn:#a86a00; --warn-soft:#fbefd6;
+  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"Be Vietnam Pro",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17121a; --surface:#211a24; --sunk:#1b151e; --line:#3a2f3d;
+  --fg:#f1eaf0; --muted:#ab9daa; --accent:#d29bc3; --accent-fg:#23141e; --accent-soft:#3a2636;
+  --ok:#5fcf93; --ok-soft:#173326; --bad:#f2837a; --bad-soft:#3d1c1a; --warn:#f0b54a; --warn-soft:#3a2c12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17121a; --surface:#211a24; --sunk:#1b151e; --line:#3a2f3d;
+  --fg:#f1eaf0; --muted:#ab9daa; --accent:#d29bc3; --accent-fg:#23141e; --accent-soft:#3a2636;
+  --ok:#5fcf93; --ok-soft:#173326; --bad:#f2837a; --bad-soft:#3d1c1a; --warn:#f0b54a; --warn-soft:#3a2c12; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--f-body)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,label:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:9px 16px;border-radius:8px;font-weight:600}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.danger{color:var(--bad);border-color:var(--bad)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+a{color:var(--accent)}
+
+/* ---------- Start ---------- */
+.start{padding-block:40px 64px;display:grid;gap:32px}
+.hero{display:grid;gap:14px;max-width:760px}
+.hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.02em}
+.hero p{margin:0;color:var(--muted);max-width:62ch}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.rules div{background:var(--surface);padding:16px 18px;display:grid;gap:4px}
+.rules b{font-family:var(--f-mono);font-size:22px}
+.rules .plus{color:var(--ok)} .rules .minus{color:var(--bad)}
+.sets{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.set{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;align-content:start}
+.set h2{font-size:24px}
+.set .meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:13px}
+.set .hist{font-size:13px;color:var(--muted);min-height:20px}
+.set .hist .pass{color:var(--ok);font-weight:600}.set .hist .fail{color:var(--bad);font-weight:600}
+.opts{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+.opts label{display:flex;gap:8px;align-items:center;cursor:pointer}
+.subjects{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--fg);border:1px solid transparent}
+.resume{background:var(--warn-soft);border:1px solid var(--warn);border-radius:var(--r);padding:14px 18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.foot{color:var(--muted);font-size:12px}
+
+/* ---------- Exam ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:16px;padding-block:10px;flex-wrap:wrap}
+.bar .title{font-weight:700;font-family:var(--f-display);font-size:17px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.timer{font-family:var(--f-mono);font-size:22px;font-weight:700;padding:4px 12px;border-radius:8px;background:var(--sunk)}
+.timer.low{background:var(--bad-soft);color:var(--bad)}
+.progress{height:4px;background:var(--sunk)}
+.progress i{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}
+.exam{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;padding-block:24px 48px;align-items:start}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:18px;min-width:0}
+.qhead{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.qtext{font-size:18px;line-height:1.5;font-weight:500;margin:0}
+.choices{display:grid;gap:10px}
+.choice{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:8px;cursor:pointer;background:var(--surface)}
+.choice:hover{border-color:var(--accent)}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice .key{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:13px;font-weight:700;color:var(--muted)}
+.choice.sel{border-color:var(--accent);background:var(--accent-soft)}
+.choice.sel .key{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.qnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.qnav .grp{display:flex;gap:8px;flex-wrap:wrap}
+.flagbtn.on{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.rail{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:14px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
+.counts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.counts div{background:var(--sunk);border-radius:8px;padding:8px 4px}
+.counts b{display:block;font-family:var(--f-mono);font-size:18px}
+.counts span{font-size:11px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;max-height:46vh;overflow:auto;padding:2px}
+.grid button{aspect-ratio:1;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:5px;font:600 10px var(--f-mono);padding:0;position:relative}
+.grid button.ans{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.grid button.cur{outline:2px solid var(--fg);outline-offset:1px}
+.grid button.flag::after{content:"";position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--warn);border:1.5px solid var(--surface)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;border:1px solid var(--line)}
+.kbd{font-size:12px;color:var(--muted)}
+
+/* ---------- Modal ---------- */
+.modal{position:fixed;inset:0;background:rgb(0 0 0 / .45);display:grid;place-items:center;z-index:20;padding:16px}
+.modal .box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;max-width:440px;width:100%;display:grid;gap:14px}
+.modal .row{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+
+/* ---------- Results ---------- */
+.res{padding-block:28px 64px;display:grid;gap:28px}
+.score{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.verdict{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;text-align:center;border:10px solid var(--line);position:relative}
+.verdict.pass{border-color:var(--ok)} .verdict.fail{border-color:var(--bad)}
+.verdict b{font:800 34px var(--f-display);display:block}
+.verdict span{font-size:12px;font-weight:700;letter-spacing:.1em}
+.verdict.pass span{color:var(--ok)} .verdict.fail span{color:var(--bad)}
+.score h2{font-size:28px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:14px}
+.stat{background:var(--sunk);border-radius:8px;padding:10px 12px}
+.stat b{font:700 20px var(--f-mono);display:block}
+.stat.c b{color:var(--ok)} .stat.w b{color:var(--bad)} .stat.u b{color:var(--muted)}
+.formula{font-size:13px;color:var(--muted);margin-top:10px}
+.stack{display:flex;height:10px;border-radius:5px;overflow:hidden;background:var(--sunk);margin-top:14px}
+.stack i{display:block;height:100%}
+.stack .c{background:var(--ok)} .stack .w{background:var(--bad)}
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--sunk)}
+td.n{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+th.n{text-align:right}
+tr:last-child td{border-bottom:none}
+td .stack{margin:0;width:140px}
+.pct.ok{color:var(--ok);font-weight:700}.pct.bad{color:var(--bad);font-weight:700}
+.sec{display:grid;gap:12px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters button{border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:6px 12px;border-radius:999px;font-size:13px}
+.filters button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.filters select{font:inherit;font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.rv{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:var(--r);padding:18px 20px;display:grid;gap:12px;min-width:0}
+.rv.c{border-left-color:var(--ok)} .rv.w{border-left-color:var(--bad)} .rv.u{border-left-color:var(--muted)}
+.rv .top{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}
+.pill{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px}
+.pill.c{background:var(--ok-soft);color:var(--ok)} .pill.w{background:var(--bad-soft);color:var(--bad)} .pill.u{background:var(--sunk);color:var(--muted)}
+.rv p.q{margin:0;font-weight:500}
+.rv ol{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.rv li{padding:8px 12px;border-radius:6px;border:1px solid var(--line);display:grid;grid-template-columns:24px 1fr auto;gap:8px;font-size:14px}
+.rv li.right{background:var(--ok-soft);border-color:var(--ok)}
+.rv li.picked{background:var(--bad-soft);border-color:var(--bad)}
+.rv li small{font-weight:700;font-size:11px;align-self:center}
+.rv li.right small{color:var(--ok)} .rv li.picked small{color:var(--bad)}
+.explain{background:var(--sunk);border-radius:8px;padding:12px 14px;font-size:14px}
+.explain b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.empty{color:var(--muted);padding:20px;text-align:center}
+
+/* ---------- Ảnh chụp giao diện mô phỏng (câu hỏi có hình) ----------
+   Luôn hiển thị như ảnh chụp màn hình Odoo sáng, không đổi theo theme trang. */
+.shot{margin:0;display:grid;gap:6px;min-width:0}
+.shot-in{border:1px solid var(--line);border-radius:8px;overflow-x:auto;background:#fff;box-shadow:0 1px 3px rgb(0 0 0 / .08)}
+.shot figcaption{font-size:12px;color:var(--muted)}
+.ox{--p:#714b67;--t:#017e84;--tx:#374151;--mu:#6b7280;--bd:#d8dadd;--bg:#f9fafb;color:var(--tx);background:#fff;font:13px/1.45 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;min-width:520px;position:relative;color-scheme:light}
+.ox *{box-sizing:border-box}
+.ox-nav{display:flex;align-items:center;gap:18px;padding:8px 14px;background:#f1f2f4;border-bottom:1px solid var(--bd)}
+.ox-nav .ox-app{font-weight:700}
+.ox-nav span{color:var(--tx)}
+.ox-cp{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 14px;border-bottom:1px solid var(--bd);flex-wrap:wrap}
+.ox-cp>div{display:flex;align-items:center;gap:8px}
+.ox-bc{font-size:15px}.ox-bc a{color:var(--t);text-decoration:none}.ox-bc b{font-weight:600}
+.ox-search{border:1px solid var(--bd);border-radius:4px;padding:4px 8px;min-width:200px;color:var(--mu);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.ox-facet{background:#e7e9ed;border-radius:3px;padding:0 6px;color:var(--tx);font-size:12px}
+.ox-views{display:flex;border:1px solid var(--bd);border-radius:4px;overflow:hidden}
+.ox-views span{padding:3px 8px;color:var(--mu);border-left:1px solid var(--bd)}.ox-views span:first-child{border-left:0}
+.ox-views .on{background:#e7e9ed;color:var(--tx)}
+.ox-pager{color:var(--mu);font-size:12px}
+.ox-btn{display:inline-block;border:1px solid var(--bd);background:#f3f4f6;color:var(--tx);border-radius:4px;padding:4px 10px;font-size:13px;font-weight:500;white-space:nowrap}
+.ox-btn.ox-primary{background:var(--p);border-color:var(--p);color:#fff}
+.ox-btn.ox-link{background:none;border-color:transparent;color:var(--t)}
+.ox-btn.ox-danger{background:#fff;border-color:#d44c59;color:#d44c59}
+.ox-body{padding:14px;background:var(--bg)}
+.ox-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.ox-bar>div{display:flex;gap:6px;flex-wrap:wrap}
+.ox-status{display:flex;border:1px solid var(--bd);border-radius:4px;overflow:hidden;background:#fff}
+.ox-status span{padding:4px 12px 4px 16px;color:var(--mu);font-size:12px;position:relative;border-left:1px solid var(--bd)}
+.ox-status span:first-child{border-left:0;padding-left:12px}
+.ox-status .on{background:#e6f2f3;color:var(--t);font-weight:600}
+.ox-sheet{background:#fff;border:1px solid var(--bd);border-radius:4px;padding:16px 20px;position:relative;overflow:hidden}
+.ox-smarts{display:flex;justify-content:flex-end;flex-wrap:wrap;margin:-16px -20px 12px;border-bottom:1px solid var(--bd)}
+.ox-smart{padding:6px 14px;border-left:1px solid var(--bd);display:flex;flex-direction:column;line-height:1.2;font-size:12px;color:var(--mu)}
+.ox-smart b{color:var(--tx);font-size:14px}
+.ox-title{font-size:24px;font-weight:600;margin:0 0 12px}
+.ox-title small{display:block;font-size:12px;color:var(--mu);font-weight:400}
+.ox-fields{display:grid;grid-template-columns:1fr 1fr;gap:4px 28px}
+.ox-f{display:grid;grid-template-columns:140px 1fr;gap:8px;padding:3px 0;align-items:baseline}
+.ox-f .l{font-weight:600}
+.ox-f .v{border-bottom:1px solid var(--bd);min-height:20px;padding-bottom:1px}
+.ox-f .v.ro{border-bottom-color:transparent}
+.ox-f .v.req{background:#fffbe6}
+.ox-tabs{display:flex;gap:2px;border-bottom:1px solid var(--bd);margin:14px 0 8px}
+.ox-tabs span{padding:5px 12px;color:var(--mu);border:1px solid transparent;border-bottom:0;border-radius:4px 4px 0 0}
+.ox-tabs .on{color:var(--tx);border-color:var(--bd);background:#fff;margin-bottom:-1px}
+.ox-ribbon{position:absolute;top:18px;right:-34px;transform:rotate(45deg);width:140px;text-align:center;font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;background:#d44c59;padding:3px 0;text-transform:uppercase}
+.ox-ribbon.ok{background:#28a745}.ox-ribbon.info{background:#17a2b8}
+.ox-chatter{border-top:1px solid var(--bd);margin-top:12px;padding-top:10px;display:grid;gap:8px}
+.ox-chatter .ox-cbar{display:flex;gap:6px;flex-wrap:wrap}
+.ox-msg{display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:12px}
+.ox-msg .who{font-weight:600}.ox-msg .when{color:var(--mu);margin-left:6px}
+.ox-note{background:#f5f0f3;border-radius:4px;padding:4px 8px}
+table.ox-list{border-collapse:collapse;width:100%;background:#fff;font-size:13px}
+.ox table{min-width:0}
+.ox th,.ox td{text-transform:none;letter-spacing:normal;font-family:inherit;font-size:13px;color:var(--tx)}
+.ox th{background:#fff}
+.ox-list th{text-align:left;font-weight:600;padding:6px 8px;border-bottom:1px solid var(--bd);background:#fff;white-space:nowrap}
+.ox-list td{padding:5px 8px;border-bottom:1px solid #eef0f2}
+.ox-list td.n,.ox-list th.n{text-align:right;font-variant-numeric:tabular-nums}
+.ox-list tr.grp td{background:#f3f4f6;font-weight:600}
+.ox-list tr.sel td{background:#e6f2f3}
+.ox-list tr.muted td{color:#9ca3af}
+.ox-list tfoot td{font-weight:600;border-top:1px solid var(--bd)}
+.ox-cb{display:inline-block;width:14px;height:14px;border:1px solid #9ca3af;border-radius:3px;vertical-align:-2px;background:#fff}
+.ox-cb.on{background:var(--t);border-color:var(--t);box-shadow:inset 0 0 0 2px #fff}
+.ox-toggle{display:inline-block;width:28px;height:16px;border-radius:8px;background:#ced4da;position:relative;vertical-align:-3px}
+.ox-toggle::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff}
+.ox-toggle.on{background:var(--t)}.ox-toggle.on::after{left:14px}
+.ox-badge{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:600;background:#e7e9ed;color:var(--tx)}
+.ox-badge.ok{background:#d4edda;color:#1e6b31}.ox-badge.warn{background:#fff3cd;color:#8a6100}.ox-badge.bad{background:#f8d7da;color:#9b1c28}.ox-badge.info{background:#d1ecf1;color:#0c5460}
+.ox-tag{display:inline-block;padding:0 7px;border-radius:9px;font-size:11px;background:#e7e9ed;margin:1px 2px 1px 0}
+.ox-tag.c1{background:#f8d7da}.ox-tag.c2{background:#ffe5cc}.ox-tag.c3{background:#fff3cd}.ox-tag.c4{background:#d4edda}.ox-tag.c5{background:#d1ecf1}.ox-tag.c6{background:#e2d9f3}
+.ox-kanban{display:flex;gap:12px;align-items:flex-start;padding:12px;background:var(--bg)}
+.ox-col{width:200px;flex:none;display:grid;gap:8px}
+.ox-colh{display:flex;justify-content:space-between;font-weight:600}
+.ox-colh small{color:var(--mu);font-weight:400}
+.ox-prog{display:flex;height:5px;border-radius:3px;overflow:hidden;background:#e7e9ed}
+.ox-prog i{display:block;height:100%}.ox-prog .g{background:#28a745}.ox-prog .o{background:#f0ad4e}.ox-prog .r{background:#d44c59}.ox-prog .x{background:#adb5bd}
+.ox-card{background:#fff;border:1px solid var(--bd);border-radius:4px;padding:8px 10px;display:grid;gap:4px;font-size:12px;position:relative}
+.ox-card .t{font-weight:600;font-size:13px}
+.ox-card .s{color:var(--mu)}
+.ox-card .foot{display:flex;justify-content:space-between;align-items:center;margin-top:2px}
+.ox-card .foot>span{display:flex;gap:6px;align-items:center}
+.ox-stars{color:#d1d5db;letter-spacing:1px}.ox-stars b{color:#f3c623;font-weight:400}
+.ox-act{display:inline-block;width:16px;height:16px;border-radius:50%;border:2px solid #9ca3af;position:relative}
+.ox-act::after{content:"";position:absolute;left:5px;top:2px;width:2px;height:5px;background:currentColor;box-shadow:2px 3px 0 -0px transparent}
+.ox-act.late{border-color:#d44c59;color:#d44c59}.ox-act.today{border-color:#f0ad4e;color:#f0ad4e}.ox-act.planned{border-color:#28a745;color:#28a745}.ox-act.none{color:#9ca3af}
+.ox-av{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#a0789a;color:#fff;font-size:10px;font-weight:700}
+.ox-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#adb5bd}
+.ox-dot.ok{background:#28a745}.ox-dot.warn{background:#f0ad4e}.ox-dot.bad{background:#d44c59}
+.ox-settings{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;padding:12px 14px;background:#fff}
+.ox-sh{grid-column:1/-1;font-weight:700;background:#f3f4f6;padding:5px 10px;margin:8px -14px 4px}
+.ox-set{display:grid;grid-template-columns:20px 1fr;gap:8px;padding:8px 0}
+.ox-set .t{font-weight:600}.ox-set .d{color:var(--mu);font-size:12px}
+.ox-set .sub{margin-top:4px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:12px}
+.ox-set .ox-btn.ox-link{padding:0}
+.ox-dialog{max-width:460px;margin:20px auto;background:#fff;border:1px solid var(--bd);border-radius:6px;box-shadow:0 6px 24px rgb(0 0 0 / .15)}
+.ox-dialog .h{padding:10px 14px;border-bottom:1px solid var(--bd);font-weight:600;display:flex;justify-content:space-between}
+.ox-dialog .b{padding:14px;display:grid;gap:8px}
+.ox-dialog .f{padding:10px 14px;border-top:1px solid var(--bd);display:flex;gap:6px}
+.ox-mark{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#e11d48;color:#fff;font-size:11px;font-weight:700;box-shadow:0 0 0 2px #fff;vertical-align:middle;margin:0 3px}
+.ox-hl{outline:2px solid #e11d48;outline-offset:2px;border-radius:3px}
+.ox-mu{color:var(--mu)}.ox-ok{color:#1e6b31}.ox-bad{color:#b4202f}.ox-teal{color:var(--t)}
+
+@media (max-width:860px){
+  .exam{grid-template-columns:minmax(0,1fr)}
+  .rail{position:static}
+  .grid{max-height:none}
+  .score{grid-template-columns:1fr;justify-items:start}
+}
+@media (max-width:480px){
+  .qcard{padding:16px}.qtext{font-size:16px}
+  .grid{grid-template-columns:repeat(8,1fr)}
+  .timer{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div id="app"></div>
+
+<script>
+const QBANK = /*__QBANK__*/[];
+// Đề 1–3: đầy đủ như đề thật; Đề 4–9: rút gọn một nửa (số câu, thời gian, điểm đạt)
+const FORMATS = [
+  {key:"full", name:"Đề đầy đủ", sets:[1,2,3], minutes:90, note:"Đúng thể lệ đề thật."},
+  {key:"half", name:"Đề rút gọn", sets:[4,5,6,7,8,9], minutes:45, note:"Một nửa số câu, thời gian và số điểm cần đạt."}
+];
+const fmtOf = n => FORMATS.find(f=>f.sets.includes(n)) || FORMATS[0];
+const durOf = n => fmtOf(n).minutes*60; // giây
+const PASS = 0.70;
+const SUBJECT_ORDER = ["Website","eCommerce","Survey","Marketing","CRM","Sales","Purchase","Project","Timesheets","Accounting","Inventory","Manufacturing","HR","Spreadsheet","Point of Sale","Studio"];
+const KEYS = "ABCD";
+const app = document.getElementById("app");
+const store = {
+  get(k){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : null; }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} },
+  del(k){ try{ localStorage.removeItem(k); }catch(e){} }
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = s => { s = Math.max(0, Math.round(s)); const m = Math.floor(s/60), x = s%60; return String(m).padStart(2,"0")+":"+String(x).padStart(2,"0"); };
+const num = n => (Math.round(n*10)/10).toLocaleString("vi-VN");
+function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+const setQs = n => QBANK.map((q,i)=>({...q,id:i})).filter(q=>q.set===n);
+// Khóa ổn định cho từng câu (băm nội dung câu hỏi) để lịch sử vẫn mở lại đúng câu dù thứ tự QBANK thay đổi
+const qkey = q => { let h = 5381; for(const ch of q.question) h = (h*33 ^ ch.codePointAt(0)) >>> 0; return h.toString(36); };
+const KIDX = new Map(QBANK.map((q,i)=>[qkey(q), i]));
+const dtfmt = t => new Date(t).toLocaleString("vi-VN", {day:"2-digit", month:"2-digit", year:"numeric", hour:"2-digit", minute:"2-digit"});
+
+let S = null;      // trạng thái bài thi đang làm
+let tick = null;
+
+/* ================= START ================= */
+function renderStart(){
+  clearInterval(tick);
+  const saved = store.get("o18_active");
+  const opt = store.get("o18_opts") || {shufQ:true, shufO:true};
+  const subs = SUBJECT_ORDER.filter(s => QBANK.some(q=>q.subject===s));
+  let html = `<div class="wrap start">
+    <div class="hero">
+      <span class="label">Đề thi thử · Odoo 18.0</span>
+      <h1>Odoo 18 Functional Certification — luyện thi</h1>
+      <p>Mô phỏng đúng thể lệ kỳ thi chứng chỉ chức năng Odoo 18: 125 câu, 1,5 giờ, có điểm trừ khi trả lời sai. Thêm 6 đề rút gọn 45 phút để luyện nhanh; từ Đề 7 có câu hỏi kèm hình ảnh giao diện như đề thật. Câu hỏi bằng tiếng Anh như đề thật; sau khi nộp bài bạn sẽ thấy thống kê theo phân hệ và lời giải thích từng câu bằng tiếng Việt.</p>
+    </div>
+    <div class="rules">
+${FORMATS.map(f=>{ const n=setQs(f.sets[0]).length; return `<div><span class="label">${f.name}</span><b>${n} câu · ${f.minutes}′</b><span class="label" style="text-transform:none;letter-spacing:0">Đạt từ ${num(n*PASS)} điểm</span></div>`; }).join("")}
+      <div><span class="label">Trả lời đúng</span><b class="plus">+1</b></div>
+      <div><span class="label">Trả lời sai</span><b class="minus">−0,5</b></div>
+      <div><span class="label">Bỏ trống</span><b>0</b></div>
+      <div><span class="label">Điểm đạt</span><b>≥ 70%</b></div>
+    </div>`;
+  if(saved && saved.end > Date.now()){
+    const a = Object.keys(saved.ans).length;
+    html += `<div class="resume"><div><b>Bạn đang làm dở Đề ${saved.set}</b> · đã trả lời ${a}/${saved.order.length} câu · còn ${fmt((saved.end-Date.now())/1000)}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="discard">Bỏ bài này</button><button class="btn primary" id="resume">Làm tiếp</button></div></div>`;
+  } else if(saved){ finish(saved, true); return; }
+  html += `<div class="opts">
+      <label><input type="checkbox" id="shufQ" ${opt.shufQ?"checked":""}> Xáo trộn thứ tự câu hỏi</label>
+      <label><input type="checkbox" id="shufO" ${opt.shufO?"checked":""}> Xáo trộn thứ tự đáp án</label>
+      <button class="btn" id="histbtn" style="margin-left:auto">Lịch sử làm bài (${(store.get("o18_hist")||[]).length})</button>
+    </div>`;
+  for(const f of FORMATS){
+  html += `<div class="sec"><div><h2 style="font-size:22px">${f.name}</h2><span style="color:var(--muted);font-size:14px">${f.note}</span></div><div class="sets">`;
+  for(const n of f.sets){
+    const qs = setQs(n);
+    const h = (store.get("o18_hist")||[]).filter(r=>r.set===n);
+    const best = h.length ? h.reduce((a,b)=>b.pct>a.pct?b:a) : null;
+    html += `<div class="set">
+      <span class="label">Bộ đề</span><h2>Đề số ${n}</h2>
+      <div class="meta"><span>${qs.length} câu</span><span>${f.minutes} phút</span><span>Đạt ≥ ${num(qs.length*PASS)} điểm</span><span>${new Set(qs.map(q=>q.subject)).size} phân hệ</span>${qs.some(q=>q.image)?`<span>${qs.filter(q=>q.image).length} câu có hình</span>`:""}</div>
+      <div class="hist">${best ? `Đã thi ${h.length} lần · tốt nhất <span class="${best.pct>=PASS*100?"pass":"fail"}">${num(best.pct)}%</span>` : "Chưa thi lần nào"}</div>
+      <button class="btn primary" data-start="${n}" ${qs.length?"":"disabled"}>Bắt đầu Đề ${n}</button>
+    </div>`;
+  }
+  html += `</div></div>`;
+  }
+  html += `
+    <div class="sec"><span class="label">Phạm vi kiến thức (theo đề thật)</span><div class="subjects">${subs.map(s=>`<span class="chip">${esc(s)}</span>`).join("")}</div></div>
+    <p class="foot">Đề luyện tập tự soạn dựa trên tài liệu Odoo 18.0 (odoo.com/documentation/18.0) và khóa eLearning; không phải đề thi chính thức và không liên kết với Odoo S.A. Tiến độ bài làm chỉ được lưu trong trình duyệt này.</p>
+  </div>`;
+  app.innerHTML = html;
+  const saveOpt = () => store.set("o18_opts",{shufQ:document.getElementById("shufQ").checked, shufO:document.getElementById("shufO").checked});
+  app.querySelectorAll("input[type=checkbox]").forEach(c=>c.onchange=saveOpt);
+  app.querySelectorAll("[data-start]").forEach(b=>b.onclick=()=>{ saveOpt(); startExam(+b.dataset.start); });
+  const r = document.getElementById("resume"); if(r) r.onclick=()=>{ S = saved; renderExam(); };
+  const d = document.getElementById("discard"); if(d) d.onclick=()=>{ store.del("o18_active"); renderStart(); };
+  document.getElementById("histbtn").onclick = () => renderHistory();
+}
+
+function startExam(n){
+  const opt = store.get("o18_opts") || {shufQ:true, shufO:true};
+  let qs = setQs(n);
+  if(opt.shufQ) qs = shuffle(qs);
+  S = { set:n, start:Date.now(), end:Date.now()+durOf(n)*1000,
+        order: qs.map(q=>q.id),
+        perm: Object.fromEntries(qs.map(q=>[q.id, opt.shufO ? shuffle([0,1,2,3]) : [0,1,2,3]])),
+        ans:{}, flags:{}, cur:0 };
+  save(); renderExam();
+}
+const save = () => S && store.set("o18_active", S);
+
+/* ================= EXAM ================= */
+function renderExam(){
+  app.innerHTML = `
+  <div class="bar"><div class="wrap">
+    <div class="title">Odoo 18 Certification · Đề ${S.set} · ${fmtOf(S.set).name}</div>
+    <div class="timer" id="timer" aria-live="off">${fmt(durOf(S.set))}</div>
+    <button class="btn primary" id="submit">Nộp bài</button>
+  </div><div class="progress"><i id="prog"></i></div></div>
+  <div class="wrap exam">
+    <div class="qcard" id="qcard"></div>
+    <aside class="rail">
+      <div class="counts">
+        <div><b id="cA">0</b><span>Đã trả lời</span></div>
+        <div><b id="cU">0</b><span>Chưa trả lời</span></div>
+        <div><b id="cF">0</b><span>Đánh dấu</span></div>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="legend"><span><i style="background:var(--accent);border-color:var(--accent)"></i>Đã trả lời</span><span><i></i>Chưa trả lời</span><span><i style="background:var(--warn);border-color:var(--warn);border-radius:50%"></i>Xem lại</span></div>
+      <div class="kbd">Phím tắt: A–D chọn · ← → chuyển câu · F đánh dấu · Del xóa</div>
+    </aside>
+  </div>`;
+  document.getElementById("submit").onclick = confirmSubmit;
+  const grid = document.getElementById("grid");
+  grid.innerHTML = S.order.map((_,i)=>`<button data-i="${i}" aria-label="Câu ${i+1}">${i+1}</button>`).join("");
+  grid.onclick = e => { const b = e.target.closest("button"); if(b){ S.cur=+b.dataset.i; save(); drawQ(); } };
+  drawQ();
+  clearInterval(tick); tick = setInterval(updTimer, 500); updTimer();
+}
+function updTimer(){
+  const left = (S.end - Date.now())/1000;
+  const t = document.getElementById("timer"); if(!t) return;
+  t.textContent = fmt(left); t.classList.toggle("low", left < 300);
+  if(left <= 0){ clearInterval(tick); finish(S, true); }
+}
+function drawQ(){
+  const id = S.order[S.cur], q = QBANK[id], p = S.perm[id], a = S.ans[id];
+  document.getElementById("qcard").innerHTML = `
+    <div class="qhead"><span class="label">Câu ${S.cur+1} / ${S.order.length}</span>
+      <button class="btn flagbtn ${S.flags[id]?"on":""}" id="flag">${S.flags[id]?"Đã đánh dấu":"Đánh dấu xem lại"}</button></div>
+    <p class="qtext">${esc(q.question)}</p>
+    ${q.image?`<figure class="shot"><div class="shot-in">${q.image}</div><figcaption>Hình minh họa giao diện Odoo 18 (mô phỏng)</figcaption></figure>`:""}
+    <div class="choices" role="radiogroup">${p.map((o,k)=>`
+      <label class="choice ${a===o?"sel":""}"><input type="radio" name="c" id="c${k}" value="${o}" ${a===o?"checked":""}>
+      <span class="key">${KEYS[k]}</span><span>${esc(q.options[o])}</span></label>`).join("")}</div>
+    <div class="qnav">
+      <div class="grp"><button class="btn" id="prev" ${S.cur===0?"disabled":""}>← Câu trước</button>
+        <button class="btn" id="clear" ${a===undefined?"disabled":""}>Xóa lựa chọn</button></div>
+      <div class="grp">${S.cur<S.order.length-1?`<button class="btn primary" id="next">Câu sau →</button>`:`<button class="btn primary" id="end">Nộp bài</button>`}</div>
+    </div>`;
+  document.querySelectorAll(".choice input").forEach(r=>r.onchange=()=>{ S.ans[id]=+r.value; save(); drawQ(); });
+  document.getElementById("flag").onclick=()=>{ S.flags[id]=!S.flags[id]; if(!S.flags[id]) delete S.flags[id]; save(); drawQ(); };
+  document.getElementById("clear").onclick=()=>{ delete S.ans[id]; save(); drawQ(); };
+  document.getElementById("prev").onclick=()=>go(-1);
+  const nx = document.getElementById("next"); if(nx) nx.onclick=()=>go(1);
+  const en = document.getElementById("end"); if(en) en.onclick=confirmSubmit;
+  drawRail();
+}
+function go(d){ const n = S.cur+d; if(n>=0 && n<S.order.length){ S.cur=n; save(); drawQ(); window.scrollTo({top:0}); } }
+function drawRail(){
+  const nA = Object.keys(S.ans).length, nF = Object.keys(S.flags).length;
+  document.getElementById("cA").textContent = nA;
+  document.getElementById("cU").textContent = S.order.length-nA;
+  document.getElementById("cF").textContent = nF;
+  document.getElementById("prog").style.width = (nA/S.order.length*100)+"%";
+  document.querySelectorAll("#grid button").forEach((b,i)=>{
+    const id = S.order[i];
+    b.className = (S.ans[id]!==undefined?"ans ":"")+(S.flags[id]?"flag ":"")+(i===S.cur?"cur":"");
+  });
+}
+function confirmSubmit(){
+  const nA = Object.keys(S.ans).length, nU = S.order.length-nA, nF = Object.keys(S.flags).length;
+  const m = document.createElement("div"); m.className="modal";
+  m.innerHTML = `<div class="box" role="dialog" aria-modal="true" aria-labelledby="mt">
+    <h3 id="mt">Nộp bài?</h3>
+    <p style="margin:0">Bạn đã trả lời <b>${nA}/${S.order.length}</b> câu${nU?`, còn <b>${nU}</b> câu bỏ trống (0 điểm)`:""}${nF?`, <b>${nF}</b> câu đang đánh dấu xem lại`:""}. Còn ${fmt((S.end-Date.now())/1000)}.</p>
+    <p style="margin:0;color:var(--muted);font-size:13px">Sau khi nộp không thể sửa đáp án.</p>
+    <div class="row"><button class="btn" id="mno">Tiếp tục làm bài</button><button class="btn primary" id="myes">Nộp bài</button></div></div>`;
+  document.body.appendChild(m);
+  document.getElementById("mno").focus();
+  document.getElementById("mno").onclick=()=>m.remove();
+  m.onclick=e=>{ if(e.target===m) m.remove(); };
+  document.getElementById("myes").onclick=()=>{ m.remove(); clearInterval(tick); finish(S, false); };
+}
+document.addEventListener("keydown", e=>{
+  if(!S || !document.getElementById("qcard") || document.querySelector(".modal")) return;
+  if(e.target.matches("input[type=text],select,textarea")) return;
+  const id = S.order[S.cur], k = e.key.toUpperCase();
+  if(KEYS.includes(k) && k.length===1){ S.ans[id] = S.perm[id][KEYS.indexOf(k)]; save(); drawQ(); }
+  else if(e.key==="ArrowRight") go(1);
+  else if(e.key==="ArrowLeft") go(-1);
+  else if(k==="F"){ S.flags[id]=!S.flags[id]; if(!S.flags[id]) delete S.flags[id]; save(); drawQ(); }
+  else if(e.key==="Delete"||e.key==="Backspace"){ delete S.ans[id]; save(); drawQ(); }
+});
+
+/* ================= RESULTS ================= */
+function grade(st){
+  const rows = st.order.map((id,i)=>{
+    const q = QBANK[id], a = st.ans[id];
+    const r = a===undefined ? "u" : (a===q.answer ? "c" : "w");
+    return {i, id, q, a, r, flag:!!st.flags[id]};
+  });
+  const c = rows.filter(x=>x.r==="c").length, w = rows.filter(x=>x.r==="w").length, u = rows.length-c-w;
+  const pts = c - 0.5*w, pct = Math.max(0, pts/rows.length*100);
+  return {rows,c,w,u,pts,pct,pass:pct>=PASS*100};
+}
+function finish(st, timeout){
+  const used = Math.min(durOf(st.set), (Math.min(Date.now(), st.end) - st.start)/1000);
+  const g = grade(st);
+  const at = Date.now();
+  const hist = store.get("o18_hist") || [];
+  hist.push({set:st.set, at, pct:g.pct, pts:g.pts, c:g.c, w:g.w, u:g.u, used, timeout});
+  store.set("o18_hist", hist.slice(-300));
+  saveAttempt({at, set:st.set, used, timeout,
+    order: st.order.map(id=>qkey(QBANK[id])),
+    perm: Object.fromEntries(st.order.map(id=>[qkey(QBANK[id]), st.perm[id]])),
+    ans: Object.fromEntries(Object.entries(st.ans).map(([id,a])=>[qkey(QBANK[id]), a])),
+    flags: Object.keys(st.flags).map(id=>qkey(QBANK[id]))});
+  store.del("o18_active");
+  S = null; renderResults({st, g, used, timeout, at});
+}
+
+/* ================= HISTORY ================= */
+// Chi tiết bài làm lưu riêng ("o18_attempts"); "o18_hist" chỉ giữ tóm tắt điểm
+function saveAttempt(rec){
+  let list = (store.get("o18_attempts") || []).concat(rec).slice(-150);
+  while(list.length){
+    try{ localStorage.setItem("o18_attempts", JSON.stringify(list)); return; }
+    catch(e){ if(list.length === 1) return; list = list.slice(1); } // đầy bộ nhớ: bỏ bài cũ nhất rồi thử lại
+  }
+}
+function openAttempt(at){
+  const rec = (store.get("o18_attempts") || []).find(r=>r.at===at);
+  if(!rec) return;
+  const ids = rec.order.map(k=>KIDX.get(k)).filter(i=>i!==undefined); // bỏ qua câu đã bị xóa khỏi đề
+  const st = {set:rec.set, order:ids,
+    perm: Object.fromEntries(ids.map(i=>[i, rec.perm[qkey(QBANK[i])] || [0,1,2,3]])),
+    ans: Object.fromEntries(ids.filter(i=>rec.ans[qkey(QBANK[i])]!==undefined).map(i=>[i, rec.ans[qkey(QBANK[i])]])),
+    flags: Object.fromEntries(ids.filter(i=>rec.flags.includes(qkey(QBANK[i]))).map(i=>[i, true]))};
+  renderResults({st, g:grade(st), used:rec.used, timeout:rec.timeout, at, fromHist:true});
+}
+function renderHistory(setFilter=""){
+  clearInterval(tick);
+  window.scrollTo({top:0});
+  const hist = (store.get("o18_hist") || []).slice().reverse();
+  const detail = new Set((store.get("o18_attempts") || []).map(r=>r.at));
+  const list = hist.filter(h=>!setFilter || h.set===+setFilter);
+  const passN = list.filter(h=>h.pct>=PASS*100).length;
+  const avg = list.length ? list.reduce((a,h)=>a+h.pct,0)/list.length : 0;
+  const best = list.length ? Math.max(...list.map(h=>h.pct)) : 0;
+  app.innerHTML = `<div class="wrap res">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+      <div><span class="label">Lịch sử</span><h2 style="font-size:28px">Lịch sử làm bài</h2></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="home">Về trang chọn đề</button>${hist.length?`<button class="btn danger" id="clearall">Xóa toàn bộ lịch sử</button>`:""}</div>
+    </div>
+    <div class="filters">
+      <label for="setf" class="label">Đề</label>
+      <select id="setf"><option value="">Tất cả các đề</option>${FORMATS.flatMap(f=>f.sets.map(n=>`<option value="${n}" ${+setFilter===n?"selected":""}>Đề ${n} · ${f.name.toLowerCase()}</option>`)).join("")}</select>
+    </div>
+    <div class="stats" style="margin-top:0">
+      <div class="stat"><span class="label">Số lần thi</span><b>${list.length}</b></div>
+      <div class="stat c"><span class="label">Số lần đạt</span><b>${passN}</b></div>
+      <div class="stat"><span class="label">Điểm trung bình</span><b>${num(avg)}%</b></div>
+      <div class="stat"><span class="label">Cao nhất</span><b>${num(best)}%</b></div>
+    </div>
+    ${list.length ? `<div class="tablewrap"><table>
+      <thead><tr><th>Thời điểm nộp</th><th>Đề</th><th class="n">Điểm</th><th class="n">Tỉ lệ</th><th>Kết quả</th><th class="n">Đúng</th><th class="n">Sai</th><th class="n">Bỏ trống</th><th class="n">Thời gian</th><th></th></tr></thead>
+      <tbody>${list.map(h=>`<tr>
+        <td class="mono">${dtfmt(h.at)}</td>
+        <td>Đề ${h.set} <span style="color:var(--muted)">· ${fmtOf(h.set).minutes}′</span></td>
+        <td class="n">${num(h.pts)}/${h.c+h.w+h.u}</td>
+        <td class="n"><span class="pct ${h.pct>=PASS*100?"ok":"bad"}">${num(h.pct)}%</span></td>
+        <td><span class="pill ${h.pct>=PASS*100?"c":"w"}">${h.pct>=PASS*100?"Đạt":"Chưa đạt"}</span></td>
+        <td class="n">${h.c}</td><td class="n">${h.w}</td><td class="n">${h.u}</td>
+        <td class="n">${h.used!==undefined?fmt(h.used):"–"}</td>
+        <td style="white-space:nowrap">${detail.has(h.at)?`<button class="btn" data-open="${h.at}">Xem lại</button>`:`<span style="color:var(--muted);font-size:12px">Không có chi tiết</span>`}
+          <button class="btn" data-del="${h.at}" aria-label="Xóa lần thi này">Xóa</button></td></tr>`).join("")}</tbody>
+    </table></div>` : `<div class="empty">Chưa có lần thi nào${setFilter?" cho đề này":""}. Nộp bài xong, kết quả sẽ tự lưu vào đây.</div>`}
+    <p class="foot">Lịch sử lưu trong trình duyệt này (localStorage): giữ tối đa 300 lần thi, trong đó 150 lần gần nhất xem lại được từng câu. Xóa dữ liệu trình duyệt hoặc dùng cửa sổ ẩn danh sẽ mất lịch sử.</p>
+  </div>`;
+  document.getElementById("home").onclick = renderStart;
+  document.getElementById("setf").onchange = e => renderHistory(e.target.value);
+  app.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>openAttempt(+b.dataset.open));
+  app.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>askConfirm("Xóa lần thi này?", "Kết quả và chi tiết bài làm của lần thi này sẽ bị xóa, không khôi phục được.", "Xóa", ()=>{
+    const at = +b.dataset.del;
+    store.set("o18_hist", (store.get("o18_hist")||[]).filter(h=>h.at!==at));
+    store.set("o18_attempts", (store.get("o18_attempts")||[]).filter(r=>r.at!==at));
+    renderHistory(setFilter);
+  }));
+  const ca = document.getElementById("clearall");
+  if(ca) ca.onclick = () => askConfirm("Xóa toàn bộ lịch sử?", `Toàn bộ ${hist.length} lần thi sẽ bị xóa, không khôi phục được.`, "Xóa hết", ()=>{
+    store.del("o18_hist"); store.del("o18_attempts"); renderHistory();
+  });
+}
+function askConfirm(title, text, okLabel, onOk){
+  const m = document.createElement("div"); m.className="modal";
+  m.innerHTML = `<div class="box" role="dialog" aria-modal="true" aria-labelledby="ct">
+    <h3 id="ct">${esc(title)}</h3><p style="margin:0">${esc(text)}</p>
+    <div class="row"><button class="btn" id="cno">Hủy</button><button class="btn danger" id="cyes">${esc(okLabel)}</button></div></div>`;
+  document.body.appendChild(m);
+  document.getElementById("cno").focus();
+  document.getElementById("cno").onclick = () => m.remove();
+  m.onclick = e => { if(e.target===m) m.remove(); };
+  document.getElementById("cyes").onclick = () => { m.remove(); onOk(); };
+}
+
+function renderResults({st, g, used, timeout, at, fromHist}){
+  window.scrollTo({top:0});
+  const total = g.rows.length;
+  const bySub = {};
+  for(const r of g.rows){ const s = bySub[r.q.subject] ||= {n:0,c:0,w:0,u:0}; s.n++; s[r.r]++; }
+  const subs = SUBJECT_ORDER.filter(s=>bySub[s]).concat(Object.keys(bySub).filter(s=>!SUBJECT_ORDER.includes(s)));
+  const weak = subs.map(s=>({s, p:(bySub[s].c-0.5*bySub[s].w)/bySub[s].n})).sort((a,b)=>a.p-b.p).slice(0,3);
+  app.innerHTML = `<div class="wrap res">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+      <div><span class="label">Kết quả · Đề ${st.set} (${fmtOf(st.set).name.toLowerCase()})${at?` · nộp lúc ${dtfmt(at)}`:""}${timeout?" · hết giờ, tự động nộp":""}</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="home">Về trang chọn đề</button><button class="btn" id="tohist">${fromHist?"← Về lịch sử":"Lịch sử làm bài"}</button><button class="btn primary" id="again">Thi lại Đề ${st.set}</button></div>
+    </div>
+    <div class="score">
+      <div class="verdict ${g.pass?"pass":"fail"}"><div><b class="mono">${num(g.pct)}%</b><span>${g.pass?"ĐẠT":"CHƯA ĐẠT"}</span></div></div>
+      <div style="min-width:0">
+        <h2>${g.pass?"Chúc mừng, bạn đã vượt ngưỡng 70%.":"Chưa đạt ngưỡng 70%."}</h2>
+        <div class="stats">
+          <div class="stat"><span class="label">Điểm</span><b>${num(g.pts)} / ${total}</b></div>
+          <div class="stat c"><span class="label">Đúng</span><b>${g.c}</b></div>
+          <div class="stat w"><span class="label">Sai</span><b>${g.w}</b></div>
+          <div class="stat u"><span class="label">Bỏ trống</span><b>${g.u}</b></div>
+          <div class="stat"><span class="label">Thời gian</span><b>${fmt(used)}</b></div>
+        </div>
+        <div class="stack" title="Đúng / Sai / Bỏ trống"><i class="c" style="width:${g.c/total*100}%"></i><i class="w" style="width:${g.w/total*100}%"></i></div>
+        <p class="formula">Điểm = ${g.c} × 1 − ${g.w} × 0,5 + ${g.u} × 0 = <b>${num(g.pts)}</b>. Cần ≥ ${num(total*PASS)} điểm (70%) để đạt.
+        ${weak.length?`<br>Nên ôn thêm: <b>${weak.map(x=>esc(x.s)).join(", ")}</b>.`:""}</p>
+      </div>
+    </div>
+    <div class="sec"><h3>Thống kê theo phân hệ</h3>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Phân hệ</th><th class="n">Số câu</th><th class="n">Đúng</th><th class="n">Sai</th><th class="n">Bỏ trống</th><th class="n">Điểm</th><th>Tỉ lệ</th></tr></thead>
+        <tbody>${subs.map(s=>{ const b=bySub[s], p=(b.c-0.5*b.w)/b.n*100; return `<tr>
+          <td>${esc(s)}</td><td class="n">${b.n}</td><td class="n">${b.c}</td><td class="n">${b.w}</td><td class="n">${b.u}</td>
+          <td class="n"><span class="pct ${p>=70?"ok":"bad"}">${num(Math.max(0,p))}%</span></td>
+          <td><div class="stack"><i class="c" style="width:${b.c/b.n*100}%"></i><i class="w" style="width:${b.w/b.n*100}%"></i></div></td></tr>`; }).join("")}</tbody>
+      </table></div>
+    </div>
+    <div class="sec"><h3>Xem lại đáp án và giải thích</h3>
+      <div class="filters" id="filters">
+        <button data-f="all" class="on">Tất cả (${total})</button>
+        <button data-f="w">Sai (${g.w})</button>
+        <button data-f="u">Bỏ trống (${g.u})</button>
+        <button data-f="c">Đúng (${g.c})</button>
+        <button data-f="flag">Đã đánh dấu (${g.rows.filter(r=>r.flag).length})</button>
+        <label for="subf" class="label" style="margin-left:6px">Phân hệ</label>
+        <select id="subf"><option value="">Tất cả</option>${subs.map(s=>`<option>${esc(s)}</option>`).join("")}</select>
+      </div>
+      <div id="review" class="sec"></div>
+    </div>
+  </div>`;
+  let f = "all";
+  const draw = () => {
+    const sub = document.getElementById("subf").value;
+    const list = g.rows.filter(r => (f==="all" || (f==="flag"?r.flag:r.r===f)) && (!sub || r.q.subject===sub));
+    const lbl = {c:"Đúng", w:"Sai", u:"Bỏ trống"};
+    document.getElementById("review").innerHTML = list.length ? list.map(r=>{
+      const p = st.perm[r.id] || [0,1,2,3];
+      return `<article class="rv ${r.r}">
+        <div class="top"><span class="pill ${r.r}">${lbl[r.r]}</span><span class="mono">Câu ${r.i+1}</span><span>${esc(r.q.subject)}</span>${r.flag?`<span>· đã đánh dấu</span>`:""}<span style="margin-left:auto" class="mono">${r.r==="c"?"+1":r.r==="w"?"−0,5":"0"}</span></div>
+        <p class="q">${esc(r.q.question)}</p>
+        ${r.q.image?`<figure class="shot"><div class="shot-in">${r.q.image}</div><figcaption>Hình minh họa giao diện Odoo 18 (mô phỏng)</figcaption></figure>`:""}
+        <ol>${p.map((o,k)=>{ const right=o===r.q.answer, picked=o===r.a && !right;
+          return `<li class="${right?"right":""} ${picked?"picked":""}"><span class="mono">${KEYS[k]}</span><span>${esc(r.q.options[o])}</span><small>${right?"Đáp án đúng":picked?"Bạn chọn":""}</small></li>`; }).join("")}</ol>
+        <div class="explain"><b>Giải thích</b>${esc(r.q.explanation)}${r.q.ref?` <a href="${esc(r.q.ref)}" target="_blank" rel="noopener">Tài liệu Odoo 18 ↗</a>`:""}</div>
+      </article>`; }).join("") : `<div class="empty">Không có câu nào khớp bộ lọc.</div>`;
+  };
+  document.getElementById("filters").onclick = e => { const b=e.target.closest("button"); if(!b) return; f=b.dataset.f; document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x===b)); draw(); };
+  document.getElementById("subf").onchange = draw;
+  document.getElementById("home").onclick = renderStart;
+  document.getElementById("tohist").onclick = () => renderHistory();
+  document.getElementById("again").onclick = () => startExam(st.set);
+  draw();
+}
+
+renderStart();
+</script>
+</body></html>

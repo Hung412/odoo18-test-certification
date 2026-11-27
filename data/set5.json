@@ -62,7 +62,7 @@
   ],
   "answer": 0,
   "explanation": "Trường Communication Standard trên sổ bán hàng có các lựa chọn Odoo và European; European tạo tham chiếu RF theo chuẩn creditor reference. Communication Type = Open lại bỏ tham chiếu tự động.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/customer_invoices/payment_references.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/finance/accounting/get_started/journals.html"
  },
  {
   "subject": "Sales",
@@ -88,7 +88,7 @@
   ],
   "answer": 2,
   "explanation": "Shipping Policy = 'When all products are ready' lên lịch giao một lần khi tất cả sản phẩm sẵn sàng. 'As soon as possible' cho phép giao từng phần ngay khi có hàng.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/delivery_policy.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/create_quotations.html"
  },
  {
   "subject": "Sales",
@@ -114,7 +114,7 @@
   ],
   "answer": 0,
   "explanation": "Sau khi bật Delivery Methods, nút 'Add shipping' trên báo giá mở wizard chọn phương thức giao hàng và thêm dòng phí vận chuyển. Down payment là khoản trả trước, không liên quan phí ship.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/setup_configuration/delivery_method.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/setup_configuration/invoicing.html"
  },
  {
   "subject": "Sales",
@@ -153,7 +153,7 @@
   ],
   "answer": 3,
   "explanation": "Tùy chọn 'Subcontract Service' (chỉ cho sản phẩm Service, cần có vendor) tạo RFQ tự động khi đơn bán được xác nhận. Route Buy/MTO dùng cho hàng hóa lưu kho, không áp dụng cho dịch vụ.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/subcontracting.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase.html"
  },
  {
   "subject": "Purchase",
@@ -166,7 +166,7 @@
   ],
   "answer": 0,
   "explanation": "'Create Backorder' tạo một phiếu nhập mới cho 40 đơn vị còn lại để chờ nhận. 'No Backorder' sẽ hủy phần còn lại, PO không còn chờ 40 đơn vị nữa.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/partial_receipt.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/receipts_delivery_one_step.html"
  },
  {
   "subject": "Purchase",
@@ -244,7 +244,7 @@
   ],
   "answer": 3,
   "explanation": "Shipping Policy 'When all products are ready' chỉ cho giao khi tất cả sản phẩm đã sẵn sàng (một lần giao). 'As soon as possible' là mặc định, cho giao từng phần ngay khi có hàng.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/delivery_policy.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/create_quotations.html"
  },
  {
   "subject": "Inventory",
@@ -257,7 +257,7 @@
   ],
   "answer": 0,
   "explanation": "Storage Category có trường 'Allow New Product' với 3 giá trị: If the location is empty / If all products are same / Allow mixed products; putaway rule dùng storage category để chọn vị trí phù hợp. Location loại View thì không chứa hàng được.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/storage_category.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/storage_category.html"
  },
  {
   "subject": "Inventory",
@@ -283,7 +283,7 @@
   ],
   "answer": 1,
   "explanation": "Nút Return tạo một phiếu chuyển kho mới (dùng 'Operation Type for Returns') đưa hàng từ Partners/Customers về kho; phiếu gốc giữ nguyên trạng thái Done. Credit note phải tạo riêng trong Sales/Accounting.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/returns.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/products_prices/returns.html"
  },
  {
   "subject": "Manufacturing",
@@ -296,7 +296,7 @@
   ],
   "answer": 2,
   "explanation": "Action 'Merge' gộp các MO cùng sản phẩm, cùng BoM, cùng trạng thái (Draft hoặc Confirmed) thành một MO với tổng số lượng. 'Split' thì làm ngược lại: chia một MO thành nhiều MO.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/split_merge.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/workflows/split_merge.html"
  },
  {
   "subject": "Manufacturing",
@@ -309,7 +309,7 @@
   ],
   "answer": 0,
   "explanation": "'Days to prepare Manufacturing Order' (tab Miscellaneous của BoM) cho phép tạo và xác nhận MO sớm hơn số ngày đó để kịp bổ sung linh kiện. 'Manuf. Lead Time' là thời gian sản xuất của chính sản phẩm, không phải thời gian chuẩn bị MO.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/scheduled_dates.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/warehouses_storage/replenishment/lead_times.html"
  },
  {
   "subject": "Manufacturing",

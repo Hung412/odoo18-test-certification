@@ -140,7 +140,7 @@
   ],
   "answer": 1,
   "explanation": "Sau khi bật Quotation Templates trong Sales settings, menu Sales ‣ Configuration ‣ Quotation Templates xuất hiện để tạo mẫu báo giá. Duplicate một báo giá không phải là mẫu tái sử dụng chính thức.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/send_quotations/quote_template.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/quote_template.html"
  },
  {
   "subject": "Sales",
@@ -153,7 +153,7 @@
   ],
   "answer": 3,
   "explanation": "Optional products được đề xuất trên báo giá và khách có thể tự thêm khi xem báo giá online. Variant là phiên bản của cùng một sản phẩm, không phải sản phẩm bổ sung.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/send_quotations/optional_products.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/optional_products.html"
  },
  {
   "subject": "Sales",
@@ -192,7 +192,7 @@
   ],
   "answer": 0,
   "explanation": "Online Signature cho phép khách hàng ký điện tử trên portal để xác nhận báo giá, chuyển nó thành đơn bán. Không liên quan đến việc ký hóa đơn nội bộ.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/send_quotations/get_signature_to_validate.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/get_signature_to_validate.html"
  },
  {
   "subject": "Sales",
@@ -803,7 +803,7 @@
   ],
   "answer": 0,
   "explanation": "Opportunity bị đánh dấu Lost sẽ được archive (active = False), probability về 0% và lưu Lost Reason; có thể tìm lại bằng bộ lọc Lost/Archived. Odoo không cần (và không dùng) một stage \"Lost\" riêng.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm/track_leads/lost_opportunities.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm/pipeline/lost_opportunities.html"
  },
  {
   "subject": "CRM",
@@ -946,7 +946,7 @@
   ],
   "answer": 1,
   "explanation": "\"Online Ticketing\" (website_event_sale) cho phép bán vé có phí qua eCommerce trên website. Booth Management dùng cho việc bán gian hàng (booth), không phải vé cho người tham dự.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/events/sell_tickets.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/events/promote_monetize/sell_tickets.html"
  },
  {
   "subject": "Marketing",
@@ -1063,7 +1063,7 @@
   ],
   "answer": 2,
   "explanation": "Redirect 301 báo cho trình duyệt và search engine rằng trang đã chuyển vĩnh viễn, giữ thứ hạng SEO; khi đổi URL trong page properties Odoo có tùy chọn tạo redirect. Nhân bản trang tạo nội dung trùng lặp, hại SEO.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages/url_redirection.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/pages.html"
  },
  {
   "subject": "Website",
@@ -1102,7 +1102,7 @@
   ],
   "answer": 2,
   "explanation": "Hộp thoại Optimize SEO (menu Site) cho phép đặt meta title, description, keywords và ảnh chia sẻ cho từng trang. robots.txt chỉ điều khiển việc bot được crawl, không chứa meta.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages/seo.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/seo.html"
  },
  {
   "subject": "Website",
@@ -1115,7 +1115,7 @@
   ],
   "answer": 1,
   "explanation": "Khi chọn form trong editor, panel tùy chỉnh có field Action (Send an E-mail, Create an Opportunity, Create a Customer…) quyết định dữ liệu gửi đi đâu. Không có app Form Builder riêng.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/web_design/building_blocks/form.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/web_design/building_blocks.html"
  },
  {
   "subject": "Website",
@@ -1232,7 +1232,7 @@
   ],
   "answer": 1,
   "explanation": "Khi bật Pricelists, mỗi pricelist có field Website và tùy chọn Selectable để khách tự chọn trên shop. Tạo hai website hay biến thể là không cần thiết.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/products/price_management.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/products/prices.html"
  },
  {
   "subject": "Project",
@@ -1284,7 +1284,7 @@
   ],
   "answer": 1,
   "explanation": "Chế độ Read cho phép collaborator xem task nhưng không được sửa. Edit và Edit with limited access đều cho phép chỉnh sửa task; 'Invited internal users (private)' là giá trị Visibility, không phải access mode.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project/project_management/project_sharing.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project/project_management.html"
  },
  {
   "subject": "Project",

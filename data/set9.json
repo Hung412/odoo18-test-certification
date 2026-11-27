@@ -195,7 +195,7 @@
   ],
   "answer": 1,
   "explanation": "ODOO.LIST.HEADER(list_id, field_name) trả về nhãn của trường trong list. ODOO.LIST trả về giá trị của một bản ghi tại vị trí cho trước, còn PIVOT.HEADER dành cho pivot.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/functions.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/work_with_data/functions.html"
  },
  {
   "subject": "Spreadsheet",
@@ -208,7 +208,7 @@
   ],
   "answer": 2,
   "explanation": "Với tài khoản bảng cân đối (include initial balance), ODOO.BALANCE lấy mọi bút toán đã posted đến ngày cuối kỳ, tức số dư lũy kế; chỉ tài khoản P&L mới giới hạn trong kỳ. Bút toán nháp chỉ được tính khi tham số include_unposted = TRUE.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/functions.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/work_with_data/functions.html"
  },
  {
   "subject": "Spreadsheet",
@@ -221,7 +221,7 @@
   ],
   "answer": 0,
   "explanation": "ODOO.ACCOUNT.GROUP(\"income\") trả về danh sách mã tài khoản thuộc loại kỹ thuật 'income' của công ty, dùng làm tham số account_codes cho ODOO.BALANCE. Loại kỹ thuật hợp lệ là 'income' chứ không phải 'revenue', còn ODOO.FILTER.VALUE trả về giá trị của global filter.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/functions.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/work_with_data/functions.html"
  },
  {
   "subject": "Inventory",
@@ -234,7 +234,7 @@
   ],
   "answer": 1,
   "explanation": "Route Cross-Dock (WH/Input → WH/Output) chỉ được kích hoạt khi Incoming Shipments không phải 1 bước và Outgoing Shipments không phải 1 bước. Ở đây giao hàng đã 2 bước, nhưng nhận hàng đang là 'Receive and Store (1 step)' nên route bị lưu trữ.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/warehouses_storage/advanced_operations_warehouse/cross_dock.html",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/cross_dock.html",
   "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Inventory</span><span>Overview</span><span>Operations</span><span>Products</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>Warehouses</a> / <b>San Francisco</b></span></div><div><span class=\"ox-pager\">1 / 1</span></div></div><div class=\"ox-body\"><div class=\"ox-sheet\"><div class=\"ox-title\"><small>Warehouse</small>San Francisco</div><div class=\"ox-fields\"><div><div class=\"ox-f\"><span class=\"l\">Short Name</span><span class=\"v\">WH</span></div></div><div><div class=\"ox-f\"><span class=\"l\">Address</span><span class=\"v\">YourCompany</span></div></div></div><div class=\"ox-tabs\"><span class=\"on\">Warehouse Configuration</span><span>Technical Information</span></div><div style=\"font-weight:700;margin:6px 0;border-bottom:1px solid #d8dadd\">Shipments</div><div class=\"ox-f\" style=\"grid-template-columns:160px 1fr\"><span class=\"l\">Incoming Shipments <span class=\"ox-mark\">1</span></span><span class=\"v ro\">&#9673; Receive and Store (1 step)<br>&#9675; Receive then Store (2 steps)<br>&#9675; Receive, Quality Control, then Store (3 steps)</span></div><div class=\"ox-f\" style=\"grid-template-columns:160px 1fr\"><span class=\"l\">Outgoing Shipments <span class=\"ox-mark\">2</span></span><span class=\"v ro\">&#9675; Deliver (1 step)<br>&#9673; Pick then Deliver (2 steps)<br>&#9675; Pick, Pack, then Deliver (3 steps)</span></div></div></div></div>"
  },
  {
@@ -300,7 +300,7 @@
   ],
   "answer": 3,
   "explanation": "Trên MO đã xác nhận, ô số lượng là một liên kết mở hộp thoại 'Change Quantity To Produce' (nút Set Quantity); Odoo cập nhật lại số lượng linh kiện và các work order theo số lượng mới. Trường Quantity chỉ sửa trực tiếp được khi MO còn ở Draft.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/manufacturing_orders.html",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/one_step_manufacturing.html",
   "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Manufacturing</span><span>Overview</span><span>Operations</span><span>Planning</span><span>Products</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>Manufacturing Orders</a> / <b>WH/MO/00012</b></span></div><div><span class=\"ox-pager\">2 / 14</span></div></div><div class=\"ox-body\"><div class=\"ox-bar\"><div><span class=\"ox-btn ox-primary\">Produce All</span><span class=\"ox-btn\">Start</span><span class=\"ox-btn\">Unreserve</span><span class=\"ox-btn\">Cancel</span></div><div class=\"ox-status\"><span>Draft</span><span class=\"on\">Confirmed</span><span>Done</span></div></div><div class=\"ox-sheet\"><div class=\"ox-smarts\"><div class=\"ox-smart\"><b>&#9776;</b>Overview</div></div><div class=\"ox-title\">WH/MO/00012</div><div class=\"ox-fields\"><div><div class=\"ox-f\"><span class=\"l\">Product</span><span class=\"v ro\">[FURN_9666] Table</span></div><div class=\"ox-f\"><span class=\"l\">Bill of Material</span><span class=\"v\">Table</span></div><div class=\"ox-f\"><span class=\"l\">Quantity</span><span class=\"v\">0.00 / <span class=\"ox-teal\" style=\"text-decoration:underline\">10.00</span> <span class=\"ox-mark\">1</span> Units <b>To Produce</b></span></div></div><div><div class=\"ox-f\"><span class=\"l\">Scheduled Date</span><span class=\"v\">11/26/2026 08:00:00</span></div><div class=\"ox-f\"><span class=\"l\">Responsible</span><span class=\"v\">Mitchell Admin</span></div></div></div><div class=\"ox-tabs\"><span class=\"on\">Components</span><span>By-Products</span><span>Miscellaneous</span></div><table class=\"ox-list\"><thead><tr><th>Product</th><th class=\"n\">To Consume</th><th class=\"n\">Quantity</th><th>UoM</th></tr></thead><tbody><tr><td>[FURN_8522] Table Top</td><td class=\"n\">10.00</td><td class=\"n\">0.00</td><td>Units</td></tr><tr><td>[FURN_2333] Table Leg</td><td class=\"n\">40.00</td><td class=\"n\">0.00</td><td>Units</td></tr><tr><td>[CONS_89957] Bolt</td><td class=\"n\">40.00</td><td class=\"n\">0.00</td><td>Units</td></tr></tbody></table></div></div></div>"
  },
  {
@@ -314,7 +314,7 @@
   ],
   "answer": 0,
   "explanation": "Setting Unlock Manufacturing Orders (Manufacturing ‣ Configuration ‣ Settings) cho phép sửa số lượng linh kiện cần tiêu hao mà không cần mở khóa MO trước. Work Order Dependencies chỉ liên quan đến thứ tự các operation.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/manufacturing_orders.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing.html"
  },
  {
   "subject": "Manufacturing",
@@ -340,7 +340,7 @@
   ],
   "answer": 1,
   "explanation": "Smart button Overview mở báo cáo MO Overview: cấu trúc linh kiện/operation, tình trạng sẵn có, ngày hàng về và so sánh chi phí dự kiến với thực tế. Product Moves chỉ liệt kê các stock move line của MO.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/manufacturing_orders.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/mo_costs.html"
  },
  {
   "subject": "Point of Sale",
@@ -363,7 +363,7 @@
    "Automatic Receipt Printing, with Basic Receipt ticked",
    "Early Receipt Printing, with Skip Preview Screen also ticked",
    "Automatic Receipt Printing, with Skip Preview Screen ticked",
-   "Use QR code on ticket, with Skip Preview Screen ticked"
+   "Self-service invoicing, with Skip Preview Screen ticked"
   ],
   "answer": 2,
   "explanation": "Automatic Receipt Printing in phiếu ngay sau khi thanh toán; tùy chọn con Skip Preview Screen bỏ qua màn hình phiếu khi in tự động được. Basic Receipt chỉ là phiếu không có giá, không giúp bỏ qua màn hình.",
@@ -590,7 +590,7 @@
   ],
   "answer": 1,
   "explanation": "Trong Page Properties, bật 'In Menu' sẽ tạo mục menu cho trang (có liên kết 'Edit Menu' để sắp xếp lại). 'Indexed' chỉ liên quan đến công cụ tìm kiếm và sitemap.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/pages.html"
  },
  {
   "subject": "eCommerce",
@@ -603,7 +603,7 @@
   ],
   "answer": 2,
   "explanation": "Automatic Invoice chỉ hiện khi Invoicing Policy = 'Ordered quantities', vì hóa đơn được tạo ngay khi thanh toán online được xác nhận. Khối Invoicing đã hiển thị nghĩa là ứng dụng kế toán đã được cài.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/checkout_payment_shipping.html",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/order_handling.html",
   "image": "<div class=\"ox\"><div class=\"ox-settings\"><div class=\"ox-sh\">Delivery</div><div class=\"ox-set\"><span class=\"ox-cb on\"></span><div><div class=\"t\">Shipping Address</div><div class=\"d\">Let the customer enter a delivery address</div></div></div><div class=\"ox-set\"><span class=\"ox-cb on\"></span><div><div class=\"t\">Shipping Costs</div><div class=\"d\">Compute shipping costs on orders</div></div></div><div class=\"ox-sh\">Invoicing</div><div class=\"ox-set\"><span class=\"ox-cb\" style=\"visibility:hidden\"></span><div><div class=\"t\">Invoicing Policy</div><div class=\"d\">Issue invoices to customers</div><div class=\"sub\"><div>○ Ordered quantities<br><span class=\"ox-mark\">1</span> ◉ Delivered quantities</div></div></div></div></div></div>"
  },
  {
@@ -617,7 +617,7 @@
   ],
   "answer": 0,
   "explanation": "Setting 'Mondial Relay' cho phép khách chọn điểm nhận hàng Mondial Relay khi thanh toán. 'Pick up in store' dùng cho việc nhận hàng tại cửa hàng/kho của chính công ty.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/checkout_payment_shipping.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/shipping.html"
  },
  {
   "subject": "eCommerce",

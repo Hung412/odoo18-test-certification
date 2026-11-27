@@ -195,7 +195,7 @@
   ],
   "answer": 1,
   "explanation": "PIVOT.HEADER trả về nhãn tiêu đề của pivot cho giá trị dimension đã cho (ở đây là tên khách hàng có id 12). PIVOT.VALUE trả về giá trị của một measure, còn ODOO.LIST.HEADER dành cho list chứ không phải pivot.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/functions.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/work_with_data/functions.html"
  },
  {
   "subject": "Spreadsheet",
@@ -208,7 +208,7 @@
   ],
   "answer": 3,
   "explanation": "Theo mô tả hàm, nếu không truyền account_codes thì ODOO.RESIDUAL dùng tất cả tài khoản loại receivable và payable để tính số dư còn lại (residual). Nó không lấy toàn bộ hệ thống tài khoản.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/functions.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/work_with_data/functions.html"
  },
  {
   "subject": "Spreadsheet",
@@ -300,7 +300,7 @@
   ],
   "answer": 0,
   "explanation": "Component Status 'Exp <ngày>' hiển thị ngày dự kiến linh kiện về; màu đỏ (late) nghĩa là ngày đó sau ngày Start của MO, còn màu cam là kịp trước ngày Start. 'Not Available' mới là trường hợp không có nguồn hàng nào đang về.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/manufacturing_orders.html",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/bill_configuration.html",
   "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Manufacturing</span><span>Overview</span><span>Operations</span><span>Planning</span><span>Products</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><b>Manufacturing Orders</b></span></div><div><span class=\"ox-search\"><span class=\"ox-facet\">To Do</span>Search...</span><span class=\"ox-views\"><span class=\"on\">&#9776;</span><span>&#9638;</span><span>&#9636;</span></span></div></div><table class=\"ox-list\"><thead><tr><th>Reference</th><th>Start</th><th>Product</th><th>Source</th><th>Component Status</th><th class=\"n\">Quantity</th><th>State</th></tr></thead><tbody><tr><td><b>WH/MO/00021</b></td><td>11/26/2026</td><td>[FURN_8522] Table Top</td><td>S00045</td><td style=\"color:#28a745\">Available</td><td class=\"n\">5.00</td><td><span class=\"ox-badge info\">Confirmed</span></td></tr><tr><td><b>WH/MO/00022</b></td><td>11/27/2026</td><td>[FURN_8900] Drawer Black</td><td></td><td style=\"color:#c27c0e\">Exp 11/25/2026</td><td class=\"n\">3.00</td><td><span class=\"ox-badge info\">Confirmed</span></td></tr><tr><td><b>WH/MO/00023</b></td><td>11/27/2026</td><td>[FURN_9666] Table</td><td>S00047</td><td style=\"color:#d44c59\">Exp 12/04/2026 <span class=\"ox-mark\">1</span></td><td class=\"n\">2.00</td><td><span class=\"ox-badge info\">Confirmed</span></td></tr><tr><td><b>WH/MO/00024</b></td><td>11/30/2026</td><td>[FURN_7800] Desk Combination</td><td></td><td style=\"color:#d44c59\">Not Available</td><td class=\"n\">4.00</td><td><span class=\"ox-badge warn\">In Progress</span></td></tr></tbody></table></div>"
  },
  {
@@ -340,7 +340,7 @@
   ],
   "answer": 3,
   "explanation": "Khi số lượng đang sản xuất khác 0 và khác tổng số lượng, nút chuyển từ 'Produce All' sang 'Produce' và chỉ xác nhận 6 đơn vị (kèm đề xuất backorder). 'Produce All' chỉ hiện khi quantity producing bằng 0 hoặc bằng toàn bộ.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/manufacturing_orders.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/one_step_manufacturing.html"
  },
  {
   "subject": "Point of Sale",
@@ -380,7 +380,7 @@
   ],
   "answer": 2,
   "explanation": "Chế độ Kiosk dành cho màn hình tự phục vụ đặt tại cửa hàng, khách tự gọi món và thanh toán. QR menu + Ordering là cho khách dùng điện thoại quét mã QR tại bàn.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/restaurant/self_order.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/self_order.html"
  },
  {
   "subject": "Point of Sale",
@@ -551,7 +551,7 @@
   ],
   "answer": 1,
   "explanation": "Visibility = 'Restricted Group' giới hạn trang cho người dùng đã đăng nhập thuộc các nhóm trong Authorized Groups (ở đây là Portal). Mật khẩu chỉ áp dụng khi Visibility = 'With Password'.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages.html",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/pages.html",
   "image": "<div class=\"ox\"><div class=\"ox-dialog\"><div class=\"h\">Page Properties</div><div class=\"b\"><div class=\"ox-f\"><span class=\"l\">Page Title</span><span class=\"v\">Partner Area</span></div><div class=\"ox-f\"><span class=\"l\">Page URL</span><span class=\"v\">/partner-area</span></div><div class=\"ox-f\"><span class=\"l\">In Menu</span><span class=\"v\"><span class=\"ox-toggle\"></span></span></div><div class=\"ox-f\"><span class=\"l\">Is Homepage</span><span class=\"v\"><span class=\"ox-toggle\"></span></span></div><div class=\"ox-f\"><span class=\"l\">Published</span><span class=\"v\"><span class=\"ox-toggle on\"></span></span></div><div class=\"ox-f\"><span class=\"l\">Publishing Date</span><span class=\"v\"></span></div><div class=\"ox-f\"><span class=\"l\">Indexed</span><span class=\"v\"><span class=\"ox-toggle\"></span> <span class=\"ox-mu\">Won't appear in search engine results</span></span></div><div class=\"ox-f\"><span class=\"l\">Visibility <span class=\"ox-mark\">1</span></span><span class=\"v\">Restricted Group</span></div><div class=\"ox-f\"><span class=\"l\">Authorized Groups</span><span class=\"v\"><span class=\"ox-tag c4\">Portal</span></span></div><div class=\"ox-f\"><span class=\"l\">Is a Template</span><span class=\"v\"><span class=\"ox-toggle\"></span></span></div></div><div class=\"f\"><span class=\"ox-btn ox-primary\">Save</span><span class=\"ox-btn\">Discard</span><span class=\"ox-btn ox-link\">Duplicate Page</span><span class=\"ox-btn ox-link\">Delete Page</span></div></div></div>"
  },
  {
@@ -591,7 +591,7 @@
   ],
   "answer": 2,
   "explanation": "'308 Redirect / Rewrite' dùng để đổi URL của một controller (ví dụ /shop → /garden): cả hai URL đều truy cập được và /shop được chuyển sang /garden. 301/302 chỉ chuyển hướng URL, không đổi tên route của controller.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages/seo.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/pages.html"
  },
  {
   "subject": "eCommerce",
@@ -630,7 +630,7 @@
   ],
   "answer": 0,
   "explanation": "Setting 'Address Autocomplete' (website_sale_autocomplete) dùng Google Places API để gợi ý và xác thực địa chỉ khách nhập. 'Shipping Address' chỉ cho phép nhập địa chỉ giao hàng riêng, không gợi ý địa chỉ.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/checkout_payment_shipping.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/configuration/address_autocomplete.html"
  },
  {
   "subject": "Project",

@@ -12,6 +12,19 @@ Hình luôn hiển thị như ảnh chụp giao diện sáng, kể cả khi tran
 - Khi câu hỏi trỏ vào một vị trí trên hình, đánh dấu bằng `<span class="ox-mark">1</span>` (hoặc `ox-hl` để viền đỏ) và gọi trong câu hỏi là "marker 1".
 - Hình phải đúng với Odoo 18: tên menu, nút, trạng thái, nhãn trường.
 
+## Bám sát giao diện Odoo 18
+
+Trước khi vẽ một màn hình, mở view XML của Odoo 18 tương ứng (vd. `addons/sale/views/sale_order_views.xml`, `addons/account/views/account_move_views.xml`; module enterprise nằm trong `erp-internal/`) và lấy đúng:
+
+- **Nút trên header**: đúng nhãn, đúng thứ tự, và chỉ những nút thực sự hiện ở trạng thái đang vẽ (xem điều kiện `invisible=`). Nút `class="btn-primary"` dùng `ox-primary`, còn lại dùng `ox-btn` thường.
+- **Statusbar**: chỉ các trạng thái trong `statusbar_visible`, cộng trạng thái hiện tại nếu nó không nằm trong danh sách. Nhãn lấy từ selection của trường `state`.
+- **Nhãn trường, tab (`page string=`), smart button**: đúng chữ hiển thị (`string=` trên view, nếu không có thì `string` của field trong model).
+- **Ribbon** (`web_ribbon`): đúng chữ và màu (`bg-danger` → mặc định đỏ, `bg-success` → `ok`, `bg-info` → `info`).
+- **Menu trên `ox-nav`**: đúng menu cấp 1 của app trong Odoo 18.
+- Kanban: thứ tự cột theo stage demo; màu thanh tiến độ: xanh = activity sắp tới, cam = hôm nay, đỏ = quá hạn, xám = không có activity.
+
+Nếu không tìm được view để đối chiếu thì vẽ ít chi tiết hơn, đừng bịa nút hay trạng thái.
+
 ## Thành phần
 
 | Nhóm | Class |

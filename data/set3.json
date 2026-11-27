@@ -192,7 +192,7 @@
   ],
   "answer": 3,
   "explanation": "Sau khi gửi email, báo giá chuyển sang trạng thái 'Quotation Sent'; chỉ khi xác nhận mới thành 'Sales Order'. 'To Invoice' là trạng thái hóa đơn chứ không phải trạng thái đơn.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/send_quotations.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/create_quotations.html"
  },
  {
   "subject": "Sales",
@@ -218,7 +218,7 @@
   ],
   "answer": 1,
   "explanation": "Khi sản phẩm có optional products, product configurator hiện lên để đề xuất thêm các sản phẩm tùy chọn. Chúng không tự động được thêm vào đơn.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/send_quotations/optional_products.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/optional_products.html"
  },
  {
   "subject": "Sales",
@@ -290,12 +290,12 @@
   "question": "A buyer creates a blanket order, adds products and quantities but leaves the Unit Price empty, and leaves 'Agreement Validity' empty. What is the result?",
   "options": [
    "The agreement cannot be confirmed without an end date",
-   "Prices stay at 0 and the agreement has no expiry date",
+   "Confirming fails until every line has a unit price",
    "Prices are taken from the product's sales price at confirmation",
    "Prices are copied from the product cost, and the agreement expires after one year"
   ],
   "answer": 1,
-  "explanation": "Giá trong blanket order không tự lấy từ giá sản phẩm nên để trống sẽ là 0; Agreement Validity để trống nghĩa là thỏa thuận không hết hạn.",
+  "explanation": "Khi bấm Confirm, Odoo 18 báo lỗi \"You cannot confirm a blanket order with lines missing a price.\", vì mọi dòng của blanket order phải có Unit Price lớn hơn 0. Agreement Validity thì không bắt buộc: để trống nghĩa là thỏa thuận không có ngày hết hạn, nên đáp án \"cần ngày kết thúc\" là sai.",
   "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/blanket_orders.html"
  },
  {
@@ -348,7 +348,7 @@
   ],
   "answer": 1,
   "explanation": "Với Units of Measure bật, sản phẩm có thể có Purchase UoM khác đơn vị bán; Odoo tự quy đổi khi nhập kho. Tạo hai sản phẩm riêng gây khó khăn quản lý tồn kho.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/products/uom.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/product_management/configure/uom.html"
  },
  {
   "subject": "Spreadsheet",
@@ -692,7 +692,7 @@
   "subject": "Point of Sale",
   "question": "A restaurant wants drinks to be printed at the bar and food at the kitchen. Which setting should be used?",
   "options": [
-   "Use QR code on ticket",
+   "Self-service invoicing",
    "Customer Display",
    "Preparation Printers, each linked to product categories",
    "Preparation Display with a single screen for all categories"
@@ -732,12 +732,12 @@
   "question": "Customers should be able to request an invoice themselves after purchase, using information printed on their receipt. Which setting enables this?",
   "options": [
    "Kiosk self-ordering mode",
-   "Use QR code on ticket",
+   "Self-service invoicing",
    "Flexible Pricelists",
    "Customer Account payment method"
   ],
   "answer": 1,
-  "explanation": "Use QR code on ticket in mã QR trên hóa đơn bán lẻ để khách tự yêu cầu invoice qua portal. Customer Account là phương thức ghi nợ, không liên quan đến tự xuất hóa đơn.",
+  "explanation": "\"Self-service invoicing\" (Point of Sale ‣ Configuration ‣ Settings) in mã QR và mã duy nhất trên phiếu để khách tự yêu cầu hóa đơn qua portal. Customer Account là phương thức ghi nợ, không liên quan đến việc khách tự xuất hóa đơn.",
   "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale.html"
  },
  {
@@ -760,10 +760,10 @@
    "Tax-included prices on products",
    "Flexible Pricelists",
    "Two separate products for each dish",
-   "Flexible Taxes"
+   "Eat in / Take out"
   ],
   "answer": 3,
-  "explanation": "Flexible Taxes cho phép chọn fiscal position trên đơn để ánh xạ sang thuế khác (mang đi/tại chỗ). Pricelist thay đổi giá, không thay đổi thuế.",
+  "explanation": "Trong Odoo 18, nhà hàng bật \"Eat in / Take out\" và chọn một Alternative Fiscal Position; nhân viên đánh dấu đơn mang đi để Odoo đổi sang thuế tương ứng (giá phải là giá đã gồm thuế). Pricelist chỉ thay đổi giá, không thay đổi thuế.",
   "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale.html"
  },
  {
@@ -790,7 +790,7 @@
   ],
   "answer": 2,
   "explanation": "Báo cáo Forecast hiển thị opportunity theo Expected Closing (theo tháng) để dự báo doanh thu. Báo cáo Activities phân tích hoạt động, không nhóm theo ngày đóng dự kiến.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm/pipeline/forecast.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm/performance/forecast_report.html"
  },
  {
   "subject": "CRM",
@@ -868,7 +868,7 @@
   ],
   "answer": 1,
   "explanation": "Trong website editor, form building block có field Action; chọn \"Create an Opportunity\" để mỗi lần gửi form tạo lead/opportunity trong CRM. \"Send an E-mail\" chỉ gửi email, không tạo bản ghi CRM.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/web_design/building_blocks/form.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/web_design/building_blocks.html"
  },
  {
   "subject": "Marketing",
@@ -920,7 +920,7 @@
   ],
   "answer": 0,
   "explanation": "Tab Communication của event là lịch gửi email/SMS tự động theo mốc (sau đăng ký, trước/sau sự kiện). Gửi mass mailing thủ công cũng được nhưng không tự động.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/events/create_events.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/events/event_setup/create_events.html"
  },
  {
   "subject": "Marketing",
@@ -959,7 +959,7 @@
   ],
   "answer": 3,
   "explanation": "Bounced nghĩa là email bị server người nhận trả về, không giao được (địa chỉ sai, hộp thư đầy…). Email vào thư mục spam vẫn được tính là đã giao.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/email_marketing/analytics.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/email_marketing/analyze_metrics.html"
  },
  {
   "subject": "Marketing",
@@ -1115,7 +1115,7 @@
   ],
   "answer": 3,
   "explanation": "Bỏ tick \"Indexed\" giúp trang không bị search engine index và không xuất hiện trong sitemap nhưng vẫn truy cập được. Unpublish thì khách không xem được trang.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/pages.html"
  },
  {
   "subject": "Website",
@@ -1141,7 +1141,7 @@
   ],
   "answer": 2,
   "explanation": "Trang chưa publish chỉ hiển thị với user nội bộ có quyền chỉnh sửa website (Restricted Editor/Editor and Designer). Khách truy cập và portal user không xem được.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/pages.html"
  },
  {
   "subject": "eCommerce",
@@ -1154,7 +1154,7 @@
   ],
   "answer": 0,
   "explanation": "\"Prevent Sale of Zero Priced Product\" ẩn nút Add to Cart cho sản phẩm giá 0 và hiển thị nút Contact Us dẫn tới Button Url. Unpublish thì khách không thấy sản phẩm.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/products/price_management.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/products/prices.html"
  },
  {
   "subject": "eCommerce",
@@ -1200,13 +1200,13 @@
   "question": "A shop wants to show a crossed-out reference price next to the sale price, e.g. \"$100\" struck through and \"$80\". What should be enabled?",
   "options": [
    "A \"Sale\" ribbon on the product, set in the website editor",
-   "Product Reference Price, then fill \"Compare to Price\"",
+   "Comparison Price, then fill \"Compare to Price\"",
    "Display Product Prices: Tax Included",
    "Optional Products"
   ],
   "answer": 1,
-  "explanation": "Bật Product Reference Price/Comparison Price trong Website settings rồi nhập \"Compare to Price\" trên sản phẩm để hiển thị giá gạch ngang. Ribbon \"Sale\" chỉ là nhãn hiển thị trên ảnh sản phẩm, không tạo giá gạch ngang.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/products/price_management.html"
+  "explanation": "Bật \"Comparison Price\" trong Website ‣ Configuration ‣ Settings (mục Shop - Products) rồi nhập \"Compare to Price\" trên sản phẩm để hiện giá gạch ngang (giá này không hiện khi có pricelist áp dụng). Ribbon \"Sale\" chỉ là nhãn trên ảnh sản phẩm, không tạo giá gạch ngang.",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/products/prices.html"
  },
  {
   "subject": "eCommerce",
@@ -1258,7 +1258,7 @@
   ],
   "answer": 3,
   "explanation": "Với chính sách Based on Milestones, delivered quantity được cập nhật khi milestone liên kết được đánh dấu Reached (theo % của milestone). Timesheet chỉ ảnh hưởng chính sách Based on Timesheets.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/invoicing/time_materials.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/invoicing/milestone.html"
  },
  {
   "subject": "Project",
@@ -1297,7 +1297,7 @@
   ],
   "answer": 1,
   "explanation": "'Edit with limited access' chỉ cho phép xem và sửa các task mà collaborator đang follow. Quyền xem/sửa mọi task là chế độ Edit.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project/project_management/project_sharing.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project/project_management.html"
  },
  {
   "subject": "Project",

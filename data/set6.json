@@ -114,7 +114,7 @@
   ],
   "answer": 0,
   "explanation": "Nút 'Preview' mở báo giá trên customer portal đúng như khách hàng sẽ thấy (kèm ký/thanh toán online nếu bật). Print chỉ tạo bản PDF.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/send_quotations/get_signature_to_validate.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm/acquire_leads/send_quotes.html"
  },
  {
   "subject": "Sales",
@@ -166,7 +166,7 @@
   ],
   "answer": 0,
   "explanation": "Purchase Template lưu sẵn danh sách sản phẩm để tạo RFQ nhanh mà không cam kết giá/số lượng. Blanket Order là cam kết giá với nhà cung cấp; 'Call for Tenders' không còn là loại agreement trong Odoo 18.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/agreements.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/purchase_templates.html"
  },
  {
   "subject": "Purchase",
@@ -192,7 +192,7 @@
   ],
   "answer": 2,
   "explanation": "ODOO.FILTER.VALUE(filter_name) trả về giá trị hiện tại của global filter theo nhãn. PIVOT.HEADER trả về tiêu đề của pivot chứ không phải giá trị bộ lọc.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/global_filters.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/work_with_data/global_filters.html"
  },
  {
   "subject": "Spreadsheet",
@@ -205,7 +205,7 @@
   ],
   "answer": 3,
   "explanation": "ODOO.FISCALYEAR.START trả về ngày bắt đầu năm tài chính chứa ngày đã cho (theo cấu hình công ty); có hàm tương ứng ODOO.FISCALYEAR.END. ODOO.BALANCE trả về số dư tài khoản.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/functions.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/work_with_data/functions.html"
  },
  {
   "subject": "Spreadsheet",
@@ -244,7 +244,7 @@
   ],
   "answer": 3,
   "explanation": "Bật 'Signature' trong Inventory ‣ Configuration ‣ Settings sẽ hiện nút Sign trên phiếu giao và in chữ ký lên delivery slip. 'Warnings for Stock' chỉ để hiện cảnh báo khi chọn partner/sản phẩm.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/setup_configuration/signature.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory.html"
  },
  {
   "subject": "Inventory",
@@ -296,7 +296,7 @@
   ],
   "answer": 0,
   "explanation": "Action 'Split' chia một MO (Draft/Confirmed) thành nhiều MO với số lượng tùy chọn. Backorder chỉ được đề xuất khi đóng MO với số lượng sản xuất thiếu, không dùng để chia trước.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/split_merge.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/workflows/split_merge.html"
  },
  {
   "subject": "Manufacturing",
@@ -309,7 +309,7 @@
   ],
   "answer": 2,
   "explanation": "'Cost per hour' trên work center được dùng để tính chi phí operation (thời gian × đơn giá) trong giá thành sản phẩm và BoM Overview. 'Cost Share (%)' chỉ phân bổ chi phí cho by-product.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/advanced_configuration/work_center_costs.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/advanced_configuration/using_work_centers.html"
  },
  {
   "subject": "Manufacturing",
@@ -322,7 +322,7 @@
   ],
   "answer": 1,
   "explanation": "Từ Odoo 18, 'Manuf. Lead Time' (produce_delay) nằm trên BoM, tab Miscellaneous, cùng với 'Days to prepare Manufacturing Order'. Các phiên bản trước đặt trường này trên tab Inventory của sản phẩm.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/scheduled_dates.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/warehouses_storage/replenishment/lead_times.html"
  },
  {
   "subject": "Manufacturing",
@@ -348,7 +348,7 @@
   ],
   "answer": 1,
   "explanation": "Cách chuẩn là vào màn hình Orders, tìm đơn gốc, chọn số lượng cần trả và bấm Refund; Odoo tạo đơn hoàn trả liên kết với đơn gốc (số lượng âm). Nhập giá âm thủ công sẽ mất liên kết với đơn gốc và sai thống kê.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/shop/refund.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale.html"
  },
  {
   "subject": "Point of Sale",
@@ -382,12 +382,12 @@
   "options": [
    "Allow Bill Splitting",
    "Preparation Printers",
-   "Use QR code on ticket",
+   "Self-service invoicing",
    "Early Receipt Printing"
   ],
   "answer": 3,
   "explanation": "'Early Receipt Printing' (restaurant) thêm nút in hóa đơn tạm (Bill) trước khi thanh toán. Preparation Printers dùng để in phiếu chế biến cho bếp/bar, không phải hóa đơn cho khách.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/restaurant/bill_printing.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/point_of_sale/restaurant.html"
  },
  {
   "subject": "CRM",

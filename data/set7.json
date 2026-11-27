@@ -116,7 +116,7 @@
   ],
   "answer": 1,
   "explanation": "Trường 'Delivery Date' (commitment_date) trong tab Other Info là ngày giao hàng đã cam kết với khách; khi có giá trị, phiếu giao hàng được lên lịch theo ngày này thay vì ngày dự kiến tính từ lead time. 'Expiration' chỉ là hạn hiệu lực của báo giá.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/delivery_date.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/create_quotations.html"
  },
  {
   "subject": "Sales",
@@ -129,7 +129,7 @@
   ],
   "answer": 0,
   "explanation": "Từ form sales order, menu Actions ‣ Generate a Payment Link tạo một đường link thanh toán trực tuyến cho số tiền cần trả, có thể copy và gửi cho khách qua bất kỳ kênh nào. Hóa đơn nháp không thể thanh toán online và việc khóa đơn không tạo nút thanh toán.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/products_prices/ecommerce/payments.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/get_paid_to_validate.html"
  },
  {
   "subject": "Purchase",
@@ -182,7 +182,7 @@
   ],
   "answer": 1,
   "explanation": "Trên dòng nhà cung cấp (vendor pricelist) ở tab Purchase của sản phẩm, các trường Vendor Product Name và Vendor Product Code được dùng khi in RFQ cho đúng nhà cung cấp đó. Đổi Internal Reference sẽ ảnh hưởng đến mọi chứng từ, không chỉ với Wood Corner.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/products/product_variants.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/rfq.html"
  },
  {
   "subject": "Spreadsheet",
@@ -208,7 +208,7 @@
   ],
   "answer": 3,
   "explanation": "Tham số account_codes là tiền tố mã tài khoản, nên '60' lấy mọi tài khoản bắt đầu bằng 60; mặc định include_unposted = FALSE nên chỉ tính bút toán đã Posted. Với tài khoản chi phí (P&L), chỉ các bút toán trong kỳ Q1/2025 được tính.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/functions.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/productivity/spreadsheet/work_with_data/functions.html"
  },
  {
   "subject": "Spreadsheet",
@@ -300,7 +300,7 @@
   ],
   "answer": 0,
   "explanation": "Nút Start trên MO đã xác nhận chỉ chuyển MO sang trạng thái In Progress để báo hiệu bắt đầu sản xuất; chưa ghi nhận tiêu hao hay thành phẩm. Tiêu hao và nhập thành phẩm xảy ra khi bấm Produce All.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/manufacturing_orders.html",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/one_step_manufacturing.html",
   "image": "<div class=\"ox\"><div class=\"ox-nav\"><span class=\"ox-app\">Manufacturing</span><span>Overview</span><span>Operations</span><span>Planning</span><span>Products</span><span>Reporting</span><span>Configuration</span></div><div class=\"ox-cp\"><div><span class=\"ox-btn ox-primary\">New</span><span class=\"ox-bc\"><a>Manufacturing Orders</a> / <b>WH/MO/00012</b></span></div><div><span class=\"ox-pager\">2 / 14</span></div></div><div class=\"ox-body\"><div class=\"ox-bar\"><div><span class=\"ox-btn ox-primary\">Produce All</span><span class=\"ox-btn\">Start <span class=\"ox-mark\">1</span></span><span class=\"ox-btn\">Unreserve</span><span class=\"ox-btn\">Cancel</span></div><div class=\"ox-status\"><span>Draft</span><span class=\"on\">Confirmed</span><span>Done</span></div></div><div class=\"ox-sheet\"><div class=\"ox-smarts\"><div class=\"ox-smart\"><b>&#9776;</b>Overview</div></div><div class=\"ox-title\">WH/MO/00012</div><div class=\"ox-fields\"><div><div class=\"ox-f\"><span class=\"l\">Product</span><span class=\"v ro\">[FURN_9666] Table</span></div><div class=\"ox-f\"><span class=\"l\">Bill of Material</span><span class=\"v\">Table</span></div><div class=\"ox-f\"><span class=\"l\">Quantity</span><span class=\"v\">0.00 / 10.00 Units <b>To Produce</b></span></div></div><div><div class=\"ox-f\"><span class=\"l\">Scheduled Date</span><span class=\"v\">11/26/2026 08:00:00</span></div><div class=\"ox-f\"><span class=\"l\">Responsible</span><span class=\"v\">Mitchell Admin</span></div></div></div><div class=\"ox-tabs\"><span class=\"on\">Components</span><span>By-Products</span><span>Miscellaneous</span></div><table class=\"ox-list\"><thead><tr><th>Product</th><th class=\"n\">To Consume</th><th class=\"n\">Quantity</th><th>UoM</th></tr></thead><tbody><tr><td>[FURN_8522] Table Top</td><td class=\"n\">10.00</td><td class=\"n\">0.00</td><td>Units</td></tr><tr><td>[FURN_2333] Table Leg</td><td class=\"n\">40.00</td><td class=\"n\">0.00</td><td>Units</td></tr><tr><td>[CONS_89957] Bolt</td><td class=\"n\">40.00</td><td class=\"n\">0.00</td><td>Units</td></tr></tbody></table></div></div></div>"
  },
  {
@@ -327,7 +327,7 @@
   ],
   "answer": 1,
   "explanation": "Security Lead Time (Manufacturing ‣ Configuration ‣ Settings) lùi ngày dự kiến của mọi MO thêm X ngày để tạo khoảng an toàn. Manuf. Lead Time trên BoM là thời gian sản xuất thực của sản phẩm, không phải biên độ an toàn chung.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/advanced_operations_shipping/scheduled_dates.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/warehouses_storage/replenishment/lead_times.html"
  },
  {
   "subject": "Manufacturing",
@@ -340,7 +340,7 @@
   ],
   "answer": 2,
   "explanation": "Nút Unreserve trên MO giải phóng lượng linh kiện đã giữ chỗ mà MO vẫn ở trạng thái Confirmed. Unplan chỉ gỡ lịch work order trên work center, không đụng tới việc giữ hàng.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/manufacturing/basic_setup/manufacturing_orders.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/inventory/shipping_receiving/reservation_methods.html"
  },
  {
   "subject": "Point of Sale",
@@ -551,7 +551,7 @@
   ],
   "answer": 3,
   "explanation": "Bật 'Is a Template' trong Page Properties sẽ thêm trang vào hộp thoại tạo trang mới (+New ‣ Page), nhóm 'Custom'. Visibility chỉ có Public, Signed In, Restricted Group, With Password.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/pages.html"
  },
  {
   "subject": "Website",
@@ -564,7 +564,7 @@
   ],
   "answer": 1,
   "explanation": "Loại '404 Not Found' dùng để gỡ bỏ một trang/controller trên một website cụ thể (ví dụ không muốn có /shop dù eCommerce đã cài). 301/302/308 vẫn đưa khách tới một URL khác chứ không chặn hẳn.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages/seo.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/pages.html"
  },
  {
   "subject": "Website",
@@ -590,7 +590,7 @@
   ],
   "answer": 0,
   "explanation": "Setting 'Default Social Share Image' thay logo website bằng ảnh chia sẻ mặc định khi trang được chia sẻ lên mạng xã hội. Favicon chỉ là biểu tượng trên tab trình duyệt.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages/seo.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/seo.html"
  },
  {
   "subject": "eCommerce",
@@ -603,7 +603,7 @@
   ],
   "answer": 3,
   "explanation": "'Let the user decide (dialog)' luôn mở hộp thoại sau khi thêm vào giỏ, để khách chọn Continue Shopping hoặc Proceed to Checkout. 'Go to cart' chuyển thẳng tới giỏ hàng, còn 'Stay on Product Page' giữ khách ở trang sản phẩm.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/checkout_payment_shipping.html",
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/checkout.html",
   "image": "<div class=\"ox\"><div class=\"ox-settings\"><div class=\"ox-sh\">Shop - Checkout Process</div><div class=\"ox-set\"><span class=\"ox-cb\" style=\"visibility:hidden\"></span><div><div class=\"t\">Add to Cart</div><div class=\"d\">What should be done on \"Add to Cart\"?</div><div class=\"sub\"><div>○ Stay on Product Page<br>○ Go to cart<br><span class=\"ox-mark\">1</span> ◉ Let the user decide (dialog)</div></div></div></div><div class=\"ox-set\"><span class=\"ox-cb\" style=\"visibility:hidden\"></span><div><div class=\"t\">Sign in/up at checkout</div><div class=\"d\">\"Optional\" allows guests to register from the order confirmation email to track their order.</div><div class=\"sub\"><div>◉ Optional<br>○ Disabled (buy as guest)<br>○ Mandatory (no guest checkout)</div></div></div></div><div class=\"ox-set\"><span class=\"ox-cb\"></span><div><div class=\"t\">Buy Now</div><div class=\"d\">Instant checkout, instead of adding to cart</div></div></div><div class=\"ox-set\"><span class=\"ox-cb\"></span><div><div class=\"t\">Extra Step During Checkout</div><div class=\"d\">Add a customizable form during checkout (after address)</div></div></div></div></div>"
  },
  {
@@ -630,7 +630,7 @@
   ],
   "answer": 2,
   "explanation": "Pricelist có trường Country Groups; website dùng GeoIP để chọn bảng giá có nhóm quốc gia khớp với quốc gia của khách. 'Selectable' chỉ cho phép khách tự chọn bảng giá, không tự áp dụng theo quốc gia.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/products/price_management.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/ecommerce/products/prices.html"
  },
  {
   "subject": "Project",

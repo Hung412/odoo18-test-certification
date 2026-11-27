@@ -140,7 +140,7 @@
   ],
   "answer": 3,
   "explanation": "Với Online Payment và prepayment %, khách phải thanh toán trước phần trăm đó trên portal để xác nhận đơn. Không có giảm giá hay hóa đơn mua nào được tạo.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/send_quotations/get_paid_to_validate.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/sales/sales_quotations/get_paid_to_validate.html"
  },
  {
   "subject": "Sales",
@@ -309,7 +309,7 @@
   ],
   "answer": 2,
   "explanation": "Bật Purchase Agreements (Purchase ‣ Configuration ‣ Settings, mục Orders) cho phép dùng blanket order và tạo RFQ thay thế. Purchase Order Approval chỉ liên quan đến duyệt đơn.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/agreements.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/inventory_and_mrp/purchase/manage_deals/blanket_orders.html"
  },
  {
   "subject": "Purchase",
@@ -803,7 +803,7 @@
   ],
   "answer": 0,
   "explanation": "Opportunity Lost chỉ bị archive nên có thể tìm bằng bộ lọc Lost rồi bấm Restore để đưa lại vào pipeline. Đổi Lost Reason không khôi phục bản ghi.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm/track_leads/lost_opportunities.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm/pipeline/lost_opportunities.html"
  },
  {
   "subject": "CRM",
@@ -842,7 +842,7 @@
   ],
   "answer": 0,
   "explanation": "Mỗi Sales Team có Email Alias; email gửi đến alias sẽ tạo lead/opportunity thuộc team đó. Mailing Lists phục vụ gửi email marketing, không nhận email vào CRM.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm/acquire_leads/generate_from_email.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/sales/crm/acquire_leads/email_manual.html"
  },
  {
   "subject": "CRM",
@@ -920,7 +920,7 @@
   ],
   "answer": 3,
   "explanation": "\"Unicity based on\" xác định field (vd. email) dùng để tránh một participant bị thêm vào campaign nhiều lần. Thứ tự activity do trigger và delay quyết định, không phải field này.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/marketing_automation/getting_started.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/marketing_automation/target_audience.html"
  },
  {
   "subject": "Marketing",
@@ -946,7 +946,7 @@
   ],
   "answer": 0,
   "explanation": "Event Template (Events ‣ Configuration ‣ Event Templates) lưu sẵn vé, lịch gửi email… và tự điền khi chọn trên event mới. Calendar recurring event không tạo vé hay đăng ký sự kiện.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/events/create_events.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/events/event_setup/event_templates.html"
  },
  {
   "subject": "Marketing",
@@ -959,7 +959,7 @@
   ],
   "answer": 3,
   "explanation": "Booth Management cho phép định nghĩa gian hàng (booth) và bán/đặt chúng trên website. Online Ticketing bán vé cho người tham dự, không phải gian hàng.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/events/event_booths.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/events/promote_monetize/event_booths.html"
  },
  {
   "subject": "Marketing",
@@ -1063,7 +1063,7 @@
   ],
   "answer": 1,
   "explanation": "Page properties có Visibility: All, Signed In, Restricted Group, With Password. \"Signed In\" yêu cầu đăng nhập chứ không phải mật khẩu riêng của trang.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/pages.html"
  },
  {
   "subject": "Website",
@@ -1076,7 +1076,7 @@
   ],
   "answer": 2,
   "explanation": "Mega Menu là dropdown lớn có thể thiết kế bằng building block (nhiều cột, ảnh). Sub-menu thông thường chỉ là danh sách link đơn giản.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages/menus.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/header_footer.html"
  },
  {
   "subject": "Website",
@@ -1089,7 +1089,7 @@
   ],
   "answer": 3,
   "explanation": "Odoo tự sinh sitemap.xml từ các trang được index và cho phép chỉnh robots.txt trong Website settings (mục SEO). Không cần upload thủ công.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/pages/seo.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/structure/seo.html"
  },
  {
   "subject": "Website",
@@ -1141,7 +1141,7 @@
   ],
   "answer": 2,
   "explanation": "Bản ghi Visitor cho thấy trang đã xem, quốc gia, lần truy cập cuối… và cho phép gửi email/SMS hoặc chat nếu đang online. Odoo không lưu mật khẩu người dùng dạng xem được.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/websites/website/reporting/visitors.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/marketing/social_marketing.html"
  },
  {
   "subject": "eCommerce",
@@ -1284,7 +1284,7 @@
   ],
   "answer": 1,
   "explanation": "Chỉ Visibility 'Invited portal users and all internal users (public)' mới cho phép portal user (khách hàng) truy cập task. Hai lựa chọn còn lại chỉ dành cho internal user.",
-  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project/project_management/project_sharing.html"
+  "ref": "https://www.odoo.com/documentation/18.0/applications/services/project/project_management.html"
  },
  {
   "subject": "Project",
